@@ -1,3 +1,1 @@
-
-
-For details, please see http://ics-software-engineering.github.io/meteor-application-template-react/
+# [Beyond The Library](https://beyond-the-library.github.io)
