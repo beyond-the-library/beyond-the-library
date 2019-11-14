@@ -3,5 +3,5 @@
 .DS_Store
 node_modules
 settings.production.json
-package-lock.json
-package.json
+app/package-lock.json
+app/package.json
