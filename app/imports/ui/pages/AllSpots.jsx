@@ -32,7 +32,9 @@ class MySpots extends React.Component {
                     <Button.Group>
                       <Button color='blue'>Edit</Button>
                       <Button.Or />
-                      <Button negative>Discard</Button>
+                      <Button negative>Reject</Button>
+                      <Button.Or />
+                      <Button positive>Publish</Button>
                     </Button.Group>
                   </Grid.Row>
                 </Grid.Column>
@@ -57,6 +59,46 @@ class MySpots extends React.Component {
                       <Label size='large'>
                         <Icon name='check' color='green' /> Approved
                       </Label>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Button.Group>
+                        <Button color='blue'>Edit</Button>
+                        <Button.Or />
+                        <Button negative>Delete</Button>
+                        <Button.Or />
+                        <Button active>Archive</Button>
+                      </Button.Group>
+                    </Grid.Row>
+                  </Grid.Column>
+                </Grid>
+              </Card.Content>
+            </Card>
+
+            <Card fluid color='gray' height='200px'>
+              <Card.Content>
+                <Grid container>
+                  <Grid.Column width={3}>
+                    <Image verticalAlign='middle' fluid rounded
+                           src="https://cnet3.cbsistatic.com/img/pXZLKD-YlCz9n12JlGhovk4YCdo=/1092x0/2014/03/31/1497f64b-bf2d-11e3-bddd-d4ae52e62bcc/bliss_1.jpg"/>
+                  </Grid.Column>
+                  <Grid.Column width={9}>
+                    <Header as='h4'>Location: Somewhere in the earth</Header>
+                    <Header as='h4'>Description: Everyone knows this spot.</Header>
+                  </Grid.Column>
+                  <Grid.Column width={3} rows='2' stretched>
+                    <Grid.Row>
+                      <Label size='large'>
+                        <Icon name='archive' color='gray' /> Archived
+                      </Label>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Button.Group>
+                        <Button color='blue'>Edit</Button>
+                        <Button.Or />
+                        <Button negative>Delete</Button>
+                        <Button.Or />
+                        <Button positive>Publish</Button>
+                      </Button.Group>
                     </Grid.Row>
                   </Grid.Column>
                 </Grid>
