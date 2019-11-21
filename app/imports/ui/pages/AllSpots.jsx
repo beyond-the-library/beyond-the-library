@@ -16,7 +16,8 @@ class MySpots extends React.Component {
               <Grid container>
                 <Grid.Column width={3}>
                   <Image verticalAlign='middle' fluid rounded
-                      src="https://cnet3.cbsistatic.com/img/pXZLKD-YlCz9n12JlGhovk4YCdo=/1092x0/2014/03/31/1497f64b-bf2d-11e3-bddd-d4ae52e62bcc/bliss_1.jpg"/>
+                      // eslint-disable-next-line max-len
+                         src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1200&quality=80"/>
                 </Grid.Column>
                 <Grid.Column width={9}>
                   <Header as='h4'>Location: Somewhere in the earth</Header>
@@ -48,7 +49,8 @@ class MySpots extends React.Component {
                 <Grid container>
                   <Grid.Column width={3}>
                     <Image verticalAlign='middle' fluid rounded
-                           src="https://cnet3.cbsistatic.com/img/pXZLKD-YlCz9n12JlGhovk4YCdo=/1092x0/2014/03/31/1497f64b-bf2d-11e3-bddd-d4ae52e62bcc/bliss_1.jpg"/>
+                        // eslint-disable-next-line max-len
+                           src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1200&quality=80"/>
                   </Grid.Column>
                   <Grid.Column width={9}>
                     <Header as='h4'>Location: Somewhere in the earth</Header>
@@ -79,7 +81,8 @@ class MySpots extends React.Component {
                 <Grid container>
                   <Grid.Column width={3}>
                     <Image verticalAlign='middle' fluid rounded
-                           src="https://cnet3.cbsistatic.com/img/pXZLKD-YlCz9n12JlGhovk4YCdo=/1092x0/2014/03/31/1497f64b-bf2d-11e3-bddd-d4ae52e62bcc/bliss_1.jpg"/>
+                        // eslint-disable-next-line max-len
+                           src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1200&quality=80"/>
                   </Grid.Column>
                   <Grid.Column width={9}>
                     <Header as='h4'>Location: Somewhere in the earth</Header>
