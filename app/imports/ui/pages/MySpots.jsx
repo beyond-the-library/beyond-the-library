@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Container, Grid, Image, Header, Button, Label, Icon } from 'semantic-ui-react';
 
-class AddSpot extends React.Component {
+class MySpots extends React.Component {
   render() {
     return this.renderPage();
   }
@@ -55,7 +55,7 @@ class AddSpot extends React.Component {
                   <Grid.Column width={3} rows='2' stretched>
                     <Grid.Row>
                       <Label size='large'>
-                        <Icon name='circle outline' color='green' /> Approved
+                        <Icon name='check' color='green' /> Approved
                       </Label>
                     </Grid.Row>
                   </Grid.Column>
@@ -69,4 +69,4 @@ class AddSpot extends React.Component {
   }
 }
 
-export default AddSpot;
+export default MySpots;
