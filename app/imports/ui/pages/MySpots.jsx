@@ -20,6 +20,7 @@ class MySpots extends React.Component {
                          src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1200&quality=80"/>
                 </Grid.Column>
                 <Grid.Column width={9}>
+                  <Header as='h3'>XP Hill</Header>
                   <Header as='h4'>Location: Somewhere in the earth</Header>
                   <Header as='h4'>Description: Everyone knows this spot.</Header>
                 </Grid.Column>
@@ -51,6 +52,7 @@ class MySpots extends React.Component {
                            src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1200&quality=80"/>
                   </Grid.Column>
                   <Grid.Column width={9}>
+                    <Header as='h3'>XP Hill</Header>
                     <Header as='h4'>Location: Somewhere in the earth</Header>
                     <Header as='h4'>Description: Everyone knows this spot.</Header>
                   </Grid.Column>
