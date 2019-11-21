@@ -57,7 +57,7 @@ class MySpots extends React.Component {
                   <Grid.Column width={3} rows='2' stretched>
                     <Grid.Row>
                       <Label size='large'>
-                        <Icon name='check' color='green' /> Approved
+                        <Icon name='check' color='green' /> Published
                       </Label>
                     </Grid.Row>
                     <Grid.Row>
@@ -74,7 +74,7 @@ class MySpots extends React.Component {
               </Card.Content>
             </Card>
 
-            <Card fluid color='gray' height='200px'>
+            <Card fluid color='grey' height='200px'>
               <Card.Content>
                 <Grid container>
                   <Grid.Column width={3}>
@@ -88,7 +88,7 @@ class MySpots extends React.Component {
                   <Grid.Column width={3} rows='2' stretched>
                     <Grid.Row>
                       <Label size='large'>
-                        <Icon name='archive' color='gray' /> Archived
+                        <Icon name='archive' color='grey' /> Archived
                       </Label>
                     </Grid.Row>
                     <Grid.Row>
