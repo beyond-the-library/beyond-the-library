@@ -26,7 +26,7 @@ class CarouselFooter extends React.Component {
                 About <br/>
                 of the UH community.<br/>
                 Honolulu, HI 96822 <br/>
-                <a href="https://beyond-the-library.github.io/">Home Page</a>
+                <a href="https://beyond-the-library.github.io/">About Page</a>
               </div>
             </Grid.Column>
             <Grid.Column>
@@ -36,7 +36,7 @@ class CarouselFooter extends React.Component {
                 This web application allows students at UH Manoa to find and contribute new study spots for the benefit
                 of the UH community.<br/>
                 Honolulu, HI 96822 <br/>
-                <a href="https://beyond-the-library.github.io/">Home Page</a>
+                <a href="https://beyond-the-library.github.io/#user-guide">User Guide</a>
               </div>
             </Grid.Column>
             <Grid.Column>

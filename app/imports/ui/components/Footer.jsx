@@ -28,7 +28,7 @@ class Footer extends React.Component {
                 <b>I can't find good places to study:</b> Beyond the Library helps students understand that libraries
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 aren't the end all be all when it comes to study locations. <br/>
-                <a href="https://beyond-the-library.github.io/">Home Page</a>
+                <a href="https://beyond-the-library.github.io/">About Page</a>
               </div>
             </Grid.Column>
             <Grid.Column>
@@ -37,7 +37,7 @@ class Footer extends React.Component {
                 <b>Sign up</b> <br/>
                 Signing up allows you to discover, suggest study areas, update suggested spots and save your favorite
                 study zones. <br/>
-                <a href="https://beyond-the-library.github.io/">Home Page</a>
+                <a href="https://beyond-the-library.github.io/#user-guide">User Guide</a>
               </div>
             </Grid.Column>
             <Grid.Column>
