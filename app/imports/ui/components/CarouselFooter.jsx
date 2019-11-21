@@ -3,7 +3,7 @@ import { Grid, Image } from 'semantic-ui-react';
 import Carousel from 'semantic-ui-carousel-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
-class Footer extends React.Component {
+class CarouselFooter extends React.Component {
   render() {
     const elements = [
       {
@@ -24,30 +24,29 @@ class Footer extends React.Component {
               <div style={divStyle} className="ui center aligned container">
                 <hr/>
                 About <br/>
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <b>I can't find good places to study:</b> Beyond the Library helps students understand that libraries
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                aren't the end all be all when it comes to study locations. <br/>
+                of the UH community.<br/>
+                Honolulu, HI 96822 <br/>
                 <a href="https://beyond-the-library.github.io/">Home Page</a>
               </div>
             </Grid.Column>
             <Grid.Column>
               <div style={divStyle} className="ui center aligned container">
                 <hr/>
-                <b>Sign up</b> <br/>
-                Signing up allows you to discover, suggest study areas, update suggested spots and save your favorite
-                study zones. <br/>
+                About <br/>
+                This web application allows students at UH Manoa to find and contribute new study spots for the benefit
+                of the UH community.<br/>
+                Honolulu, HI 96822 <br/>
                 <a href="https://beyond-the-library.github.io/">Home Page</a>
               </div>
             </Grid.Column>
             <Grid.Column>
               <div style={divStyle} className="ui center aligned container">
                 <hr/>
-                <Carousel elements={elements}
-                          duration={3000}
-                          animation='slide left'
-                          showNextPrev={false}
-                          showIndicatrs={false}/>
+                <Carousel elements={ elements }
+                          duration = {3000}
+                          animation = 'slide left'
+                          showNextPrev = {false}
+                          showIndicatrs = {false}/>
               </div>
             </Grid.Column>
           </Grid>
@@ -56,4 +55,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default CarouselFooter;
