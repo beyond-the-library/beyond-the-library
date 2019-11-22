@@ -6,7 +6,7 @@ import { Tracker } from 'meteor/tracker';
 const Spots = new Mongo.Collection('Spots');
 
 /** Define a schema to specify the structure of each document in the collection. */
-const Spotschema = new SimpleSchema({
+const SpotsSchema = new SimpleSchema({
   name: String, // name of the spot
   image: String, // a link to the picture of the spot
   location: String, // general location for display
@@ -31,7 +31,7 @@ const Spotschema = new SimpleSchema({
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
-Spots.attachSchema(Spotschema);
+Spots.attachSchema(SpotsSchema);
 
 /** Make the collection and schema available to other code. */
 export { Spots, Spotschema };
