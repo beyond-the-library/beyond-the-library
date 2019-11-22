@@ -34,4 +34,4 @@ const SpotsSchema = new SimpleSchema({
 Spots.attachSchema(SpotsSchema);
 
 /** Make the collection and schema available to other code. */
-export { Spots, Spotschema };
+export { Spots, SpotsSchema };
