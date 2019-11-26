@@ -19,7 +19,7 @@ class Footer extends React.Component {
     const divStyle = { paddingTop: '15px' };
     return (
         <footer>
-          <Grid columns={3} divided>
+          <Grid columns={3}>
             <Grid.Column>
               <div style={divStyle} className="ui center aligned container">
                 <hr/>
