@@ -13,6 +13,11 @@ const SpotsSchema = new SimpleSchema({
   description: String, // extra information for display
   address: String, // this is the exact address for map interaction
   owner: String, // name of the user who posted the spot
+  status: {
+    type: String,
+    allowedValues: ['Published', 'Archived', 'Pending'],
+    defaultValue: 'Pending',
+  },
   major: {
     type: String,
     allowedValues: ['Computer Science', 'Computer Engineering', 'Music', 'Open for everyone'],
