@@ -18,14 +18,14 @@ if (Stuffs.find().count() === 0) {
   }
 }
 
-function addSpotData(data) {
+function addSpot(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Spots.insert(data);
 }
 
 if (Spots.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultSpots) {
     console.log('Creating default spots.');
-    Meteor.settings.defaultData.map(data => addSpotData(data));
+    Meteor.settings.defaultSpots.map(data => addSpot(data));
   }
 }
