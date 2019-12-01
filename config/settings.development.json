@@ -12,7 +12,9 @@
   ],
 
   "defaultSpots": [
-    { "name": "Paradise Palms", "image": "https://www.facebook.com/UHMFoodSvc/photos/a.10150652372206647/10153538695681647/?type=3&__xts__%5B0%5D=68.ARDNfdNGbFRmThZvQIM_qlsIIA5OnsSgKrhgITom_2qsMI6mSVs3WZAKXcVjhSUbPQAUt0_z6VVVPWM5LX2cgY_36Gvs6UEHfdhoFmSSMJ1u0WNz7wd6gY0MJLoIBBsvthg78-5oipoAE-3L-pLP3SXrGHYjrJS_2_ic-OjRbPR97rdLGdcvo36rSm5sp0C-cPGUVjOm-t7Q5k0_NoDENRebo9dLT5zhjk3OUFuXjB4-DRfT0fc5seKxV_YxjqzTsXIGHZoF&__tn__=HH-R", "location":"Next to Hamilton Library", "description":"A nice cafe where you can get coffee and milk tea.", "address": "852M+9Q Honolulu, Hawaii", "owner": "john@foo.com", "status":"Pending", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    { "name": "Paradise Palms", "image": "https://lh5.googleusercontent.com/p/AF1QipNPoshJ3WI2yz7tJDWlMyZ20BEFPRHXk7U4f_Zv=w203-h270-k-no", "location":"Next to Hamilton Library", "description":"A nice cafe where you can get coffee and milk tea.", "address": "852M+9Q Honolulu, Hawaii", "owner": "john@foo.com", "status":"Pending", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    },
+    { "name": "Engineering POST Building", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Published", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
     }
   ]
 

@@ -1,5 +1,10 @@
 import React from 'react';
-import { Card, Container, Grid, Image, Header, Button, Label, Icon } from 'semantic-ui-react';
+import { Card, Container } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import MySpotsCard from '../components/MySpotsCard';
+import { Spots } from '../../api/spot/Spots';
 
 class MySpots extends React.Component {
   render() {
@@ -11,61 +16,7 @@ class MySpots extends React.Component {
     return (
         <Container>
           <Card.Group>
-            <Card fluid color='orange' height='200px'>
-              <Card.Content>
-              <Grid container>
-                <Grid.Column width={3}>
-                  <Image verticalAlign='middle' fluid rounded
-                      // eslint-disable-next-line max-len
-                         src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1200&quality=80"/>
-                </Grid.Column>
-                <Grid.Column width={9}>
-                  <Header as='h3'>XP Hill</Header>
-                  <Header as='h4'>Location: Somewhere in the earth</Header>
-                  <Header as='h4'>Description: Everyone knows this spot.</Header>
-                </Grid.Column>
-                <Grid.Column width={3} rows='2' stretched>
-                  <Grid.Row>
-                    <Label size='large'>
-                      <Icon name='circle outline' color='orange' /> Pending
-                    </Label>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Button.Group>
-                      <Button color='blue'>Edit</Button>
-                      <Button.Or />
-                      <Button negative>Discard</Button>
-                    </Button.Group>
-                  </Grid.Row>
-                </Grid.Column>
-              </Grid>
-              </Card.Content>
-            </Card>
-
-
-            <Card fluid color='green' height='200px'>
-              <Card.Content>
-                <Grid container>
-                  <Grid.Column width={3}>
-                    <Image verticalAlign='middle' fluid rounded
-                        // eslint-disable-next-line max-len
-                           src="https://manoa.hawaii.edu/wp/wp-content/uploads/2017/09/hamilton-library.jpg"/>
-                  </Grid.Column>
-                  <Grid.Column width={9}>
-                    <Header as='h3'>Hamilton Library</Header>
-                    <Header as='h4'>Location: UHM</Header>
-                    <Header as='h4'>Description: Who says we cannot have a library in beyond the library?</Header>
-                  </Grid.Column>
-                  <Grid.Column width={3} rows='2' stretched>
-                    <Grid.Row>
-                      <Label size='large'>
-                        <Icon name='check' color='green' /> Approved
-                      </Label>
-                    </Grid.Row>
-                  </Grid.Column>
-                </Grid>
-              </Card.Content>
-            </Card>
+              {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
           </Card.Group>
         </Container>
 
@@ -73,4 +24,18 @@ class MySpots extends React.Component {
   }
 }
 
-export default MySpots;
+/** Require an array of Stuff documents in the props. */
+MySpots.propTypes = {
+  spots: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Spots');
+  return {
+    spots: Spots.find({}).fetch(),
+    ready: subscription.ready(),
+  };
+})(MySpots);
