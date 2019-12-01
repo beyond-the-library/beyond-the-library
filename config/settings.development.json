@@ -15,6 +15,10 @@
     { "name": "Paradise Palms", "image": "https://lh5.googleusercontent.com/p/AF1QipNPoshJ3WI2yz7tJDWlMyZ20BEFPRHXk7U4f_Zv=w203-h270-k-no", "location":"Next to Hamilton Library", "description":"A nice cafe where you can get coffee and milk tea.", "address": "852M+9Q Honolulu, Hawaii", "owner": "john@foo.com", "status":"Pending", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
     },
     { "name": "Engineering POST Building", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Published", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    },
+    { "name": "Rejected Spot", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Rejected", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    },
+    { "name": "Archived Spot", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Archived", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
     }
   ]
 

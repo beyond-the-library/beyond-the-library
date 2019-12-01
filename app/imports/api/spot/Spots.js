@@ -15,7 +15,7 @@ const SpotsSchema = new SimpleSchema({
   owner: String, // name of the user who posted the spot
   status: {
     type: String,
-    allowedValues: ['Published', 'Archived', 'Pending'],
+    allowedValues: ['Published', 'Archived', 'Pending', 'Rejected'],
     defaultValue: 'Pending',
   },
   major: {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class MySpotsCard extends React.Component {
+class AllSpotsCard extends React.Component {
   icon() {
     if (this.props.spot.status === 'Pending') {
       return (<Icon name='circle outline' color='orange'/>);
@@ -19,18 +19,40 @@ class MySpotsCard extends React.Component {
   }
 
   button() {
-    if (this.props.spot.status !== 'Published') {
+    if (this.props.spot.status === 'Pending') {
       return (
           <Button.Group>
             <Button color='blue'>Edit</Button>
             <Button.Or/>
-            <Button negative>Discard</Button>
+            <Button negative>Reject</Button>
+            <Button.Or/>
+            <Button positive>Publish</Button>
           </Button.Group>
       );
     }
-    return (
-        <Header as='h4'>You got 10 points from this spot!</Header>
-    );
+    if (this.props.spot.status === 'Published') {
+      return (
+          <Button.Group>
+            <Button color='blue'>Edit</Button>
+            <Button.Or/>
+            <Button negative>Delete</Button>
+            <Button.Or/>
+            <Button color='gray'>Archive</Button>
+          </Button.Group>
+      );
+    }
+    if (this.props.spot.status === 'Archived') {
+      return (
+          <Button.Group>
+            <Button color='blue'>Edit</Button>
+            <Button.Or/>
+            <Button negative>Delete</Button>
+            <Button.Or/>
+            <Button positive>Publish</Button>
+          </Button.Group>
+      );
+    }
+    return (<Header as='h4'>Waiting for User</Header>);
   }
 
   render() {
@@ -46,6 +68,7 @@ class MySpotsCard extends React.Component {
                 <Header as='h3'>{this.props.spot.name}</Header>
                 <Header as='h4'>Location: {this.props.spot.location}</Header>
                 <Header as='h4'>Description: {this.props.spot.description}</Header>
+                <Header as='h4'>Owner: {this.props.spot.owner}</Header>
               </Grid.Column>
               <Grid.Column width={3} rows='2' stretched>
                 <Grid.Row>
@@ -66,9 +89,9 @@ class MySpotsCard extends React.Component {
 }
 
 /** Require a document to be passed to this component. */
-MySpotsCard.propTypes = {
+AllSpotsCard.propTypes = {
   spot: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(MySpotsCard);
+export default withRouter(AllSpotsCard);

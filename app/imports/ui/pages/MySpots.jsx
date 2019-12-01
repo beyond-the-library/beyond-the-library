@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, Container } from 'semantic-ui-react';
+import { Card, Container, Message } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import MySpotsCard from '../components/MySpotsCard';
 import { Spots } from '../../api/spot/Spots';
 
@@ -18,6 +19,11 @@ class MySpots extends React.Component {
           <Card.Group>
               {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
           </Card.Group>
+          <Card centered>
+            <Message>
+              <Link to="/addspot">Click here to Add a new Spot</Link>
+            </Message>
+          </Card>
         </Container>
 
     );
