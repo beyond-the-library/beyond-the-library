@@ -18,6 +18,7 @@ import Signout from '../pages/Signout';
 import Discovery from '../pages/Discovery';
 import MySpots from '../pages/MySpots';
 import AddSpot from '../pages/AddSpot';
+import UserProfile from '../pages/UserFile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
               <ProtectedRoute path="/addspot" component={AddSpot}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
+              <ProtectedRoute path="/userprofile" component={UserProfile}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/admin" component={AllSpots}/>
               <ProtectedRoute path="/signout" component={Signout}/>
