@@ -7,14 +7,20 @@ class CarouselFooter extends React.Component {
   render() {
     const elements = [
       {
-        render: () => <Image centered src='images/testspot1.jpeg'/>,
+        render: () => <Image centered src='images/lecrepelawschool.jpg'/>,
       },
       {
-        render: () => <Image centered src='images/testspot2.jpeg'/>,
+        render: () => <Image centered src='images/marinesciencebuilding.jpg'/>,
       },
       {
-        render: () => <Image centered src='images/testspot3.jpeg'/>,
+        render: () => <Image centered src='images/pacifichurricanecenter.jpg'/>,
       },
+      {
+        render: () => <Image centered src='images/qlc.jpg'/>,
+      },
+      {
+        render: () => <Image centered src='images/saundershall.jpg'/>,
+      }
     ];
     return (
         <footer>
