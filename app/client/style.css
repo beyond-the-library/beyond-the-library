@@ -1,0 +1,40 @@
+.container p {
+  font-family: 'Bebas Neue', serif;
+  font-size: 16px;
+  letter-spacing: .1em;
+}
+
+.container h3 {
+  font-family: 'Bebas Neue', serif;
+  letter-spacing: .1em;
+}
+
+.grid h1 {
+  font-family: 'Bebas Neue', serif;
+  letter-spacing: .1em;
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
+#landingtexts {
+  font-family: 'Bebas Neue', serif;
+  font-size: 16px;
+  letter-spacing: .1em;
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
+.menu.item {
+  font-family: 'Bebas Neue', serif;
+  font-size: 16px;
+}
+
+#carouselbackgroundcolor {
+  background-color: #9FE2BF;
+}

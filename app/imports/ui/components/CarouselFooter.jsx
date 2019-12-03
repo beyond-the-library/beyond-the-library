@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Image, Container } from 'semantic-ui-react';
 import Carousel from 'semantic-ui-carousel-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
@@ -16,38 +16,33 @@ class CarouselFooter extends React.Component {
         render: () => <Image centered src='images/testspot3.jpeg'/>,
       },
     ];
-    const divStyle = { paddingTop: '15px' };
     return (
         <footer>
           <Grid columns={3} divided>
             <Grid.Column>
-              <div style={divStyle} className="ui center aligned container">
+              <Container textAlign='center'>
                 <hr/>
-                About <br/>
-                of the UH community.<br/>
-                Honolulu, HI 96822 <br/>
-                <a href="https://beyond-the-library.github.io/">About Page</a>
-              </div>
+                <h3>About</h3>
+                <p>We want to enable students to share their experiences and discoveries of spots where they have
+                  studied in.</p>
+                <p><a href="https://beyond-the-library.github.io/">About Page</a></p>
+              </Container>
             </Grid.Column>
             <Grid.Column>
-              <div style={divStyle} className="ui center aligned container">
+              <Container textAlign='center'>
                 <hr/>
-                About <br/>
-                This web application allows students at UH Manoa to find and contribute new study spots for the benefit
-                of the UH community.<br/>
-                Honolulu, HI 96822 <br/>
-                <a href="https://beyond-the-library.github.io/#user-guide">User Guide</a>
-              </div>
+                <h3>Sign up</h3>
+                <p>Signing up allows you to contribute and save certain spots for ease of access.</p>
+                <p>Committed to community contribution.</p>
+                <p><a href="https://beyond-the-library.github.io/#user-guide">User Guide</a></p>
+              </Container>
             </Grid.Column>
             <Grid.Column>
-              <div style={divStyle} className="ui center aligned container">
+              <Container>
                 <hr/>
-                <Carousel elements={ elements }
-                          duration = {3000}
-                          animation = 'slide left'
-                          showNextPrev = {false}
-                          showIndicatrs = {false}/>
-              </div>
+                <Carousel elements={elements} duration={10000} animation='slide left' showNextPrev={false}
+                          showIndicators={false}/>
+              </Container>
             </Grid.Column>
           </Grid>
         </footer>

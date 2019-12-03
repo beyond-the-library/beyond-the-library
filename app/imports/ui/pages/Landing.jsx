@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
-// import CarouselFooter from '../components/CarouselFooter';
+import { Grid, Container } from 'semantic-ui-react';
+import CarouselFooter from '../components/CarouselFooter';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -11,18 +11,24 @@ class Landing extends React.Component {
                 style={{
                   height: 400,
                   backgroundSize: 'cover',
-                  backgroundImage: `url(${'images/landingmain.jpg'})`,
+                  backgroundImage: `url(${'images/beyond.jpeg'})`,
+                  backgroundRepeat: 'no-repeat',
                 }}>
             <Grid.Column>
-              <h1 style={{
-                color: 'white',
-              }}>Beyond the Library</h1>
-              <p style={{
-                color: 'white',
-              }}
-              >Hit the books in these hit places</p>
+              <Container>
+                <h1 style={{
+                  fontSize: '120px',
+                  color: '#9FE2BF',
+                }}>Beyond the Library</h1>
+                <p id='landingtexts' style={{
+                  color: 'white',
+                  fontSize: '40px',
+                }}
+                >Hit the books in these hit places</p>
+              </Container>
             </Grid.Column>
           </Grid>
+          <CarouselFooter/>
         </div>
     );
   }
