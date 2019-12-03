@@ -39,7 +39,7 @@ MySpots.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Spots');
+  const subscription = Meteor.subscribe('MySpots');
   return {
     spots: Spots.find({}).fetch(),
     ready: subscription.ready(),

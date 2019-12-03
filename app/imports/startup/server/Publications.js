@@ -20,7 +20,7 @@ Meteor.publish('StuffAdmin', function publish() {
   return this.ready();
 });
 
-Meteor.publish('Spots', function publish() {
+Meteor.publish('MySpots', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Spots.find({ owner: username });
@@ -34,4 +34,9 @@ Meteor.publish('SpotsAdmin', function publish() {
     return Spots.find();
   }
   return this.ready();
+});
+
+/** I think we can use this subscription for all users to see all spots. */
+Meteor.publish('AllSpots', function publish() {
+  return Spots.find();
 });
