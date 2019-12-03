@@ -9,16 +9,16 @@ class Landing extends React.Component {
         <div>
           <Grid verticalAlign='middle' textAlign='center'
                 style={{
-                  height: 400,
+                  height: '950px',
                   backgroundSize: 'cover',
-                  backgroundImage: `url(${'images/beyond.jpeg'})`,
+                  backgroundImage: `url(${'images/beach.png'})`,
                   backgroundRepeat: 'no-repeat',
                 }}>
             <Grid.Column>
               <Container>
                 <h1 style={{
                   fontSize: '120px',
-                  color: '#9FE2BF',
+                  color: 'white',
                 }}>Beyond the Library</h1>
                 <p id='landingtexts' style={{
                   color: 'white',
