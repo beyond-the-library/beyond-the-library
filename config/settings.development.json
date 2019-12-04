@@ -1,24 +1,149 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme"
+    }
   ],
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    {
+      "name": "Basket",
+      "quantity": 3,
+      "owner": "john@foo.com",
+      "condition": "excellent"
+    },
+    {
+      "name": "Bicycle",
+      "quantity": 2,
+      "owner": "john@foo.com",
+      "condition": "poor"
+    },
+    {
+      "name": "Banana",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "good"
+    },
+    {
+      "name": "Boogie Board",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "excellent"
+    }
   ],
-
   "defaultSpots": [
-    { "name": "Paradise Palms", "image": "https://lh5.googleusercontent.com/p/AF1QipNPoshJ3WI2yz7tJDWlMyZ20BEFPRHXk7U4f_Zv=w203-h270-k-no", "location":"Next to Hamilton Library", "description":"A nice cafe where you can get coffee and milk tea.", "address": "852M+9Q Honolulu, Hawaii", "owner": "john@foo.com", "status":"Pending", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    {
+      "name": "Paradise Palms",
+      "image": "https://lh5.googleusercontent.com/p/AF1QipNPoshJ3WI2yz7tJDWlMyZ20BEFPRHXk7U4f_Zv=w203-h270-k-no",
+      "location": "Next to Hamilton Library",
+      "description": "A nice cafe where you can get coffee and milk tea.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Pending",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
     },
-    { "name": "Engineering POST Building", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Published", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    {
+      "name": "Engineering POST Building",
+      "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100",
+      "location": "1000 Pope Rd, Honolulu, HI 96822",
+      "description": "A nice blue building where you can share ideas with other engineering students.",
+      "address": "75WM+XC Honolulu, Hawaii",
+      "owner": "admin@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
     },
-    { "name": "Rejected Spot", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Rejected", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    {
+      "name": "Rejected Spot",
+      "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100",
+      "location": "1000 Pope Rd, Honolulu, HI 96822",
+      "description": "A nice blue building where you can share ideas with other engineering students.",
+      "address": "75WM+XC Honolulu, Hawaii",
+      "owner": "admin@foo.com",
+      "status": "Rejected",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
     },
-    { "name": "Archived Spot", "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100", "location":"1000 Pope Rd, Honolulu, HI 96822", "description":"A nice blue building where you can share ideas with other engineering students.", "address": "75WM+XC Honolulu, Hawaii", "owner": "admin@foo.com", "status":"Archived", "major": "Open for everyone", "environment": "Indoor", "time":"Daytime"
+    {
+      "name": "Archived Spot",
+      "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100",
+      "location": "1000 Pope Rd, Honolulu, HI 96822",
+      "description": "A nice blue building where you can share ideas with other engineering students.",
+      "address": "75WM+XC Honolulu, Hawaii",
+      "owner": "admin@foo.com",
+      "status": "Archived",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Le Crepe Law School",
+      "image": "images/lecrepelawschool.jpg",
+      "location": "Next to Zone 20 Parking Strucuture and Law School Library",
+      "description": "Get to studying with crepes and coffee.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Marine Science Building",
+      "image": "images/marinesciencebuilding.jpg",
+      "location": "Marine Science Building",
+      "description": "Waiting for class near POST, HIG, SOEST or MSB then spend your time doing homework here.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Pacific Hurricane Center",
+      "image": "images/pacifichurricanecenter.jpg",
+      "location": "Next to Zone 20 Parking Strucuture and Law School Library",
+      "description": "Get to studying with crepes and coffee.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Queen Liliuokalani Center",
+      "image": "images/qlc.jpg",
+      "location": "Building overlooking Varney Circle and the fountain",
+      "description": "Small nooks and spots fit for the solo or duo study sessions.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Saunders Hall",
+      "image": "images/saundershall.jpg",
+      "location": "Near Da Spot",
+      "description": "Can get very loud due to the footpath coming from various classrooms, but the multitude of seating arrangements and the ease of access of food from Da Spot makes this a great study spot",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
     }
   ]
-
 }
