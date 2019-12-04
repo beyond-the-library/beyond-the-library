@@ -1,5 +1,11 @@
 import React from 'react';
-import { Container, Header, Form, Card, Image, Rating } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { Container, Header, Form, Card } from 'semantic-ui-react';
+import SpotCard from '/imports/ui/components/SpotCard.jsx';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
+import { Spots } from '../../api/spot/Spots.js';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class Discovery extends React.Component {
@@ -16,8 +22,14 @@ class Discovery extends React.Component {
           <Header as="h2" textAlign="center" inverted>Discover New Spots</Header>
           <Form>
             <Form.Group widths='equal'>
-              <Form.Input fluid label='Major' placeholder='Major'/>
               <Form.Input fluid label='Name' placeholder='Name'/>
+              <Form.Select
+                  fluid
+                  label='Major'
+                  options={[{ key: 'Computer Science', text: 'CS' }, { key: 'Computer Engineering', text: 'CENG' },
+                    { key: 'Music', text: 'Music' }, { key: 'Open for everyone', text: 'Open for everyone' }]}
+                  placeholder='Major'
+              />
               <Form.Select
                   fluid
                   label='Location'
@@ -31,37 +43,29 @@ class Discovery extends React.Component {
                   placeholder='Environment'
               />
             </Form.Group>
-            <Form.Button>Apply Filter</Form.Button>
+            <Form.Group>
+              <Form.Button>Apply Filter</Form.Button>
+              <Form.Button>Add a New Study Spot</Form.Button>
+            </Form.Group>
           </Form>
-          <Card.Group centered>
-            <Card>
-              <Image src='https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png' wrapped
-                     ui={false}/>
-              <Card.Content>
-                <Card.Header>Name of Location</Card.Header>
-                <Card.Meta>Hours of Operation</Card.Meta>
-                <Card.Description>Description of Location</Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Rating icon='star' defaultRating={3} maxRating={5}/>
-              </Card.Content>
-            </Card>
-            <Card>
-              <Image src='https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png' wrapped
-                     ui={false}/>
-              <Card.Content>
-                <Card.Header>XP Hills</Card.Header>
-                <Card.Meta>Anytime</Card.Meta>
-                <Card.Description>It is somewhere on Earth, spacious, blissful</Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Rating icon='star' defaultRating={5} maxRating={5}/>
-              </Card.Content>
-            </Card>
+          <Card.Group>
+            {this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot}/>)}
           </Card.Group>
         </Container>
     );
   }
 }
 
-export default Discovery;
+/** Require an array of Stuff documents in the props. */
+Discovery.propTypes = {
+  spots: PropTypes.array.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Spots documents.
+  Meteor.subscribe('Spots');
+  return {
+    spots: Spots.find({}).fetch(),
+  };
+})(Discovery);

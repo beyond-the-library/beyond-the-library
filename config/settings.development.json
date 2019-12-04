@@ -9,5 +9,28 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultSpots": [
+    { "name":  "XP",
+      "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png",
+      "location": "XP",
+      "description": "XP",
+      "address": "XP",
+      "owner": "john@foo.com",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "24/7"
+    },
+    { "name":  "PX",
+      "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png",
+      "location": "PX",
+      "description": "PX",
+      "address": "PX",
+      "owner": "admin@foo.com",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "24/7"
+    }
   ]
 }
