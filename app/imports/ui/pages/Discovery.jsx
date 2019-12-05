@@ -127,6 +127,6 @@ export default withTracker(() => {
   // Get access to Spots documents.
   Meteor.subscribe('Spots');
   return {
-    spots: Spots.find({}).fetch(),
+    spots: Spots.find({ status: 'Published' }).fetch(),
   };
 })(Discovery);

@@ -68,7 +68,7 @@
       "description": "A nice blue building where you can share ideas with other engineering students.",
       "address": "1000 Pope Rd, Honolulu, HI 96822",
       "owner": "admin@foo.com",
-      "status": "Published",
+      "status": "Archived",
       "major": "Open for everyone",
       "environment": "Indoor",
       "time": "Daytime"
