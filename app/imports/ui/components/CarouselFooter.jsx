@@ -20,7 +20,7 @@ class CarouselFooter extends React.Component {
       },
       {
         render: () => <Image centered src='images/saundershall.jpg'/>,
-      }
+      },
     ];
     return (
         <footer>
