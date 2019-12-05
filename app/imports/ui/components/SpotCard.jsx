@@ -9,7 +9,7 @@ class SpotCard extends React.Component {
     return (
         <Card centered>
           <Image src={this.props.spot.image} wrapped ui={false}/>
-          <Card.Header>{this.props.spot.name}</Card.Header>
+          <Card.Header as='h4'>{this.props.spot.name}</Card.Header>
           <Card.Meta>{this.props.spot.address}</Card.Meta>
           <Card.Description>
             {this.props.spot.description}
