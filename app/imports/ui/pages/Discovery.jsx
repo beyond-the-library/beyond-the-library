@@ -32,6 +32,7 @@ class Discovery extends React.Component {
       { key: 1, value: 'major', text: 'Major' },
       { key: 2, value: 'environment', text: 'Environment' },
       { key: 3, value: 'time', text: 'Time' },
+      { key: 4, value: 'location', text: 'Location' },
     ];
     // eslint-disable-next-line no-restricted-syntax
     for (const category of this.searchBy) {
