@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Header, Dropdown, Menu, Card, Button } from 'semantic-ui-react';
 import SpotCard from '/imports/ui/components/SpotCard.jsx';
 import { withTracker } from 'meteor/react-meteor-data';
+import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import { Spots } from '../../api/spot/Spots.js';
 
