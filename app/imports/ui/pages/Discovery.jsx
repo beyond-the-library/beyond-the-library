@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Form, Card } from 'semantic-ui-react';
+import { Container, Header, Form, Card, Button } from 'semantic-ui-react';
 import SpotCard from '/imports/ui/components/SpotCard.jsx';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -51,6 +51,9 @@ class Discovery extends React.Component {
           <Card.Group centered>
             {this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot}/>)}
           </Card.Group>
+          <Card.Content extra>
+            <Button icon='file'/>
+          </Card.Content>
         </Container>
     );
   }

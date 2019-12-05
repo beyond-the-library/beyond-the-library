@@ -1,4 +1,12 @@
 {
+  "defaultUsers": [
+    {
+      "name": "Aljaed Lui Ereno",
+      "image": "images/momoadmin.jpg",
+      "description": "",
+      "major": "Computer Engineering"
+    }
+  ],
   "defaultAccounts": [
     {
       "email": "admin@foo.com",
@@ -8,6 +16,10 @@
     {
       "email": "john@foo.com",
       "password": "changeme"
+    },
+    {
+      "email": "aljtest@foo.com",
+      "password": "ADAD"
     }
   ],
   "defaultData": [
@@ -42,7 +54,7 @@
       "image": "https://lh5.googleusercontent.com/p/AF1QipNPoshJ3WI2yz7tJDWlMyZ20BEFPRHXk7U4f_Zv=w203-h270-k-no",
       "location": "Next to Hamilton Library",
       "description": "A nice cafe where you can get coffee and milk tea.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2560 McCarthy mall, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Pending",
       "major": "Open for everyone",
@@ -54,7 +66,7 @@
       "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100",
       "location": "1000 Pope Rd, Honolulu, HI 96822",
       "description": "A nice blue building where you can share ideas with other engineering students.",
-      "address": "75WM+XC Honolulu, Hawaii",
+      "address": "1000 Pope Rd, Honolulu, HI 96822",
       "owner": "admin@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -66,7 +78,7 @@
       "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100",
       "location": "1000 Pope Rd, Honolulu, HI 96822",
       "description": "A nice blue building where you can share ideas with other engineering students.",
-      "address": "75WM+XC Honolulu, Hawaii",
+      "address": "1000 Pope Rd, Honolulu, HI 96822",
       "owner": "admin@foo.com",
       "status": "Rejected",
       "major": "Open for everyone",
@@ -78,7 +90,7 @@
       "image": "https://lh5.googleusercontent.com/p/AF1QipOhyWpzHvmrasfaXqANRdOY7vm2CFtqco--oPx8=w408-h240-k-no-pi0-ya19.22705-ro-0-fo100",
       "location": "1000 Pope Rd, Honolulu, HI 96822",
       "description": "A nice blue building where you can share ideas with other engineering students.",
-      "address": "75WM+XC Honolulu, Hawaii",
+      "address": "1000 Pope Rd, Honolulu, HI 96822",
       "owner": "admin@foo.com",
       "status": "Archived",
       "major": "Open for everyone",
@@ -90,7 +102,7 @@
       "image": "images/lecrepelawschool.jpg",
       "location": "Next to Zone 20 Parking Strucuture and Law School Library",
       "description": "Get to studying with crepes and coffee.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2525 Dole St, Honolulu, HI, 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -100,9 +112,9 @@
     {
       "name": "Marine Science Building",
       "image": "images/marinesciencebuilding.jpg",
-      "location": "Marine Science Building",
+      "location": "University of Hawaii at Manoa, Honolulu, HI 96822",
       "description": "Waiting for class near POST, HIG, SOEST or MSB then spend your time doing homework here.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "University of Hawaii at Manoa, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -112,9 +124,9 @@
     {
       "name": "Pacific Hurricane Center",
       "image": "images/pacifichurricanecenter.jpg",
-      "location": "Next to Zone 20 Parking Strucuture and Law School Library",
+      "location": "Pacific Hurricane Center",
       "description": "Get to studying with crepes and coffee.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2525 Correa Rd Suite 250, Honolulu, 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -126,7 +138,7 @@
       "image": "images/qlc.jpg",
       "location": "Building overlooking Varney Circle and the fountain",
       "description": "Small nooks and spots fit for the solo or duo study sessions.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2600 Campus Rd, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -138,7 +150,7 @@
       "image": "images/saundershall.jpg",
       "location": "Near Da Spot",
       "description": "Can get very loud due to the footpath coming from various classrooms, but the multitude of seating arrangements and the ease of access of food from Da Spot makes this a great study spot",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2424 Maile Way, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -150,7 +162,7 @@
       "image": "images/architect.jpg",
       "location": "Architecture Building",
       "description": "Need a spot to study while your designing buildings, come check this place out.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "1899 University Ave #1859, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -162,7 +174,7 @@
       "image": "images/balle.jpg",
       "location": "Balle",
       "description": "Eat pho or drink some beers, balle has you covered for your nighttime studying.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2445 Campus Rd, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -174,7 +186,7 @@
       "image": "images/georgehall.jpg",
       "location": "Near Shidler",
       "description": "In between architecture and shidler.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2424 Maile Way, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",
@@ -186,7 +198,7 @@
       "image": "images/kuykendall.jpg",
       "location": "Kuykendall Hall",
       "description": "Need a place to study and feed chickens, visit this study spot.",
-      "address": "852M+9Q Honolulu, Hawaii",
+      "address": "2517-2523 Correa Rd, Honolulu, HI 96822",
       "owner": "john@foo.com",
       "status": "Published",
       "major": "Open for everyone",

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Grid, Segment, Image, Button } from 'semantic-ui-react';
+import { Container, Loader, Grid, Segment, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Users } from '../../api/user/Users';
+import UserComponent from '../components/UserComponent';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class UserFile extends React.Component {
+class UserProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -20,7 +22,8 @@ class UserFile extends React.Component {
             <Grid.Row>
               <Grid.Column>
                 <Container>
-                  <Image src='images/momoadmin.jpg' size='medium' fluid/>
+                  {/* <Image src={this.props.user.image }fluid/> */}
+                  {this.props.users.map((user, index) => (<UserComponent key={index} user={user}/>))}
                 </Container>
               </Grid.Column>
             </Grid.Row>
@@ -49,7 +52,8 @@ class UserFile extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-UserFile.propTypes = {
+UserProfile.propTypes = {
+  users: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -59,6 +63,7 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('Users');
   return {
     // stuffs: Stuffs.find({}).fetch(),
+    users: Users.find({}).fetch(),
     ready: subscription.ready(),
   };
-})(UserFile);
+})(UserProfile);
