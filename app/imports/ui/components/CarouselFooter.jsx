@@ -28,19 +28,25 @@ class CarouselFooter extends React.Component {
             <Grid.Column>
               <Container textAlign='center'>
                 <hr/>
-                <h3>About</h3>
-                <p>We want to enable students to share their experiences and discoveries of spots where they have
-                  studied in.</p>
-                <p><a href="https://beyond-the-library.github.io/">About Page</a></p>
+                <h2>About</h2>
+                <p style={{ fontSize: '16px' }}>Are you sick of studying at the library? Do you want to discover
+                  new study locations? Maybe a change in location can help you study better?Well you are in luck as
+                  Beyond the Library helps you discover
+                  study locations both on and off campus!</p>
+                <p style={{ fontSize: '16px' }}><a href='https://beyond-the-library.github.io/#overview'>About Page
+                </a></p>
               </Container>
             </Grid.Column>
             <Grid.Column>
               <Container textAlign='center'>
                 <hr/>
-                <h3>Sign up</h3>
-                <p>Signing up allows you to contribute and save certain spots for ease of access.</p>
-                <p>Committed to community contribution.</p>
-                <p><a href="https://beyond-the-library.github.io/#user-guide">User Guide</a></p>
+                <h2>Sign up</h2>
+                <p style={{ fontSize: '16px' }}>Discovering new study spots doesn&apos;t require an account. However,
+                  signing up allows you save your favorite study spots for easy access. It also allows you to propose
+                  new study spots to be displayed on the site. Help improve the UH community by sharing your favorite
+                  study spot!</p>
+                <p style={{ fontSize: '16px' }}><a href='https://beyond-the-library.github.io/#user-guide'>User Guide
+                </a></p>
               </Container>
             </Grid.Column>
             <Grid.Column>
