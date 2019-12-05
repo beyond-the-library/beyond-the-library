@@ -109,6 +109,9 @@ class Discovery extends React.Component {
                 this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)}/>))
             }
           </Card.Group>
+          <Card.Content extra>
+            <Button icon='file'/>
+          </Card.Content>
         </Container>
     );
   }

@@ -1,11 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Spots } from '../../api/spot/Spots';
-
+import { Users } from '../../api/user/Users';
 
 /** This subscription publishes all the documents associated with the spots app */
 Meteor.publish('Spots', function publish() {
   return Spots.find();
+});
+
+Meteor.publish('Users', function publish() {
+  return Users.find();
 });
 
  /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin.
@@ -18,6 +22,14 @@ Meteor.publish('StuffAdmin', function publish() {
 * */
 
 Meteor.publish('MySpots', function publish() {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Spots.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish('FavoriteSpots', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Spots.find({ owner: username });
