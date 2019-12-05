@@ -9,20 +9,20 @@ class Landing extends React.Component {
         <div>
           <Grid verticalAlign='middle' textAlign='center'
                 style={{
-                  height: '950px',
+                  height: '900px',
                   backgroundSize: 'cover',
                   backgroundImage: `url(${'images/beach.png'})`,
                   backgroundRepeat: 'no-repeat',
                 }}>
             <Grid.Column>
               <Container>
-                <h1 style={{
-                  fontSize: '120px',
+                <h1 className='landingTitle' style={{
+                  fontSize: '140px',
                   color: 'white',
                 }}>Beyond the Library</h1>
-                <p id='landingtexts' style={{
+                <p className='landingTitle' style={{
                   color: 'white',
-                  fontSize: '40px',
+                  fontSize: '60px',
                 }}
                 >Hit the books in these hit places</p>
               </Container>
