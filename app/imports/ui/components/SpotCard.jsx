@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -9,11 +9,13 @@ class SpotCard extends React.Component {
     return (
         <Card centered>
           <Image src={this.props.spot.image} wrapped ui={false}/>
-          <Card.Header as='h4'>{this.props.spot.name}</Card.Header>
-          <Card.Meta>{this.props.spot.address}</Card.Meta>
-          <Card.Description>
-            {this.props.spot.description}
-          </Card.Description>
+          <Container>
+            <Card.Header as='h4'>{this.props.spot.name}</Card.Header>
+            <Card.Meta>{this.props.spot.address}</Card.Meta>
+            <Card.Description>
+              {this.props.spot.description}
+            </Card.Description>
+          </Container>
         </Card>
     );
   }
