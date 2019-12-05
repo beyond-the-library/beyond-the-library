@@ -48,7 +48,7 @@ class Discovery extends React.Component {
               <Form.Button>Add a New Study Spot</Form.Button>
             </Form.Group>
           </Form>
-          <Card.Group>
+          <Card.Group centered>
             {this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot}/>)}
           </Card.Group>
         </Container>

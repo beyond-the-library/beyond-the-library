@@ -144,6 +144,54 @@
       "major": "Open for everyone",
       "environment": "Outdoor",
       "time": "Daytime"
+    },
+    {
+      "name": "Architecture",
+      "image": "images/architect.jpg",
+      "location": "Architecture Building",
+      "description": "Need a spot to study while your designing buildings, come check this place out.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Balle",
+      "image": "images/balle.jpg",
+      "location": "Balle",
+      "description": "Eat pho or drink some beers, balle has you covered for your nighttime studying.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "George Hall",
+      "image": "images/georgehall.jpg",
+      "location": "Near Shidler",
+      "description": "In between architecture and shidler.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Kuykendall Hall",
+      "image": "images/kuykendall.jpg",
+      "location": "Kuykendall Hall",
+      "description": "Need a place to study and feed chickens, visit this study spot.",
+      "address": "852M+9Q Honolulu, Hawaii",
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
     }
   ]
 }

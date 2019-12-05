@@ -10,7 +10,7 @@ class TestDiscovery extends React.Component {
         <Card centered>
           <Card.Content>
             <Image
-                floated='center'
+                floated='left'
                 size='medium'
                 src={this.props.spot.image}
             />
