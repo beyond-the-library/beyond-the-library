@@ -11,7 +11,7 @@ const SpotsSchema = new SimpleSchema({
   image: String, // a link to the picture of the spot
   location: String, // general location for display
   description: String, // extra information for display
-  address: String, // this is the exact address for map interaction
+  address: String, // THIS IS FOR GOOGLE MAP INTERACTIVE FUNCTIONS!!!!!!!!!!!!!!!!!!!!!
   owner: String, // name of the user who posted the spot
   status: {
     type: String,

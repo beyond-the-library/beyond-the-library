@@ -22,10 +22,9 @@ class MySpotsCard extends React.Component {
     if (this.props.spot.status !== 'Published') {
       return (
           <Button.Group>
-            <Button color='blue' onClick={(e) => {
-              e.preventDefault();
-              console.log('edit');
-            }}>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
             <Button negative>Discard</Button>
           </Button.Group>
