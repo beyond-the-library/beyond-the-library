@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image, Grid, Header, Label, Icon, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
+import { Spots } from '../../api/spot/Spots';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class MySpotsCard extends React.Component {
@@ -26,7 +27,12 @@ class MySpotsCard extends React.Component {
               <Button color='blue'>Edit</Button>
             </Link>
             <Button.Or/>
-            <Button negative>Discard</Button>
+            <Button negative onClick={ (e) => {
+              e.preventDefault();
+              console.log('discard');
+              Spots.update(this.props.spot._id, {
+              $set: { status: 'Rejected' } });
+            }}>Discard</Button>
           </Button.Group>
       );
     }
@@ -61,9 +67,6 @@ class MySpotsCard extends React.Component {
                 </Grid.Row>
               </Grid.Column>
             </Grid>
-          </Card.Content>
-          <Card.Content extra>
-            <Link to={`/edit/${this.props.spot._id}`}>Edit</Link>
           </Card.Content>
         </Card>
     );

@@ -19,11 +19,23 @@ class EditSpot extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, image, location, description, address, major, environment, time, _id } = data;
+    const { name, image, location, description, address, major, environment, time, status, _id } = data;
     // eslint-disable-next-line max-len
-    Spots.update(_id, { $set: { name, image, location, description, address, major, environment, time } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Spot updated successfully', 'success')));
+    Spots.update(_id, {
+      $set: {
+        name,
+        image,
+        location,
+        description,
+        address,
+        major,
+        environment,
+        time,
+        status: 'Pending',
+      },
+    }, (error) => (error ?
+        swal('Error', error.message, 'error') :
+        swal('Success', 'Spot updated successfully', 'success')));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -49,7 +61,7 @@ class EditSpot extends React.Component {
                 <SelectField name='time'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
-                <HiddenField name='owner' />
+                <HiddenField name='owner'/>
               </Segment>
             </AutoForm>
           </Grid.Column>
@@ -70,7 +82,7 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('MySpots');
+  const subscription = Meteor.subscribe('Spots');
   return {
     doc: Spots.findOne(documentId),
     ready: subscription.ready(),

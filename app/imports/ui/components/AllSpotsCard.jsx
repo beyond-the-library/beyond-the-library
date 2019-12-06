@@ -1,10 +1,29 @@
 import React from 'react';
 import { Card, Image, Grid, Header, Label, Icon, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { Spots } from '../../api/spot/Spots';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class AllSpotsCard extends React.Component {
+  publish = () => {
+    Spots.update(this.props.spot._id, {
+      $set: { status: 'Published' },
+    });
+  }
+
+  reject = () => {
+    Spots.update(this.props.spot._id, {
+      $set: { status: 'Rejected' },
+    });
+  }
+
+  archive = () => {
+    Spots.update(this.props.spot._id, {
+      $set: { status: 'Archived' },
+    });
+  }
+
   icon() {
     if (this.props.spot.status === 'Pending') {
       return (<Icon name='circle outline' color='orange'/>);
@@ -22,33 +41,39 @@ class AllSpotsCard extends React.Component {
     if (this.props.spot.status === 'Pending') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
-            <Button negative>Reject</Button>
+            <Button negative onClick={this.reject}>Reject</Button>
             <Button.Or/>
-            <Button positive>Publish</Button>
+            <Button positive onClick={this.publish}>Publish</Button>
           </Button.Group>
       );
     }
     if (this.props.spot.status === 'Published') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
             <Button negative>Delete</Button>
             <Button.Or/>
-            <Button color='gray'>Archive</Button>
+            <Button color='grey' onClick={this.archive}>Archive</Button>
           </Button.Group>
       );
     }
     if (this.props.spot.status === 'Archived') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
             <Button negative>Delete</Button>
             <Button.Or/>
-            <Button positive>Publish</Button>
+            <Button positive onClick={this.publish}>Publish</Button>
           </Button.Group>
       );
     }
