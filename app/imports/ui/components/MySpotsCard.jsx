@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image, Grid, Header, Label, Icon, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class MySpotsCard extends React.Component {
@@ -22,7 +22,10 @@ class MySpotsCard extends React.Component {
     if (this.props.spot.status !== 'Published') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Button color='blue' onClick={(e) => {
+              e.preventDefault();
+              console.log('edit');
+            }}>Edit</Button>
             <Button.Or/>
             <Button negative>Discard</Button>
           </Button.Group>
@@ -59,6 +62,9 @@ class MySpotsCard extends React.Component {
                 </Grid.Row>
               </Grid.Column>
             </Grid>
+          </Card.Content>
+          <Card.Content extra>
+            <Link to={`/edit/${this.props.spot._id}`}>Edit</Link>
           </Card.Content>
         </Card>
     );
