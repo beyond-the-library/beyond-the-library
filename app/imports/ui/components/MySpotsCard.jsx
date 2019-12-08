@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Image, Grid, Header, Label, Icon, Button } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { Spots } from '../../api/spot/Spots';
@@ -20,7 +21,23 @@ class MySpotsCard extends React.Component {
   }
 
   delete = () => {
-    Spots.remove(this.props.spot._id);
+    swal({
+      title: 'Wait a minute...',
+      text: 'Out spot manager is on the way to see your awesome spot! Once discarded, you cannot recover this spot!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willDelete) => {
+          if (willDelete) {
+            Spots.remove(this.props.spot._id);
+            swal('Poof! Now nobody can see your secret spot!', {
+              icon: 'success',
+            });
+          } else {
+            swal('Your spot is safe now!');
+          }
+        });
   }
 
   button() {
