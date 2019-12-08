@@ -8,15 +8,45 @@ import { Spots } from '../../api/spot/Spots';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class AllSpotsCard extends React.Component {
   publish = () => {
-    Spots.update(this.props.spot._id, {
-      $set: { status: 'Published' },
-    });
+    swal({
+      title: 'Are you sure?',
+      text: 'Once you publish the spot, everyone can see this spot.',
+      icon: 'warning',
+      buttons: true,
+    })
+        .then((willPublish) => {
+          if (willPublish) {
+            Spots.update(this.props.spot._id, {
+              $set: { status: 'Published' },
+            });
+            swal('The spot has been published.', {
+              icon: 'success',
+            });
+          }
+        });
+
+
   }
 
   reject = () => {
-    Spots.update(this.props.spot._id, {
-      $set: { status: 'Rejected' },
-    });
+    swal({
+      title: 'Are you sure?',
+      text: 'You cannot do anything to this spot until the user resubmit the spot.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willReject) => {
+          if (willReject) {
+            Spots.update(this.props.spot._id, {
+              $set: { status: 'Rejected' },
+            });
+            swal('The spot has been rejected.', {
+              icon: 'success',
+            });
+          }
+        });
+
   }
 
   archive = () => {
@@ -77,7 +107,7 @@ class AllSpotsCard extends React.Component {
               <Button color='blue'>Edit</Button>
             </Link>
             <Button.Or/>
-            <Button negative onClick={ this.delete }>Delete</Button>
+            <Button negative onClick={this.delete}>Delete</Button>
             <Button.Or/>
             <Button color='grey' onClick={this.archive}>Archive</Button>
           </Button.Group>
@@ -90,7 +120,7 @@ class AllSpotsCard extends React.Component {
               <Button color='blue'>Edit</Button>
             </Link>
             <Button.Or/>
-            <Button negative onClick={ this.delete }>Delete</Button>
+            <Button negative onClick={this.delete}>Delete</Button>
             <Button.Or/>
             <Button positive onClick={this.publish}>Publish</Button>
           </Button.Group>
