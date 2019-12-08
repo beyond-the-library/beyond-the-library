@@ -19,6 +19,10 @@ class MySpotsCard extends React.Component {
     return (<Icon name='archive' color='grey'/>);
   }
 
+  delete = () => {
+    Spots.remove(this.props.spot._id);
+  }
+
   button() {
     if (this.props.spot.status !== 'Published') {
       return (
@@ -27,12 +31,7 @@ class MySpotsCard extends React.Component {
               <Button color='blue'>Edit</Button>
             </Link>
             <Button.Or/>
-            <Button negative onClick={ (e) => {
-              e.preventDefault();
-              console.log('discard');
-              Spots.update(this.props.spot._id, {
-              $set: { status: 'Rejected' } });
-            }}>Discard</Button>
+            <Button negative onClick={ this.delete }>Discard</Button>
           </Button.Group>
       );
     }

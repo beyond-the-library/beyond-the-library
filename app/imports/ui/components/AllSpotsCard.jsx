@@ -24,6 +24,10 @@ class AllSpotsCard extends React.Component {
     });
   }
 
+  delete = () => {
+    Spots.remove(this.props.spot._id);
+  }
+
   icon() {
     if (this.props.spot.status === 'Pending') {
       return (<Icon name='circle outline' color='orange'/>);
@@ -58,7 +62,7 @@ class AllSpotsCard extends React.Component {
               <Button color='blue'>Edit</Button>
             </Link>
             <Button.Or/>
-            <Button negative>Delete</Button>
+            <Button negative onClick={ this.delete }>Delete</Button>
             <Button.Or/>
             <Button color='grey' onClick={this.archive}>Archive</Button>
           </Button.Group>
@@ -71,7 +75,7 @@ class AllSpotsCard extends React.Component {
               <Button color='blue'>Edit</Button>
             </Link>
             <Button.Or/>
-            <Button negative>Delete</Button>
+            <Button negative onClick={ this.delete }>Delete</Button>
             <Button.Or/>
             <Button positive onClick={this.publish}>Publish</Button>
           </Button.Group>
