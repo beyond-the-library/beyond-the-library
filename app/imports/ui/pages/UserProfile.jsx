@@ -1,10 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Grid, Segment, Button } from 'semantic-ui-react';
+import { Container, Loader, Grid, Segment, Button, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/Users';
-import UserComponent from '../components/UserComponent';
+// import UserComponent from '../components/UserComponent';
+import AllSpotsCard from '../components/AllSpotsCard';
+import { Spots } from '../../api/spot/Spots';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
@@ -22,18 +24,19 @@ class UserProfile extends React.Component {
             <Grid.Row>
               <Grid.Column>
                 <Container>
-                  {/* <Image src={this.props.user.image }fluid/> */}
-                  {this.props.users.map((user, index) => (<UserComponent key={index} user={user}/>))}
+                  {/* {this.props.users.map((user, index) => (<UserComponent key={index} user={user}/>))} */}
+                  <Image src='images/momoadmin.jpg' size='medium' fluid/>
                 </Container>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
                 <Segment>
-                  <p>USERNAME: Admin</p>
+                  <p></p>
                 </Segment>
                 <Segment>
                   <p>List of favorite spots:</p>
+                  {this.props.spots.map((spot, index) => (<AllSpotsCard key={index} spot={spot}/>))}
                 </Segment>
               </Grid.Column>
             </Grid.Row>
@@ -53,6 +56,7 @@ class UserProfile extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 UserProfile.propTypes = {
+  spots: PropTypes.array.isRequired,
   users: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -62,8 +66,8 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Users');
   return {
-    // stuffs: Stuffs.find({}).fetch(),
     users: Users.find({}).fetch(),
+    spots: Spots.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(UserProfile);

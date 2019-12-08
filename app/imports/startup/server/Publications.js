@@ -9,7 +9,11 @@ Meteor.publish('Spots', function publish() {
 });
 
 Meteor.publish('Users', function publish() {
-  return Users.find();
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).name;
+    return Users.find({ owner: username });
+  }
+  return this.ready();
 });
 
  /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin.

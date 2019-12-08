@@ -1,7 +1,8 @@
 {
   "defaultUsers": [
     {
-      "name": "Aljaed Lui Ereno",
+      "email": "aljtest@foo.com",
+      "username": "Aljaed Lui Ereno",
       "image": "images/momoadmin.jpg",
       "description": "",
       "major": "Computer Engineering"
