@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Image, Grid, Header, Label, Icon, Button } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Spots } from '../../api/spot/Spots';
@@ -25,7 +26,21 @@ class AllSpotsCard extends React.Component {
   }
 
   delete = () => {
-    Spots.remove(this.props.spot._id);
+    swal({
+      title: 'Are you sure?',
+      text: 'The spot cannot be retrieved once deleted.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willDelete) => {
+          if (willDelete) {
+            Spots.remove(this.props.spot._id);
+            swal('The spot has been removed.', {
+              icon: 'success',
+            });
+          }
+        });
   }
 
   icon() {
