@@ -19,7 +19,7 @@ class EditSpot extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, image, location, description, address, major, environment, time, status, _id } = data;
+    const { name, image, location, description, address, major, environment, time, _id } = data;
     // eslint-disable-next-line max-len
     Spots.update(_id, {
       $set: {

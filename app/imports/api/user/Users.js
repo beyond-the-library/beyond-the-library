@@ -13,7 +13,7 @@ const UsersSchema = new SimpleSchema({
   image: String, // a link to the picture of the user
   description: String, // extra information for display
   major: String,
-  favoritespot: String,
+  favoriteSpot: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

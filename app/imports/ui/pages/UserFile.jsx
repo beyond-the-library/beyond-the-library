@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { NavLink, Redirect } from 'react-router-dom';
 import UserComponent from '../components/UserComponent';
-import AllSpotsCard from '../components/AllSpotsCard';
+import SpotCard from '../components/SpotCard';
+import { Spots } from '../../api/spot/Spots';
+import { Users } from '../../api/user/Users';
 // import { Users } from '../../api/user/Users';
 // import { Accounts } from 'meteor/accounts-base';
 
@@ -56,7 +58,7 @@ class UserFile extends React.Component {
                 </Segment>
                 <Segment>
                   <p>List of favorite spots:</p>
-                  {this.props.spots.map((spot, index) => (<AllSpotsCard key={index} spot={spot}/>))}
+                  {this.props.spots.map((spot, index) => (<SpotCard key={index} spot={spot}/>))}
                 </Segment>
               </Grid.Column>
             </Grid.Row>
@@ -77,17 +79,19 @@ class UserFile extends React.Component {
 /** Require an array of Stuff documents in the props. */
 UserFile.propTypes = {
   spots: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
-  users: PropTypes.bool.isRequired,
+  users: PropTypes.object.isRequired,
   location: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to User documents.
-  const subscription = Meteor.subscribe('Users');
-  const subscription2 = Meteor.subscribe('Spots');
+  const subscription = Meteor.subscribe('UserProfiles');
+  const subscription2 = Meteor.subscribe('FavoriteSpots');
   return {
+    spots: Spots.find({}).fetch(),
+    users: Users.findOne(),
     ready: subscription.ready() && subscription2.ready(),
   };
 })(UserFile);
