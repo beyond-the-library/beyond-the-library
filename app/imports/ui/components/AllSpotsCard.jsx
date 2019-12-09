@@ -1,10 +1,78 @@
 import React from 'react';
 import { Card, Image, Grid, Header, Label, Icon, Button } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { Spots } from '../../api/spot/Spots';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class AllSpotsCard extends React.Component {
+  publish = () => {
+    swal({
+      title: 'Are you sure?',
+      text: 'Once you publish the spot, everyone can see this spot.',
+      icon: 'warning',
+      buttons: true,
+    })
+        .then((willPublish) => {
+          if (willPublish) {
+            Spots.update(this.props.spot._id, {
+              $set: { status: 'Published' },
+            });
+            swal('The spot has been published.', {
+              icon: 'success',
+            });
+          }
+        });
+
+
+  }
+
+  reject = () => {
+    swal({
+      title: 'Are you sure?',
+      text: 'You cannot do anything to this spot until the user resubmit the spot.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willReject) => {
+          if (willReject) {
+            Spots.update(this.props.spot._id, {
+              $set: { status: 'Rejected' },
+            });
+            swal('The spot has been rejected.', {
+              icon: 'success',
+            });
+          }
+        });
+
+  }
+
+  archive = () => {
+    Spots.update(this.props.spot._id, {
+      $set: { status: 'Archived' },
+    });
+  }
+
+  delete = () => {
+    swal({
+      title: 'Are you sure?',
+      text: 'The spot cannot be retrieved once deleted.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willDelete) => {
+          if (willDelete) {
+            Spots.remove(this.props.spot._id);
+            swal('The spot has been removed.', {
+              icon: 'success',
+            });
+          }
+        });
+  }
+
   icon() {
     if (this.props.spot.status === 'Pending') {
       return (<Icon name='circle outline' color='orange'/>);
@@ -22,33 +90,39 @@ class AllSpotsCard extends React.Component {
     if (this.props.spot.status === 'Pending') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
-            <Button negative>Reject</Button>
+            <Button negative onClick={this.reject}>Reject</Button>
             <Button.Or/>
-            <Button positive>Publish</Button>
+            <Button positive onClick={this.publish}>Publish</Button>
           </Button.Group>
       );
     }
     if (this.props.spot.status === 'Published') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
-            <Button negative>Delete</Button>
+            <Button negative onClick={this.delete}>Delete</Button>
             <Button.Or/>
-            <Button color='gray'>Archive</Button>
+            <Button color='grey' onClick={this.archive}>Archive</Button>
           </Button.Group>
       );
     }
     if (this.props.spot.status === 'Archived') {
       return (
           <Button.Group>
-            <Button color='blue'>Edit</Button>
+            <Link to={`/edit/${this.props.spot._id}`}>
+              <Button color='blue'>Edit</Button>
+            </Link>
             <Button.Or/>
-            <Button negative>Delete</Button>
+            <Button negative onClick={this.delete}>Delete</Button>
             <Button.Or/>
-            <Button positive>Publish</Button>
+            <Button positive onClick={this.publish}>Publish</Button>
           </Button.Group>
       );
     }
