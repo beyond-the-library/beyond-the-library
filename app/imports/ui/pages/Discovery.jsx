@@ -81,7 +81,6 @@ class Discovery extends React.Component {
     if (this.spots === undefined) {
       this.createOptions();
     }
-
     return (
         <Container>
           <Header as="h2" textAlign="center" inverted>Discover New Spots</Header>

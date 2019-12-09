@@ -159,7 +159,7 @@
       "time": "Daytime"
     },
     {
-      "name": "Architecture",
+      "name": "Architecture Building",
       "image": "images/architect.jpg",
       "location": "Architecture Building",
       "description": "Need a spot to study while your designing buildings, come check this place out.",
@@ -171,7 +171,7 @@
       "time": "Daytime"
     },
     {
-      "name": "Balle",
+      "name": "Ba-le",
       "image": "images/balle.jpg",
       "location": "Balle",
       "description": "Eat pho or drink some beers, balle has you covered for your nighttime studying.",
@@ -205,6 +205,63 @@
       "major": "Open for everyone",
       "environment": "Outdoor",
       "time": "Daytime"
+    }
+  ],
+  "defaultMarker": [
+    {
+      "name": "Paradise Palms",
+      "lat": 21.300923,
+      "lng": -157.815685
+    },
+    {
+      "name": "POST",
+      "lat": 21.297330,
+      "lng": -157.816354
+    },
+    {
+      "name":"Le Crepe Law School",
+      "lat": 21.29526,
+      "lng": -157.818197
+    },
+    {
+      "name": "Marine Science Building",
+      "lat": 21.297925,
+      "lng": -157.815896
+    },
+    {
+      "name": "Pacific Hurricane Center",
+      "lat": 21.298022,
+      "lng": -157.816804
+    },
+    {
+      "name": "Queen Liliuokalani Center",
+      "lat": 21.300247,
+      "lng": -157.818509
+    },
+    {
+      "name": "Saunders Hall",
+      "lat": 21.300516,
+      "lng": -157.819008
+    },
+    {
+      "name": "Architecture Building",
+      "lat": 21.299660,
+      "lng": -157.820671
+    },
+    {
+      "name": "Ba-Le",
+      "lat": 21.298831,
+      "lng": -157.819853
+    },
+    {
+      "name": "George Hall",
+      "lat": 21.300441,
+      "lng": -157.820223
+    },
+    {
+      "name": "Kuykendall Hall",
+      "lat": 21.298269,
+      "lng": -157.817245
     }
   ]
 }

@@ -32,7 +32,7 @@ const SpotsSchema = new SimpleSchema({
     type: String,
     allowedValues: ['24/7', 'Weekdays Daytime', 'Daytime', 'Unknown'],
     defaultValue: '24/7',
-  },
+  }
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
