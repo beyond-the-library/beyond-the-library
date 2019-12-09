@@ -4,7 +4,7 @@ import { Container, Loader, Grid, Segment, Button, Image } from 'semantic-ui-rea
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Users } from '../../api/user/Users';
-// import UserComponent from '../components/UserComponent';
+import UserComponent from '../components/UserComponent';
 import AllSpotsCard from '../components/AllSpotsCard';
 import { Spots } from '../../api/spot/Spots';
 
@@ -24,7 +24,7 @@ class UserProfile extends React.Component {
             <Grid.Row>
               <Grid.Column>
                 <Container>
-                  {/* {this.props.users.map((user, index) => (<UserComponent key={index} user={user}/>))} */}
+                   {this.props.users.map((user, index) => (<UserComponent key={index} user={user}/>))}
                   <Image src='images/momoadmin.jpg' size='medium' fluid/>
                 </Container>
               </Grid.Column>

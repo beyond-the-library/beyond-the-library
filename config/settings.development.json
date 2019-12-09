@@ -1,52 +1,23 @@
 {
-  "defaultUsers": [
-    {
-      "email": "aljtest@foo.com",
-      "username": "Aljaed Lui Ereno",
-      "image": "images/momoadmin.jpg",
-      "description": "",
-      "major": "Computer Engineering"
-    }
-  ],
   "defaultAccounts": [
     {
       "email": "admin@foo.com",
       "password": "changeme",
-      "role": "admin"
+      "role": "admin",
+      "image": "images/aljpic.jpg",
+      "favoritespot": "Holmes Hall"
     },
     {
       "email": "john@foo.com",
-      "password": "changeme"
+      "password": "changeme",
+      "image": "images/aljpic.jpg",
+      "favoritespot": "Holmes Hall"
     },
     {
       "email": "aljtest@foo.com",
-      "password": "ADAD"
-    }
-  ],
-  "defaultData": [
-    {
-      "name": "Basket",
-      "quantity": 3,
-      "owner": "john@foo.com",
-      "condition": "excellent"
-    },
-    {
-      "name": "Bicycle",
-      "quantity": 2,
-      "owner": "john@foo.com",
-      "condition": "poor"
-    },
-    {
-      "name": "Banana",
-      "quantity": 2,
-      "owner": "admin@foo.com",
-      "condition": "good"
-    },
-    {
-      "name": "Boogie Board",
-      "quantity": 2,
-      "owner": "admin@foo.com",
-      "condition": "excellent"
+      "password": "ADAD",
+      "image": "images/aljpic.jpg",
+      "favoritespot": "Holmes Hall"
     }
   ],
   "defaultSpots": [
@@ -205,6 +176,17 @@
       "major": "Open for everyone",
       "environment": "Outdoor",
       "time": "Daytime"
+    }
+  ],
+  "myAccounts": [
+    {
+      "email": "aljtest@foo.com",
+      "username": "Aljaed Lui Ereno",
+      "password": "ADAD",
+      "image": "images/aljpic.jpg",
+      "description": "This is my test user account",
+      "major": "Computer Engineering",
+      "favoritespot": "Holmes Hall"
     }
   ]
 }

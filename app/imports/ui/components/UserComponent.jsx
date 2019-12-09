@@ -5,16 +5,17 @@ import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class UserComponent extends React.Component {
+
   render() {
     return (
-        <Card centered>
-          <Image src={this.props.user.image} wrapped ui={false}/>
-          <Card.Header>{this.props.user.username}</Card.Header>
-          <Card.Meta>{this.props.user.major}</Card.Meta>
-          <Card.Description>
-            {this.props.user.description}
-          </Card.Description>
-        </Card>
+    <Card centered>
+      <Image src={this.props.user.image} wrapped ui={false}/>
+      <Card.Header>{this.props.user.username}</Card.Header>
+      <Card.Meta>{this.props.user.major}</Card.Meta>
+      <Card.Description>
+        {this.props.user.description}
+      </Card.Description>
+    </Card>
     );
   }
 }
