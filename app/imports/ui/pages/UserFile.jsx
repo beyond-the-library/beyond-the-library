@@ -4,7 +4,7 @@ import { Container, Loader, Grid, Segment, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import UserComponent from '../components/UserComponent';
 import AllSpotsCard from '../components/AllSpotsCard';
 // import { Users } from '../../api/user/Users';
@@ -29,8 +29,9 @@ class UserFile extends React.Component {
             });
           }
         });
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    return <Redirect to={from}/>;
   }
-
 
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
