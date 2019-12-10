@@ -18,7 +18,7 @@ import AddSpot from '../pages/AddSpot';
 import UserFile from '../pages/UserFile';
 import Achievements from '../pages/Achievements';
 import EditPassword from '../pages/EditPassword';
-import UserProfile from '../pages/UserProfile';
+// import UserProfile from '../pages/UserProfile';
 import EditSpot from '../pages/EditSpot';
 import LocationsPage from '../pages/LocationsPage';
 
