@@ -72,7 +72,7 @@ class AddSpot extends React.Component {
                 <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
                 <TextField name='location' data-tip="General location for display"/>
                 <LongTextField name='description' data-tip="You can add some extra description or information here"/>
-                <TextField name='address' data-tip="NEED TO BE CHANGED"/>
+                <TextField name='address' data-tip="NEED TO BE CHANGED. Write whatever you want here."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>
