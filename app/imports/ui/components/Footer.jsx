@@ -9,8 +9,9 @@ class Footer extends React.Component {
           <div style={divStyle} className="ui center aligned container">
             <hr />
             Beyond the Library<br />
-            University of Hawaii<br />
-            <a href="https://beyond-the-library.github.io/">Project Documentation</a>
+            &quot; Hit the books in these hit places &quot;<br />
+            University of Hawaii at Manoa<br />
+            <a href="https://beyond-the-library.github.io/">GitHub Project Documentation</a>
           </div>
         </footer>
     );
