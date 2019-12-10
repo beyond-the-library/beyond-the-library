@@ -92,9 +92,9 @@ class Discovery extends React.Component {
             Find a spot you want and click on it for a map location.
           </Container>
           <Menu>
-            <Dropdown placeholder={'Choose a Filter ...'} selection options={this.searchBy}
+            <Dropdown placeholder={'Choose a Filter...'} selection options={this.searchBy}
                       onChange={(e, data) => this.setSearchBy(e, data)}/>
-            <Dropdown placeholder={'Choose a sub-filter ...'} deburr fluid search selection
+            <Dropdown placeholder={'Choose a sub-filter...'} deburr fluid search selection
                       options={this[this.state.searchBy]} icon='search' allowAdditions additionLabel=''
                       onChange={(event, data) => this.handleGeneralChange(event, data, this.state.searchBy)}
                       onAddItem={(e, data) => this.handleAddition(e, data, this.state.searchBy)}/>
