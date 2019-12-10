@@ -36,7 +36,7 @@ class UserFile extends React.Component {
   }
 
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return this.renderPage();
   }
 
   /** Render the page once subscriptions have been received. */
@@ -79,9 +79,8 @@ class UserFile extends React.Component {
 /** Require an array of Stuff documents in the props. */
 UserFile.propTypes = {
   spots: PropTypes.array.isRequired,
-  users: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired,
   location: PropTypes.object,
-  ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
@@ -91,7 +90,6 @@ export default withTracker(() => {
   const subscription2 = Meteor.subscribe('FavoriteSpots');
   return {
     spots: Spots.find({}).fetch(),
-    users: Users.findOne(),
-    ready: subscription.ready() && subscription2.ready(),
+    users: Users.find({}).fetch(),
   };
 })(UserFile);

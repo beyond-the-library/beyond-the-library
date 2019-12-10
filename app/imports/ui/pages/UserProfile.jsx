@@ -11,7 +11,7 @@ import { Spots } from '../../api/spot/Spots';
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
 
-  /** If the subscription(s) have been received, re nder the page, otherwise show a loading icon. */
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
