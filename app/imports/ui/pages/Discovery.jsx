@@ -13,7 +13,7 @@ class Discovery extends React.Component {
 
   state = {
     spots: [],
-    searchBy: 'Major',
+    searchBy: '',
     currentValue: [],
   };
 
@@ -29,10 +29,11 @@ class Discovery extends React.Component {
 
   createOptions() {
     this.searchBy = [
-      { key: 1, value: 'major', text: 'Major' },
-      { key: 2, value: 'environment', text: 'Environment' },
-      { key: 3, value: 'time', text: 'Time' },
-      { key: 4, value: 'location', text: 'Location' },
+      { key: 1, value: 'environment', text: 'Environment' },
+      { key: 2, value: 'location', text: 'Location' },
+      { key: 3, value: 'name', text: 'Name' },
+      { key: 4, value: 'owner', text: 'Posts by User' },
+      { key: 5, value: 'time', text: 'Time' },
     ];
     // eslint-disable-next-line no-restricted-syntax
     for (const category of this.searchBy) {
@@ -68,6 +69,7 @@ class Discovery extends React.Component {
 
   onClickClear() {
     this.setState({ spots: [] });
+    this.setState({ searchBy: '' });
     this.setState({ currentValue: [] });
   }
 
@@ -84,22 +86,18 @@ class Discovery extends React.Component {
 
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>Discover New Spots</Header>
+          <Header as="h2" textAlign="center">Discover New Spots</Header>
+          <Container text textAlign={'center'}>
+            Discover new study spots here! Choose a filter and a sub-filter, and see all available results (or do not).
+            Find a spot you want and click on it for a map location.
+          </Container>
           <Menu>
-            <Dropdown selection defaultValue='Major' options={this.searchBy}
+            <Dropdown placeholder={'Choose a Filter ...'} selection options={this.searchBy}
                       onChange={(e, data) => this.setSearchBy(e, data)}/>
-            {this.state.searchBy === 'Major' ? (
-                <Dropdown placeholder='Filter Values' fluid multiple search selection
-                          options={this.spots} value={this.state.currentValue} icon='search'
-                          onChange={(event, data) => this.handleFilterChange(event, data)}
-                />
-            ) : (
-                <Dropdown placeholder={'Choose a Filter'} deburr fluid search selection
-                          options={this[this.state.searchBy]} icon='search' allowAdditions additionLabel=''
-                          onChange={(event, data) => this.handleGeneralChange(event, data, this.state.searchBy)}
-                          onAddItem={(e, data) => this.handleAddition(e, data, this.state.searchBy)}
-                />
-            )}
+            <Dropdown placeholder={'Choose a sub-filter ...'} deburr fluid search selection
+                      options={this[this.state.searchBy]} icon='search' allowAdditions additionLabel=''
+                      onChange={(event, data) => this.handleGeneralChange(event, data, this.state.searchBy)}
+                      onAddItem={(e, data) => this.handleAddition(e, data, this.state.searchBy)}/>
             <Button negative onClick={this.onClickClear}>Clear</Button>
           </Menu>
           <Card.Group>
@@ -109,9 +107,6 @@ class Discovery extends React.Component {
                 this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)}/>))
             }
           </Card.Group>
-          <Card.Content extra>
-            <Button icon='file'/>
-          </Card.Content>
         </Container>
     );
   }

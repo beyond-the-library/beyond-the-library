@@ -186,7 +186,7 @@
       "image": "images/aljpic.jpg",
       "description": "This is my test user account",
       "major": "Computer Engineering",
-      "favoritespot": "Holmes Hall"
+      "favoriteSpot": "Holmes Hall"
     }
   ]
 }
