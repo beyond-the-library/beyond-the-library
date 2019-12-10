@@ -18,7 +18,7 @@ import AddSpot from '../pages/AddSpot';
 import UserFile from '../pages/UserFile';
 import Achievements from '../pages/Achievements';
 import EditSpot from '../pages/EditSpot';
-import TestLocationsPage from '../pages/TestLocationsPage';
+import LocationsPage from '../pages/LocationsPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <Route path="/discovery" component={Discovery}/>
-              <Route path="/locations" component={TestLocationsPage}/>
+              <Route path="/locations" component={LocationsPage}/>
               <ProtectedRoute path="/myspots" component={MySpots}/>
               <ProtectedRoute path="/addspot" component={AddSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>

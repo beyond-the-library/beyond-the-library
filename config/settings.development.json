@@ -1,13 +1,4 @@
 {
-  "defaultUsers": [
-    {
-      "email": "aljtest@foo.com",
-      "username": "Aljaed Lui Ereno",
-      "image": "images/momoadmin.jpg",
-      "description": "",
-      "major": "Computer Engineering"
-    }
-  ],
   "defaultAccounts": [
     {
       "email": "admin@foo.com",
