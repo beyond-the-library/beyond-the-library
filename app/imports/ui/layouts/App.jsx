@@ -16,11 +16,11 @@ import Discovery from '../pages/Discovery';
 import MySpots from '../pages/MySpots';
 import AddSpot from '../pages/AddSpot';
 import UserFile from '../pages/UserFile';
-import TestListDiscovery from '../pages/TestListDiscovery';
 import Achievements from '../pages/Achievements';
 import EditPassword from '../pages/EditPassword';
 import UserProfile from '../pages/UserProfile';
 import EditSpot from '../pages/EditSpot';
+import LocationsPage from '../pages/LocationsPage';
 
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -35,7 +35,7 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <Route path="/discovery" component={Discovery}/>
-              <Route path="/testdiscovery" component={TestListDiscovery}/>
+              <Route path="/locations" component={LocationsPage}/>
               <ProtectedRoute path="/myspots" component={MySpots}/>
               <ProtectedRoute path="/addspot" component={AddSpot}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
