@@ -15,6 +15,7 @@
     "react-leaflet": "^2.6.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-tooltip": "^3.11.1",
     "semantic-ui-carousel-react": "^1.1.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3",

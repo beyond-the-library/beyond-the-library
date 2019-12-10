@@ -11,6 +11,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { Spots } from '/imports/api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
+import ReactTooltip from 'react-tooltip';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -66,16 +67,18 @@ class AddSpot extends React.Component {
               fRef = ref;
             }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
               <Segment>
-                <TextField name='name'/>
-                <TextField name='image'/>
-                <TextField name='location'/>
-                <LongTextField name='description'/>
-                <TextField name='address'/>
-                <SelectField name='major'/>
-                <SelectField name='environment'/>
-                <SelectField name='time'/>
+                <TextField name='name' data-tip="The name of the study spot"/>
+                {/* eslint-disable-next-line max-len */}
+                <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
+                <TextField name='location' data-tip="General location for display"/>
+                <LongTextField name='description' data-tip="You can add some extra description or information here"/>
+                <TextField name='address' data-tip="NEED TO BE CHANGED"/>
+                <SelectField name='major' data-tip="If there is any major restrictions"/>
+                <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
+                <SelectField name='time' data-tip="When is your spot available?"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
+                <ReactTooltip />
               </Segment>
             </AutoForm>
           </Grid.Column>
