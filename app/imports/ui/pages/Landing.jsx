@@ -11,7 +11,7 @@ class Landing extends React.Component {
           backgroundImage: `url(${'images/beach.png'})`,
           backgroundRepeat: 'no-repeat',
         }}>
-            <Grid container verticalAlign="middle" textAlign='center' style={{ paddingTop: '100px'}}>
+            <Grid container verticalAlign="middle" textAlign='center' style={{ paddingTop: '100px' }}>
               <Grid.Row columns={2}>
                 <Grid.Column>
                   <h1 className='landingTitle' style={{
@@ -24,6 +24,7 @@ class Landing extends React.Component {
                     color: 'white',
                     fontSize: '40px',
                   }}
+                     // eslint-disable-next-line max-len
                   >Discover new study spots! Login or register in the upper right-hand corner to get started. If you&apos;re lost, visit the
                     Frequently Asked Questions (FAQ) page via the top menu.</p>
                 </Grid.Column>

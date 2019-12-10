@@ -54,4 +54,3 @@ if (MapMarker.find().count() === 0) {
     Meteor.settings.defaultMarker.map(data => addMarker(data));
   }
 }
-  
