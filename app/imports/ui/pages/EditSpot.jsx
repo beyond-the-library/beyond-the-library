@@ -13,13 +13,15 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Spots, SpotsSchema } from '../../api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2';
+import NumField from 'uniforms-semantic/NumField';
+import ReactTooltip from 'react-tooltip';
 
 /** Renders the Page for editing a single document. */
 class EditSpot extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, image, location, description, address, major, environment, time, _id } = data;
+    const { name, image, location, description, latitude, longitude, major, environment, time, _id } = data;
     // eslint-disable-next-line max-len
     Spots.update(_id, {
       $set: {
@@ -27,7 +29,8 @@ class EditSpot extends React.Component {
         image,
         location,
         description,
-        address,
+        latitude,
+        longitude,
         major,
         environment,
         time,
@@ -51,16 +54,21 @@ class EditSpot extends React.Component {
             <Header as="h2" textAlign="center">Edit Spot</Header>
             <AutoForm schema={SpotsSchema} onSubmit={data => this.submit(data)} model={this.props.doc}>
               <Segment>
-                <TextField name='name'/>
-                <TextField name='image'/>
-                <TextField name='location'/>
-                <LongTextField name='description'/>
-                <TextField name='address'/>
-                <SelectField name='major'/>
-                <SelectField name='environment'/>
-                <SelectField name='time'/>
+                <TextField name='name' data-tip="The name of the study spot"/>
+                {/* eslint-disable-next-line max-len */}
+                <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
+                <TextField name='location' data-tip="General location for display"/>
+                <LongTextField name='description' data-tip="You can add some extra description or information here"/>
+                {/* eslint-disable-next-line max-len */}
+                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates."/>
+                {/* eslint-disable-next-line max-len */}
+                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates."/>
+                <SelectField name='major' data-tip="If there is any major restrictions"/>
+                <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
+                <SelectField name='time' data-tip="When is your spot available?"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
+                <ReactTooltip />
                 <HiddenField name='owner'/>
               </Segment>
             </AutoForm>

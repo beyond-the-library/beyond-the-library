@@ -7,6 +7,7 @@ import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import LongTextField from 'uniforms-semantic/LongTextField';
+import NumField from 'uniforms-semantic/NumField';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { Spots } from '/imports/api/spot/Spots';
@@ -20,6 +21,14 @@ const formSchema = new SimpleSchema({
   location: String, // general location for display
   description: String, // extra information for display
   address: String, // this is the exact address for map interaction
+  latitude: {
+    type: Number,
+    defaultValue: 21.2969,
+  }, // latitude
+  longitude: {
+    type: Number,
+    defaultValue: -157.8171,
+  }, // longitude
   major: {
     type: String,
     allowedValues: ['Computer Science', 'Computer Engineering', 'Music', 'Open for everyone'],
@@ -42,10 +51,10 @@ class AddSpot extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, image, location, description, address, major, environment, time } = data;
+    const { name, image, location, description, address, lat, lng, major, environment, time } = data;
     const owner = Meteor.user().username;
     const status = 'Pending';
-    Spots.insert({ name, image, location, description, address, status, owner, major, environment, time },
+    Spots.insert({ name, image, location, description, address, status, lat, lng, owner, major, environment, time },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -73,6 +82,10 @@ class AddSpot extends React.Component {
                 <TextField name='location' data-tip="General location for display"/>
                 <LongTextField name='description' data-tip="You can add some extra description or information here"/>
                 <TextField name='address' data-tip="NEED TO BE CHANGED. Write whatever you want here."/>
+                {/* eslint-disable-next-line max-len */}
+                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
+                {/* eslint-disable-next-line max-len */}
+                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use defalt value if you are not sure."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>

@@ -16,7 +16,7 @@ class MapComponent extends Component {
           {/* eslint-disable-next-line max-len */}
           {_.map(this.props.mapmarker, marker => (<Marker position={[marker.lat, marker.lng]}>
             <Popup>
-              {marker.name};
+              {marker.name}
             </Popup>
           </Marker>))}
         </Map>);
