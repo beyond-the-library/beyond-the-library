@@ -142,9 +142,9 @@ class AllSpotsCard extends React.Component {
                 <Header as='h3'>{this.props.spot.name}</Header>
                 <Header as='h4'>Location: {this.props.spot.location}</Header>
                 <Header as='h4'>Description: {this.props.spot.description}</Header>
-                <Header as='h4'>Owner: {this.props.spot.owner}</Header>
+                <p>Owner: {this.props.spot.owner}</p>
               </Grid.Column>
-              <Grid.Column width={3} rows='2' stretched>
+              <Grid.Column width={4} rows='2' stretched>
                 <Grid.Row>
                   <Label size='large'>
                     {this.icon()}
