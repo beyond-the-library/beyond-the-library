@@ -189,6 +189,32 @@
       "time": "Daytime"
     },
     {
+      "name": "Language & Technology Diamond Head Computer Lab",
+      "image": "https://clt.manoa.hawaii.edu/wp-content/uploads/2018/04/DH-Lab-back.jpg",
+      "location": "Moore Hall",
+      "description": "AC room",
+      "latitude": 21.301187,
+      "longitude": -157.815337,
+      "owner": "hana@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Language & Technology Ewa Computer Lab",
+      "image": "https://clt.manoa.hawaii.edu/wp-content/uploads/2018/04/Ewa-Lab-front.jpg",
+      "location": "Moore Hall",
+      "description": "AC room",
+      "latitude": 21.301180,
+      "longitude": -157.815251,
+      "owner": "hana@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
       "name": "Banan",
       "image": "https://s3-media1.fl.yelpcdn.com/bphoto/OAuKFTIOFZ-peL70WjJVew/l.jpg",
       "location": "1810 University Ave, Honolulu, HI 96822",
@@ -294,7 +320,7 @@
     },
     {
       "name": "Ala Moana Regional Park",
-      "image": "http://honolulumagazine-images.dashdigital.com/images/Blogs/BitingCommentary/2016/Shirokiya-interior-seating-area.jpg?ver=1465870964",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrPGWjlikqQYJ6nn0jKTsbrU7WaaI-VIclRGl9N51RKyX9P_qFA&s",
       "location": "1201 Ala Moana Blvd, Honolulu, HI 96814",
       "description": "Outdoor and study",
       "latitude": 21.289797,
@@ -312,6 +338,19 @@
       "description": "Outdoor and study",
       "latitude": 21.275555,
       "longitude": -157.825921,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Kanewai Community Park",
+      "image": "https://lh5.googleusercontent.com/p/AF1QipOs9WxSymp8VdXUNr5TeqlKBBXNRbIsLCELtihE=w408-h544-k-no",
+      "location": "2695 Dole St, Honolulu, HI 96822",
+      "description": "Outdoor and study",
+      "latitude": 21.292870,
+      "longitude": -157.811919,
       "owner": "chris@hawaii.edu",
       "status": "Published",
       "major": "Open for everyone",
