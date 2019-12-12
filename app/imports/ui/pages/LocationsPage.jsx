@@ -12,7 +12,7 @@ class LocationsPage extends Component {
   }
 
   renderPage() {
-    const uhposition = [21.2969, -157.8171];
+    const uhposition = [21.2982, -157.8171];
     return (
         <Container>
           <h1>Beyond the Library Map</h1>
