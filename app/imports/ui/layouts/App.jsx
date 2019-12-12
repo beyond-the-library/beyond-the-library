@@ -16,7 +16,6 @@ import Discovery from '../pages/Discovery';
 import MySpots from '../pages/MySpots';
 import AddSpot from '../pages/AddSpot';
 import UserFile from '../pages/UserFile';
-import Achievements from '../pages/Achievements';
 import EditPassword from '../pages/EditPassword';
 // import UserProfile from '../pages/UserProfile';
 import EditSpot from '../pages/EditSpot';
@@ -41,7 +40,6 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/userfile" component={UserFile}/>
               <ProtectedRoute path='/editpassword' component={EditPassword}/>
-              <ProtectedRoute path="/achievements" component={Achievements}/>
               <AdminProtectedRoute path="/admin" component={AllSpots}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
