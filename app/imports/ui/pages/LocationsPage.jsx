@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Loader, Grid, Container } from 'semantic-ui-react';
 import MapComponent from '../components/MapComponent';
-import { MapMarker } from '../../api/mapmarker/MapMarker';
+import { Spots } from '../../api/spot/Spots';
 
 class LocationsPage extends Component {
   render() {
@@ -19,7 +19,7 @@ class LocationsPage extends Component {
           <Grid columns={2}>
             <Grid.Column width={12}>
               {/* eslint-disable-next-line max-len */}
-              <MapComponent className='map' lat={uhposition[0]} lng={uhposition[1]} zoom={16} mapmarker={this.props.mapmarker}/>
+              <MapComponent className='map' lat={uhposition[0]} lng={uhposition[1]} zoom={16} spots={this.props.spots}/>
             </Grid.Column>
             <Grid.Column width={4}>
               <h1>Updates on Spots</h1>
@@ -31,14 +31,14 @@ class LocationsPage extends Component {
 }
 
 LocationsPage.propTypes = {
-  mapmarker: PropTypes.array.isRequired,
+  spots: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
-  const subs1 = Meteor.subscribe('MapMarker');
+  const subs1 = Meteor.subscribe('Spots');
   return {
-    mapmarker: MapMarker.find({}).fetch(),
+    spots: Spots.find({ status: 'Published' }).fetch(),
     ready: subs1.ready(),
   };
 })(LocationsPage);
