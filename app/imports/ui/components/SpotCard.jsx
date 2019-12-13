@@ -1,16 +1,14 @@
 import React from 'react';
-import { Card, Image, Container, Button } from 'semantic-ui-react';
+import { Card, Image, Container} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import Signup from '../pages/Signup';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class SpotCard extends React.Component {
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/locations' } };
     return (
         <Card centered>
-          <Link to={ from }>
+          <Link to={`/location/${this.props.spot._id}`}>
             <Image src={this.props.spot.image} wrapped/>
           </Link>
           <Container>
