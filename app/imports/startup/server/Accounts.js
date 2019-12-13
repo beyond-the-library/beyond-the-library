@@ -4,14 +4,16 @@ import { Roles } from 'meteor/alanning:roles';
 
 /* eslint-disable no-console */
 
-function createUser(email, password, role, image, favoritespot) {
-  console.log(`  Creating user ${email} with image ${image} and favorite spot: ${favoritespot}`);
+function createUser(email, username, password, role, image, description, major, favoriteSpot) {
+  console.log(`  Creating user ${email} with image ${image} and favorite spot: ${favoriteSpot}`);
   const userID = Accounts.createUser({
-    username: email,
     email: email,
+    username: username,
     password: password,
     image: image,
-    favoritespot: favoritespot,
+    description: description,
+    major: major,
+    favoriteSpot: favoriteSpot,
   });
   if (role === 'admin') {
     Roles.addUsersToRoles(userID, 'admin');
@@ -22,15 +24,17 @@ function createUser(email, password, role, image, favoritespot) {
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating the default user(s)');
-    // eslint-disable-next-line max-len
-    Meteor.settings.defaultAccounts.map(({ email, password, role, image, favoritespot }) => createUser(email, password, role, image, favoritespot));
+    Meteor.settings.defaultAccounts.map(
+        ({ email, username, password, role, image, description, favoriteSpot }) => createUser(
+            email, username, password, role, image, description, favoriteSpot,
+        ),
+    );
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 }
 
-
-// function returnUser(email) {
-//   console.log(`This is the user you asked for ${email}`);
-//   const userID = Accounts.returnUser({email: email});
-// }
+/* function returnUser(email) {
+  console.log(`This is the user you asked for ${email}`);
+  const userID = Accounts.returnUser({email: email});
+} */

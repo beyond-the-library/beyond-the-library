@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Card, Image, Container, Feed } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import MapsNote from '/imports/ui/components/MapsNote';
 import AddNote from '/imports/ui/components/AddNote.jsx';
 
@@ -12,7 +12,9 @@ class SpotCard extends React.Component {
   render() {
     return (
         <Card centered>
-          <Image src={this.props.spot.image} wrapped ui={false}/>
+          <Link to={`/location/${this.props.spot._id}`}>
+            <Image src={this.props.spot.image} wrapped/>
+          </Link>
           <Container>
             <Card.Header as='h4'>{this.props.spot.name}</Card.Header>
             <Card.Meta>{this.props.spot.address}</Card.Meta>
@@ -40,6 +42,8 @@ SpotCard.propTypes = {
   spot: PropTypes.object.isRequired,
   notes: PropTypes.array.isRequired,
   currentUser: PropTypes.string,
+  location: PropTypes.object,
+
 };
 
 const SpotCardContainer = withTracker(() => ({

@@ -8,6 +8,7 @@ import MapsNote from '../components/MapsNote';
 import { MapMarker } from '../../api/mapmarker/MapMarker';
 import { Notes } from '../../api/note/Notes';
 // import AddNote from '../components/AddNote';
+import { Spots } from '../../api/spot/Spots';
 
 class LocationsPage extends Component {
   render() {
@@ -26,13 +27,14 @@ class LocationsPage extends Component {
     // function formatTime(time) {
     //   return time.toLocaleDateString('en-us') === new Date();
     // }
+
     return (
         <Container>
           <h1>Beyond the Library Map</h1>
           <Grid columns={2}>
             <Grid.Column width={12}>
               {/* eslint-disable-next-line max-len */}
-              <MapComponent className='map' lat={uhposition[0]} lng={uhposition[1]} zoom={16} mapmarker={this.props.mapmarker}/>
+              <MapComponent className='map' lat={uhposition[0]} lng={uhposition[1]} zoom={16} spots={this.props.spots}/>
             </Grid.Column>
             <Grid.Column width={4}>
               <h1>Spot Updates</h1>
@@ -47,17 +49,17 @@ class LocationsPage extends Component {
 }
 
 LocationsPage.propTypes = {
-  mapmarker: PropTypes.array.isRequired,
   notes: PropTypes.array.isRequired,
+  spots: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
-  const subs1 = Meteor.subscribe('MapMarker');
+  const subs1 = Meteor.subscribe('Spots');
   const subs2 = Meteor.subscribe('Notes');
 
   return {
-    mapmarker: MapMarker.find({}).fetch(),
+    spots: Spots.find({ status: 'Published' }).fetch(),
     notes: Notes.find({ owner: 'john@foo.com' }).fetch(),
     ready: subs1.ready() && subs2.ready(),
   };

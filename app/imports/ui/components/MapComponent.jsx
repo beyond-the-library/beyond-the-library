@@ -13,9 +13,9 @@ class MapComponent extends Component {
               url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           />
           {/* eslint-disable-next-line max-len */}
-          {_.map(this.props.mapmarker, (marker, index) => (<Marker key={index} position={[marker.lat, marker.lng]}>
+          {_.map(this.props.spots, (spot, index) => (<Marker position={[spot.latitude, spot.longitude]} key={index}>
             <Popup>
-              {marker.name}
+              {spot.name}
             </Popup>
           </Marker>))}
         </Map>);
@@ -26,7 +26,7 @@ MapComponent.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
   zoom: PropTypes.number.isRequired,
-  mapmarker: PropTypes.array.isRequired,
+  spots: PropTypes.array.isRequired,
 };
 
 export default withRouter(MapComponent);

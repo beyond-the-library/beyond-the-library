@@ -4,6 +4,7 @@ import { Users } from '../../api/user/Users';
 import { MapMarker } from '../../api/mapmarker/MapMarker.js';
 import { Notes } from '../../api/note/Notes';
 
+
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
@@ -38,9 +39,9 @@ function addUserProfile(data) {
 }
 
 if (Users.find().count() === 0) {
-  if (Meteor.settings.myAccounts) {
+  if (Meteor.settings.defaultAccounts) {
     console.log('Creating default users');
-    Meteor.settings.myAccounts.map(data => addUserProfile(data));
+    Meteor.settings.defaultAccounts.map(data => addUserProfile(data));
   }
 }
 
