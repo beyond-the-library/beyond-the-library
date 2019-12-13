@@ -33,7 +33,6 @@ class OneSpotLocationPage extends Component {
               </Map>
             </Grid.Column>
             <Grid.Column width={4}>
-              <h1>Updates on Spots</h1>
               <SpotCard spot={this.props.doc}/>
             </Grid.Column>
           </Grid>
