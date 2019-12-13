@@ -6,6 +6,7 @@ import { _ } from 'meteor/underscore';
 
 class MapComponent extends Component {
   render() {
+    console.log(`${this.props.lat} + ${this.props.lng}`);
     return (
         <Map className='map' center={[this.props.lat, this.props.lng]} zoom={this.props.zoom}>
           <TileLayer

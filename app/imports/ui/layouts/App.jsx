@@ -19,6 +19,7 @@ import EditPassword from '../pages/EditPassword';
 import EditSpot from '../pages/EditSpot';
 import LocationsPage from '../pages/LocationsPage';
 import OneSpotLocationPage from '../pages/OneSpotLocationPage';
+import UserProfile from '../pages/UserProfile';
 
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
