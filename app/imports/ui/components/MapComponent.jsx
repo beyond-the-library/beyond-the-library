@@ -6,7 +6,6 @@ import { _ } from 'meteor/underscore';
 
 class MapComponent extends Component {
   render() {
-    console.log(this.props.mapmarker[0].lat);
     return (
         <Map className='map' center={[this.props.lat, this.props.lng]} zoom={this.props.zoom}>
           <TileLayer
@@ -14,9 +13,9 @@ class MapComponent extends Component {
               url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           />
           {/* eslint-disable-next-line max-len */}
-          {_.map(this.props.mapmarker, marker => (<Marker position={[marker.lat, marker.lng]}>
+          {_.map(this.props.mapmarker, (marker, index) => (<Marker key={index} position={[marker.lat, marker.lng]}>
             <Popup>
-              {marker.name};
+              {marker.name}
             </Popup>
           </Marker>))}
         </Map>);

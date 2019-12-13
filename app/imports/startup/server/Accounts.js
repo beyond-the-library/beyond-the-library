@@ -30,7 +30,7 @@ if (Meteor.users.find().count() === 0) {
 }
 
 
-function returnUser(email) {
-  console.log(`This is the user you asked for ${email}`);
-  const userID = Accounts.returnUser({email: email});
-}
+// function returnUser(email) {
+//   console.log(`This is the user you asked for ${email}`);
+//   const userID = Accounts.returnUser({email: email});
+// }

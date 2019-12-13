@@ -1,11 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Dropdown, Menu, Card, Button } from 'semantic-ui-react';
+import { Container, Header, Dropdown, Menu, Card, Button, Loader } from 'semantic-ui-react';
 import SpotCard from '/imports/ui/components/SpotCard.jsx';
 import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import { Spots } from '../../api/spot/Spots.js';
+import { Notes } from '../../api/note/Notes';
 
 /** {this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot}/>)} */
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -73,12 +74,12 @@ class Discovery extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return this.renderPage();
+    return (this.props.ready) ? this.renderPage() : <Loader active> Getting data</Loader>;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    console.log(this.props.spots);
+    console.log(this.props.spots.owner);
     if (this.spots === undefined) {
       this.createOptions();
     }
@@ -104,14 +105,13 @@ class Discovery extends React.Component {
           </Menu>
           <Card.Group>
             {this.state.spots.length === 0 ? (
-                this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot}/>)
+                // eslint-disable-next-line max-len
+                this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot} notes={this.props.notes.filter(note => (note.contactId === spot._id))}/>)
             ) : (
-                this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)}/>))
+                // eslint-disable-next-line max-len
+                this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)} notes={this.props.notes.filter(note => (note.contactId === spot._id))}/>))
             }
           </Card.Group>
-          <Card.Content extra>
-            <Button icon='file'/>
-          </Card.Content>
         </Container>
     );
   }
@@ -120,13 +120,20 @@ class Discovery extends React.Component {
 /** Require an array of Stuff documents in the props. */
 Discovery.propTypes = {
   spots: PropTypes.array.isRequired,
+  notes: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+  currentUser: PropTypes.string,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Spots documents.
-  Meteor.subscribe('Spots');
+  const subs1 = Meteor.subscribe('Spots');
+  const subs2 = Meteor.subscribe('Notes');
   return {
     spots: Spots.find({ status: 'Published' }).fetch(),
+    notes: Notes.find({}).fetch(),
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+    ready: subs1.ready() && subs2.ready(),
   };
 })(Discovery);
