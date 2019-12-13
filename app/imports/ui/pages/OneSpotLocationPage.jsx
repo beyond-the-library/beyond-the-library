@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Loader, Grid, Container } from 'semantic-ui-react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Spots } from '../../api/spot/Spots';
+import SpotCard from '../components/SpotCard';
 
 class OneSpotLocationPage extends Component {
   render() {
@@ -33,6 +34,7 @@ class OneSpotLocationPage extends Component {
             </Grid.Column>
             <Grid.Column width={4}>
               <h1>Updates on Spots</h1>
+              <SpotCard spot={this.props.doc}/>
             </Grid.Column>
           </Grid>
         </Container>
