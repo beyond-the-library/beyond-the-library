@@ -1,14 +1,18 @@
 import React from 'react';
-import { Card, Image, Container } from 'semantic-ui-react';
+import { Card, Image, Container, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Signup from '../pages/Signup';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class SpotCard extends React.Component {
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/locations' } };
     return (
         <Card centered>
-          <Image src={this.props.spot.image} wrapped ui={false}/>
+          <Link to={ from }>
+            <Image src={this.props.spot.image} wrapped/>
+          </Link>
           <Container>
             <Card.Header as='h4'>{this.props.spot.name}</Card.Header>
             <Card.Meta>{this.props.spot.address}</Card.Meta>
@@ -24,6 +28,8 @@ class SpotCard extends React.Component {
 /** Require a document to be passed to this component. */
 SpotCard.propTypes = {
   spot: PropTypes.object.isRequired,
+  location: PropTypes.object,
+
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
