@@ -37,9 +37,9 @@ function addUserProfile(data) {
 }
 
 if (Users.find().count() === 0) {
-  if (Meteor.settings.myAccounts) {
+  if (Meteor.settings.defaultAccounts) {
     console.log('Creating default users');
-    Meteor.settings.myAccounts.map(data => addUserProfile(data));
+    Meteor.settings.defaultAccounts.map(data => addUserProfile(data));
   }
 }
 
@@ -54,4 +54,3 @@ if (MapMarker.find().count() === 0) {
     Meteor.settings.defaultMarker.map(data => addMarker(data));
   }
 }
-  

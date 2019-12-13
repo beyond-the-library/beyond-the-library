@@ -2,22 +2,33 @@
   "defaultAccounts": [
     {
       "email": "admin@foo.com",
+      "username": "Administrator",
       "password": "changeme",
       "role": "admin",
-      "image": "images/aljpic.jpg",
-      "favoritespot": "Holmes Hall"
+      "image": "https://compote.slate.com/images/5e48cf3d-0992-4eda-a080-e00e07738b2f.jpg",
+      "description": "I am the Admin of this domain >:D",
+      "major": "Computer Engineering",
+      "favoriteSpot": "Holmes Hall"
     },
     {
       "email": "john@foo.com",
+      "username": "JohnDoe70",
       "password": "changeme",
-      "image": "images/aljpic.jpg",
-      "favoritespot": "Holmes Hall"
+      "role": "student",
+      "image": "https://compote.slate.com/images/5e48cf3d-0992-4eda-a080-e00e07738b2f.jpg",
+      "description": "I am JohnDoe70.",
+      "major": "Computer Engineering",
+      "favoriteSpot": "Holmes Hall"
     },
     {
       "email": "aljtest@foo.com",
+      "username": "AlaBlaster19",
       "password": "ADAD",
-      "image": "images/aljpic.jpg",
-      "favoritespot": "Holmes Hall"
+      "role": "student",
+      "image": "https://compote.slate.com/images/5e48cf3d-0992-4eda-a080-e00e07738b2f.jpg",
+      "description": "I am AlaBlaster19",
+      "major": "Computer Engineering",
+      "favoriteSpot": "Holmes Hall"
     }
   ],
   "defaultSpots": [
