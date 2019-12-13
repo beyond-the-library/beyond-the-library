@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Loader, Grid, Container } from 'semantic-ui-react';
+import { Loader, Grid, Container, Button } from 'semantic-ui-react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Link } from 'react-router-dom';
 import { Spots } from '../../api/spot/Spots';
 import SpotCard from '../components/SpotCard';
 
@@ -34,6 +35,9 @@ class OneSpotLocationPage extends Component {
             </Grid.Column>
             <Grid.Column width={4}>
               <SpotCard spot={this.props.doc}/>
+              <Link to={'/discovery'}>
+                <Button color='blue'>Find Another Spot</Button>
+              </Link>
             </Grid.Column>
           </Grid>
         </Container>
