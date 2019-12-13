@@ -80,7 +80,7 @@ class Discovery extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    console.log(this.props.spots);
+    // console.log(this.props.spots);
     if (this.spots === undefined) {
       this.createOptions();
     }

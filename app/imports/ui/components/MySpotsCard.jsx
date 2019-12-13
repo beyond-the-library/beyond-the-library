@@ -53,7 +53,7 @@ class MySpotsCard extends React.Component {
       );
     }
     return (
-        <Header as='h4'>You got 10 points from this spot!</Header>
+        <Header as='h4'>Thank you for the contribution to our community!</Header>
     );
   }
 
@@ -71,7 +71,7 @@ class MySpotsCard extends React.Component {
                 <Header as='h4'>Location: {this.props.spot.location}</Header>
                 <Header as='h4'>Description: {this.props.spot.description}</Header>
               </Grid.Column>
-              <Grid.Column width={3} rows='2' stretched>
+              <Grid.Column width={4} rows='2' stretched>
                 <Grid.Row>
                   <Label size='large'>
                     {this.icon()}
