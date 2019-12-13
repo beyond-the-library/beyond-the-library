@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import MapsNote from '/imports/ui/components/MapsNote';
 import AddNote from '/imports/ui/components/AddNote.jsx';
-import { Spots } from '../../api/spot/Spots';
-import { Notes } from '../../api/note/Notes';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class SpotCard extends React.Component {

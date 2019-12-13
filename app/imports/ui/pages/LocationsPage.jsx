@@ -23,9 +23,9 @@ class LocationsPage extends Component {
   renderPage() {
     const uhposition = [21.2969, -157.8171];
 
-    function formatTime(time) {
-      return time.toLocaleDateString('en-us') === new Date();
-    }
+    // function formatTime(time) {
+    //   return time.toLocaleDateString('en-us') === new Date();
+    // }
     return (
         <Container>
           <h1>Beyond the Library Map</h1>
