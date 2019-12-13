@@ -15,7 +15,6 @@ import Signout from '../pages/Signout';
 import Discovery from '../pages/Discovery';
 import MySpots from '../pages/MySpots';
 import AddSpot from '../pages/AddSpot';
-import Achievements from '../pages/Achievements';
 import EditPassword from '../pages/EditPassword';
 import UserProfile from '../pages/UserProfile';
 import EditSpot from '../pages/EditSpot';

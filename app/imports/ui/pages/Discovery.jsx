@@ -89,7 +89,7 @@ class Discovery extends React.Component {
           <Header as="h2" textAlign="center">Discover New Spots</Header>
           <Container text textAlign={'center'}>
             Discover new study spots here! Choose a filter and a sub-filter, and see all available results (or do not).
-            Find a spot you want and click on it for a map location.
+            Find a spot you want and search for it on the map page.
           </Container>
           <Menu>
             <Dropdown placeholder={'Choose a Filter...'} selection options={this.searchBy}
