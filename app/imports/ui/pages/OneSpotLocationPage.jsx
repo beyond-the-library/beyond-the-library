@@ -35,7 +35,7 @@ class OneSpotLocationPage extends Component {
               </Map>
             </Grid.Column>
             <Grid.Column width={4}>
-              <SpotCard spot={this.props.doc}/>
+              <SpotCard spot={this.props.doc} notes={this.props.notes}/>
               <Link to={'/discovery'}>
                 <Button color='blue'>Find Another Spot</Button>
               </Link>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Loader, Grid, Container, Card } from 'semantic-ui-react';
 import MapComponent from '../components/MapComponent';
 import MapsNote from '../components/MapsNote';
-import { MapMarker } from '../../api/mapmarker/MapMarker';
+// import { MapMarker } from '../../api/mapmarker/MapMarker';
 import { Notes } from '../../api/note/Notes';
 // import AddNote from '../components/AddNote';
 import { Spots } from '../../api/spot/Spots';
@@ -52,6 +52,7 @@ LocationsPage.propTypes = {
   notes: PropTypes.array.isRequired,
   spots: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  mapmarker: PropTypes.array.isRequired,
 };
 
 export default withTracker(() => {
