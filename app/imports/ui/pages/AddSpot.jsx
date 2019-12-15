@@ -11,9 +11,7 @@ import { Meteor } from 'meteor/meteor';
 import { Spots } from '/imports/api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import ReactTooltip from 'react-tooltip';
-import { Redirect, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { withTracker } from 'meteor/react-meteor-data';
+import { Redirect } from 'react-router-dom';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -29,7 +27,6 @@ class AddSpot extends React.Component {
     this.state = {
       redirectToMySpots: false,
       redirectToNext: false,
-      spotName: '',
     };
   }
 
@@ -48,7 +45,7 @@ class AddSpot extends React.Component {
           } else {
             swal({
               title: 'Success',
-              text: 'Would you like to add more details to this spot?',
+              text: 'Would you like to add more details to this spot? You can keep editing your spot on My Spots Page.',
               icon: 'success',
               buttons: {
                 willContinue: 'Why not?',
@@ -59,7 +56,6 @@ class AddSpot extends React.Component {
                   switch (value) {
 
                     case 'willContinue':
-                      this.setState({ spotName: name });
                       this.setState({ redirectToNext: true });
                       break;
 
@@ -76,10 +72,10 @@ class AddSpot extends React.Component {
     const redirectToMySpots = this.state.redirectToMySpots;
     const redirectToNext = this.state.redirectToNext;
     if (redirectToMySpots === true) {
-      return <Redirect to="/myspots" />;
+      return <Redirect to='/myspots' />;
     }
     if (redirectToNext === true) {
-      return <Redirect to={`/edit/${Spots.findOne()._id}`}/>;
+      return <Redirect to='myspots' />;
     }
     let fRef = null;
     return (
@@ -104,15 +100,4 @@ class AddSpot extends React.Component {
   }
 }
 
-AddSpot.propTypes = {
-  spot: PropTypes.object,
-};
-
-export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('SpotsAdmin');
-  return {
-    spot: Spots.find({}).fetch(),
-    ready: subscription.ready(),
-  };
-})(AddSpot);
+export default AddSpot;
