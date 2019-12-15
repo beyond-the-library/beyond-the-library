@@ -1,12 +1,11 @@
 import React from 'react';
 import SimpleSchema from 'simpl-schema';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
-import NumField from 'uniforms-semantic/NumField';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -14,18 +13,11 @@ import PropTypes from 'prop-types';
 import { Spots } from '/imports/api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import ReactTooltip from 'react-tooltip';
+import { Redirect } from 'react-router-dom';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   image: String, // a link to the picture of the spot
-  latitude: {
-    type: Number,
-    defaultValue: 21.2969,
-  },
-  longitude: {
-    type: Number,
-    defaultValue: -157.8171,
-  },
   major: {
     type: String,
     allowedValues: ['Computer Science', 'Computer Engineering', 'Music', 'Open for everyone'],
@@ -45,43 +37,53 @@ const formSchema = new SimpleSchema({
 
 /** Renders the Page for adding a document. */
 class AddSpotExtra extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToMySpots: false,
+    };
+  }
 
   /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { image, latitude, longitude, major, environment, time } = data;
-    const owner = Meteor.user().username;
-    const status = 'Pending';
-    const name = this.state.spot.name;
-    const location = this.state.spot.location;
-    const description = this.state.spot.description;
-    Spots.insert({ name, image, location, description, status, latitude, longitude, owner, major, environment, time },
-        (error) => {
+  submit(data) {
+    const { image, major, environment, time, _id } = data;
+    Spots.update(_id, {
+          $set: {
+            image,
+            major,
+            environment,
+            time,
+            status: 'Pending',
+          },
+        }, (error) => {
           if (error) {
             swal('Error', error.message, 'error');
           } else {
-            swal('Success', 'Spot added successfully', 'success');
-            formRef.reset();
+            swal('Success', 'More details have been submitted. Thank you!', 'success')
+                .then(() => { this.setState({ redirectToMySpots: true }); });
           }
         });
   }
 
-  /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    let fRef = null;
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
+  renderPage() {
+    const redirectToMySpots = this.state.redirectToMySpots;
+    if (redirectToMySpots === true) {
+      return <Redirect to='/myspots'/>;
+    }
     return (
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Extra</Header>
-            <AutoForm ref={ref => {
-              fRef = ref;
-            }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
+            <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
               <Segment>
                 {/* eslint-disable-next-line max-len */}
                 <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use defalt value if you are not sure."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>

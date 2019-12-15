@@ -15,14 +15,20 @@ import 'uniforms-bridge-simple-schema-2';
 import NumField from 'uniforms-semantic/NumField';
 import ReactTooltip from 'react-tooltip';
 import { Spots, SpotsSchema } from '../../api/spot/Spots';
+import { Redirect } from 'react-router-dom';
 
 /** Renders the Page for editing a single document. */
 class EditSpot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToMySpots: false,
+    };
+  }
 
   /** On successful submit, insert the data. */
   submit(data) {
     const { name, image, location, description, latitude, longitude, major, environment, time, _id } = data;
-    // eslint-disable-next-line max-len
     Spots.update(_id, {
       $set: {
         name,
@@ -38,7 +44,8 @@ class EditSpot extends React.Component {
       },
     }, (error) => (error ?
         swal('Error', error.message, 'error') :
-        swal('Success', 'Spot updated successfully', 'success')));
+        swal('Success', 'Spot updated successfully', 'success')))
+          .then(() => { this.setState({ redirectToMySpots: true }); });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -48,6 +55,10 @@ class EditSpot extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
+    const redirectToMySpots = this.state.redirectToMySpots;
+    if (redirectToMySpots === true) {
+      return <Redirect to='/myspots'/>;
+    }
     return (
         <Grid container centered>
           <Grid.Column>
@@ -60,9 +71,9 @@ class EditSpot extends React.Component {
                 <TextField name='location' data-tip="General location for display"/>
                 <LongTextField name='description' data-tip="You can add some extra description or information here"/>
                 {/* eslint-disable-next-line max-len */}
-                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates."/>
+                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
                 {/* eslint-disable-next-line max-len */}
-                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates."/>
+                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use defalt value if you are not sure."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>

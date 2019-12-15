@@ -38,7 +38,8 @@ class AddSpot extends React.Component {
     const image = 'images/logo-temp.png';
     const latitude = 21.2969;
     const longitude = -157.8171;
-    Spots.insert({ name, image, location, description, status, latitude, longitude, owner, major, environment, time },
+    // eslint-disable-next-line no-undef,max-len
+    const spotID = Spots.insert({ name, image, location, description, status, latitude, longitude, owner, major, environment, time },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -56,7 +57,8 @@ class AddSpot extends React.Component {
                   switch (value) {
 
                     case 'willContinue':
-                      this.setState({ redirectToNext: true });
+                      this.setState({ spotID: spotID });
+                      this.setState({ redirectNext: true });
                       break;
 
                     default:
@@ -70,12 +72,12 @@ class AddSpot extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     const redirectToMySpots = this.state.redirectToMySpots;
-    const redirectToNext = this.state.redirectToNext;
+    const redirectToNext = this.state.redirectNext;
     if (redirectToMySpots === true) {
-      return <Redirect to='/myspots' />;
+      return <Redirect to='/myspots'/>;
     }
     if (redirectToNext === true) {
-      return <Redirect to='myspots' />;
+      return <Redirect to={`/extra/${this.state.spotID}`}/>;
     }
     let fRef = null;
     return (
