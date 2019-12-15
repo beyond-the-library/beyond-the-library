@@ -13,7 +13,7 @@ class Discovery extends React.Component {
 
   state = {
     spots: [],
-    searchBy: '',
+    searchBy: 'environment',
     currentValue: [],
   };
 
@@ -69,7 +69,6 @@ class Discovery extends React.Component {
 
   onClickClear() {
     this.setState({ spots: [] });
-    this.setState({ searchBy: '' });
     this.setState({ currentValue: [] });
   }
 
@@ -80,8 +79,7 @@ class Discovery extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    // console.log(this.props.spots);
-    if (this.spots === undefined) {
+    if (this.asdf === undefined) {
       this.createOptions();
     }
     return (
@@ -89,15 +87,16 @@ class Discovery extends React.Component {
           <Header as="h2" textAlign="center">Discover New Spots</Header>
           <Container text textAlign={'center'}>
             Discover new study spots here! Choose a filter and a sub-filter, and see all available results (or do not).
-            Find a spot you want and search for it on the map page.
+            Find a spot you want and see it on the map page.
           </Container>
           <Menu>
-            <Dropdown placeholder={'Choose a Filter...'} selection options={this.searchBy}
+            <Dropdown selection defaultValue='environment' options={this.searchBy}
                       onChange={(e, data) => this.setSearchBy(e, data)}/>
-            <Dropdown placeholder={'Choose a sub-filter...'} deburr fluid search selection
+            <Dropdown placeholder={`Search By ${this.state.searchBy}`} deburr fluid search selection
                       options={this[this.state.searchBy]} icon='search' allowAdditions additionLabel=''
                       onChange={(event, data) => this.handleGeneralChange(event, data, this.state.searchBy)}
-                      onAddItem={(e, data) => this.handleAddition(e, data, this.state.searchBy)}/>
+                      onAddItem={(e, data) => this.handleAddition(e, data, this.state.searchBy)}
+            />
             <Button negative onClick={this.onClickClear}>Clear</Button>
           </Menu>
           <Card.Group>
