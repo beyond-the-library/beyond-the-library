@@ -12,12 +12,12 @@ import { Spots } from '../../api/spot/Spots';
 
 class LocationsPage extends Component {
   render() {
-    const date = new Date('2013-03-10T02:00:00Z');
-    const date3 = new Date('2019-12-12T22:48:00Z');
-    const date2 = new Date();
-    console.log(date3 === date2);
-    console.log(date2.toLocaleDateString());
-    console.log(`${date.getFullYear()} - ${date.getMonth() + 1} - ${date.getDate()}`);
+    // const date = new Date('2013-03-10T02:00:00Z');
+    // const date3 = new Date('2019-12-12T22:48:00Z');
+    // const date2 = new Date();
+    // console.log(date3 === date2);
+    // console.log(date2.toLocaleDateString());
+    // console.log(`${date.getFullYear()} - ${date.getMonth() + 1} - ${date.getDate()}`);
     return (this.props.ready) ? this.renderPage() : <Loader active>Rendering the map</Loader>;
   }
 
@@ -27,7 +27,7 @@ class LocationsPage extends Component {
     // function formatTime(time) {
     //   return time.toLocaleDateString('en-us') === new Date();
     // }
-
+    console.log(this.props.notes.length);
     return (
         <Container>
           <h1>Beyond the Library Map</h1>
@@ -39,7 +39,8 @@ class LocationsPage extends Component {
             <Grid.Column width={4}>
               <h1>Spot Updates</h1>
               <Card.Content extra>
-                {this.props.notes.map((note, index) => <MapsNote key={index} note={note}/>)}
+                {/* eslint-disable-next-line max-len */}
+                {(this.props.notes.slice(this.props.notes.length - 7, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
               </Card.Content>
             </Grid.Column>
           </Grid>
@@ -57,11 +58,11 @@ LocationsPage.propTypes = {
 
 export default withTracker(() => {
   const subs1 = Meteor.subscribe('Spots');
-  const subs2 = Meteor.subscribe('Notes');
+  const subs2 = Meteor.subscribe('AggregatedNotes');
 
   return {
     spots: Spots.find({ status: 'Published' }).fetch(),
-    notes: Notes.find({ owner: 'john@foo.com' }).fetch(),
+    notes: Notes.find({}).fetch(),
     ready: subs1.ready() && subs2.ready(),
   };
 })(LocationsPage);

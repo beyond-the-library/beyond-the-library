@@ -76,3 +76,7 @@ Meteor.publish('MapsNotes', function publish() {
   }
   return this.ready();
 });
+
+Meteor.publish('AggregatedNotes', function publish() {
+  return Notes.find();
+});

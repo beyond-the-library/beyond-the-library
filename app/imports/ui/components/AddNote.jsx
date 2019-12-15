@@ -1,5 +1,6 @@
 import React from 'react';
 import AutoForm from 'uniforms-semantic/AutoForm';
+import { Meteor } from 'meteor/meteor';
 import TextField from 'uniforms-semantic/TextField';
 import HiddenField from 'uniforms-semantic/HiddenField';
 import { Segment } from 'semantic-ui-react';
@@ -10,12 +11,14 @@ import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import PropTypes from 'prop-types';
 import { Notes, NotesSchema } from '../../api/note/Notes';
 
+
 /** Renders the Page for adding a document. */
 class AddNote extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { note, owner, contactId, createdAt } = data;
+    const { note, contactId, createdAt } = data;
+    const owner = Meteor.user().username;
     Notes.insert({ note, owner, contactId, createdAt },
         (error) => {
           if (error) {

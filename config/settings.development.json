@@ -425,25 +425,24 @@
       "lat": 21.298269,
       "lng": -157.817245
     }
-  ],
-  "defaultNotes": [
-    {
-      "note": "My notes",
-      "owner": "aljtest@foo.com",
-      "contactId": "FF3wckG2yzuD6S4BR",
-      "createdAt": "2019-12-10T19:58:10.213Z"
-    },
-    {
-      "note": "12/9 Notes",
-      "owner": "aljtest@foo.com",
-      "contactId": "FF3wckG2yzuD6S4BR",
-      "createdAt": "2019-09-10T19:58:10.213Z"
-    },
-    {
-      "note": "12/8 Notes",
-      "owner": "aljtest@foo.com",
-      "contactId": "FF3wckG2yzuD6S4BR",
-      "createdAt": "2019-08-10T19:58:10.213Z"
-    }
-  ]
+  ],"defaultNotes": [
+  {
+    "note": "My notes",
+    "owner": "aljtest@foo.com",
+    "contactId": "FF3wckG2yzuD6S4BR",
+    "createdAt": "2019-12-10T19:58:10.213Z"
+  },
+  {
+    "note": "12/9 Notes",
+    "owner": "aljtest@foo.com",
+    "contactId": "FF3wckG2yzuD6S4BR",
+    "createdAt": "2019-09-10T19:58:10.213Z"
+  },
+  {
+    "note": "12/8 Notes",
+    "owner": "aljtest@foo.com",
+    "contactId": "FF3wckG2yzuD6S4BR",
+    "createdAt": "2019-08-10T19:58:10.213Z"
+  }
+]
 }

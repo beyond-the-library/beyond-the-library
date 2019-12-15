@@ -8,9 +8,10 @@ class MapsNote extends React.Component {
     return (
         <Feed.Event >
           <Feed.Content>
-            <Feed.Date content={this.props.note.createdAt.toLocaleDateString('en-US')} />
+            <Feed.Date><b>Date posted: {this.props.note.createdAt.toLocaleDateString('en-US')}</b></Feed.Date>
+            <Feed.User>Author: {this.props.note.owner }</Feed.User>
             <Feed.Summary>
-              {this.props.note.note}
+              Message: {this.props.note.note}
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>

@@ -35,7 +35,8 @@ class OneSpotLocationPage extends Component {
               </Map>
             </Grid.Column>
             <Grid.Column width={4}>
-              <SpotCard spot={this.props.doc} notes={this.props.notes}/>
+              {/* eslint-disable-next-line max-len */}
+              <SpotCard spot={this.props.doc} notes={this.props.notes.filter(note => (note.contactId === this.props.doc._id))}/>
               <Link to={'/discovery'}>
                 <Button color='blue'>Find Another Spot</Button>
               </Link>
@@ -58,7 +59,7 @@ export default withTracker(({ match }) => {
   const documentId = match.params._id;
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Spots');
-  const subs2 = Meteor.subscribe('Notes');
+  const subs2 = Meteor.subscribe('AggregatedNotes');
   return {
     doc: Spots.findOne(documentId),
     notes: Notes.find().fetch(),
