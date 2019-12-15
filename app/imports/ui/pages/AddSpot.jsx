@@ -1,7 +1,6 @@
 import React from 'react';
 import SimpleSchema from 'simpl-schema';
-import { withTracker } from 'meteor/react-meteor-data';
-import { Grid, Segment, Header, Button } from 'semantic-ui-react';
+import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -12,9 +11,9 @@ import { Meteor } from 'meteor/meteor';
 import { Spots } from '/imports/api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import ReactTooltip from 'react-tooltip';
-import { Link, Redirect, Route } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import { withTracker } from 'meteor/react-meteor-data';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
@@ -30,11 +29,12 @@ class AddSpot extends React.Component {
     this.state = {
       redirectToMySpots: false,
       redirectToNext: false,
+      spotName: '',
     };
   }
 
   /** On submit, insert the data. */
-  submit(data, formRef) {
+  submit(data) {
     const { name, location, description, major, environment, time } = data;
     const owner = Meteor.user().username;
     const status = 'Pending';
@@ -59,6 +59,7 @@ class AddSpot extends React.Component {
                   switch (value) {
 
                     case 'willContinue':
+                      this.setState({ spotName: name });
                       this.setState({ redirectToNext: true });
                       break;
 
@@ -66,7 +67,6 @@ class AddSpot extends React.Component {
                       this.setState({ redirectToMySpots: true });
                   }
                 });
-            formRef.reset();
           }
         });
   }
@@ -79,7 +79,7 @@ class AddSpot extends React.Component {
       return <Redirect to="/myspots" />;
     }
     if (redirectToNext === true) {
-      return <Redirect to="/discovery" />;
+      return <Redirect to={`/edit/${Spots.findOne()._id}`}/>;
     }
     let fRef = null;
     return (
@@ -105,18 +105,14 @@ class AddSpot extends React.Component {
 }
 
 AddSpot.propTypes = {
-  doc: PropTypes.object,
-  model: PropTypes.object,
-  ready: PropTypes.bool.isRequired,
+  spot: PropTypes.object,
 };
 
-export default withTracker(({ match }) => {
-  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
-  const documentId = match.params._id;
+export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Spots');
+  const subscription = Meteor.subscribe('SpotsAdmin');
   return {
-    doc: Spots.findOne(documentId),
+    spot: Spots.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(AddSpot);

@@ -6,20 +6,18 @@ import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
-import LongTextField from 'uniforms-semantic/LongTextField';
 import NumField from 'uniforms-semantic/NumField';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import { Spots } from '/imports/api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import ReactTooltip from 'react-tooltip';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
-  name: String, // name of the spot
   image: String, // a link to the picture of the spot
-  location: String, // general location for display
-  description: String, // extra information for display
   latitude: {
     type: Number,
     defaultValue: 21.2969,
@@ -46,14 +44,17 @@ const formSchema = new SimpleSchema({
 });
 
 /** Renders the Page for adding a document. */
-class AddSpot extends React.Component {
+class AddSpotExtra extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, image, location, description, lat, lng, major, environment, time } = data;
+    const { image, latitude, longitude, major, environment, time } = data;
     const owner = Meteor.user().username;
     const status = 'Pending';
-    Spots.insert({ name, image, location, description, status, lat, lng, owner, major, environment, time },
+    const name = this.state.spot.name;
+    const location = this.state.spot.location;
+    const description = this.state.spot.description;
+    Spots.insert({ name, image, location, description, status, latitude, longitude, owner, major, environment, time },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -70,16 +71,13 @@ class AddSpot extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Add a Spot</Header>
+            <Header as="h2" textAlign="center">Extra</Header>
             <AutoForm ref={ref => {
               fRef = ref;
             }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
               <Segment>
-                <TextField name='name' data-tip="The name of the study spot"/>
                 {/* eslint-disable-next-line max-len */}
                 <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
-                <TextField name='location' data-tip="General location for display"/>
-                <LongTextField name='description' data-tip="You can add some extra description or information here"/>
                 {/* eslint-disable-next-line max-len */}
                 <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
                 {/* eslint-disable-next-line max-len */}
@@ -98,4 +96,21 @@ class AddSpot extends React.Component {
   }
 }
 
-export default AddSpot;
+/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
+AddSpotExtra.propTypes = {
+  spot: PropTypes.object,
+  model: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(({ match }) => {
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const documentId = match.params._id;
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Spots');
+  return {
+    spot: Spots.findOne(documentId),
+    ready: subscription.ready(),
+  };
+})(AddSpotExtra);

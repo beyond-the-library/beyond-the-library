@@ -11,10 +11,10 @@ import LongTextField from 'uniforms-semantic/LongTextField'; // required for Uni
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Spots, SpotsSchema } from '../../api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2';
 import NumField from 'uniforms-semantic/NumField';
 import ReactTooltip from 'react-tooltip';
+import { Spots, SpotsSchema } from '../../api/spot/Spots';
 
 /** Renders the Page for editing a single document. */
 class EditSpot extends React.Component {
@@ -52,7 +52,7 @@ class EditSpot extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Edit Spot</Header>
-            <AutoForm schema={SpotsSchema} onSubmit={data => this.submit(data)} model={this.props.doc}>
+            <AutoForm schema={SpotsSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
               <Segment>
                 <TextField name='name' data-tip="The name of the study spot"/>
                 {/* eslint-disable-next-line max-len */}
@@ -80,7 +80,7 @@ class EditSpot extends React.Component {
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 EditSpot.propTypes = {
-  doc: PropTypes.object,
+  spot: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
@@ -92,7 +92,7 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Spots');
   return {
-    doc: Spots.findOne(documentId),
+    spot: Spots.findOne(documentId),
     ready: subscription.ready(),
   };
 })(EditSpot);
