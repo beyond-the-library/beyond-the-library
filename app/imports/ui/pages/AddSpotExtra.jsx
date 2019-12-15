@@ -1,24 +1,42 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import swal from 'sweetalert';
+import SimpleSchema from 'simpl-schema';
+import { Grid, Segment, Header, Loader } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
-import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
-import LongTextField from 'uniforms-semantic/LongTextField'; // required for Uniforms
+import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import 'uniforms-bridge-simple-schema-2';
-import NumField from 'uniforms-semantic/NumField';
+import { Spots } from '/imports/api/spot/Spots';
+import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import ReactTooltip from 'react-tooltip';
-import { Spots, SpotsSchema } from '../../api/spot/Spots';
 import { Redirect } from 'react-router-dom';
 
-/** Renders the Page for editing a single document. */
-class EditSpot extends React.Component {
+/** Create a schema to specify the structure of the data to appear in the form. */
+const formSchema = new SimpleSchema({
+  image: String, // a link to the picture of the spot
+  major: {
+    type: String,
+    allowedValues: ['Computer Science', 'Computer Engineering', 'Music', 'Open for everyone'],
+    defaultValue: 'Open for everyone',
+  },
+  environment: {
+    type: String,
+    allowedValues: ['Indoor', 'Outdoor', 'Unknown'],
+    defaultValue: 'Outdoor',
+  },
+  time: {
+    type: String,
+    allowedValues: ['24/7', 'Weekdays Daytime', 'Daytime', 'Unknown'],
+    defaultValue: '24/7',
+  },
+});
+
+/** Renders the Page for adding a document. */
+class AddSpotExtra extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,26 +44,25 @@ class EditSpot extends React.Component {
     };
   }
 
-  /** On successful submit, insert the data. */
+  /** On submit, insert the data. */
   submit(data) {
-    const { name, image, location, description, latitude, longitude, major, environment, time, _id } = data;
+    const { image, major, environment, time, _id } = data;
     Spots.update(_id, {
-      $set: {
-        name,
-        image,
-        location,
-        description,
-        latitude,
-        longitude,
-        major,
-        environment,
-        time,
-        status: 'Pending',
-      },
-    }, (error) => (error ?
-        swal('Error', error.message, 'error') :
-        swal('Success', 'Spot updated successfully', 'success')))
-          .then(() => { this.setState({ redirectToMySpots: true }); });
+          $set: {
+            image,
+            major,
+            environment,
+            time,
+            status: 'Pending',
+          },
+        }, (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            swal('Success', 'More details have been submitted. Thank you!', 'success')
+                .then(() => { this.setState({ redirectToMySpots: true }); });
+          }
+        });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -62,25 +79,17 @@ class EditSpot extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Spot</Header>
-            <AutoForm schema={SpotsSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
+            <Header as="h2" textAlign="center">Extra</Header>
+            <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
               <Segment>
-                <TextField name='name' data-tip="The name of the study spot"/>
                 {/* eslint-disable-next-line max-len */}
                 <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
-                <TextField name='location' data-tip="General location for display"/>
-                <LongTextField name='description' data-tip="You can add some extra description or information here"/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use defalt value if you are not sure."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <ReactTooltip />
-                <HiddenField name='owner'/>
               </Segment>
             </AutoForm>
           </Grid.Column>
@@ -90,7 +99,7 @@ class EditSpot extends React.Component {
 }
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
-EditSpot.propTypes = {
+AddSpotExtra.propTypes = {
   spot: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -106,4 +115,4 @@ export default withTracker(({ match }) => {
     spot: Spots.findOne(documentId),
     ready: subscription.ready(),
   };
-})(EditSpot);
+})(AddSpotExtra);

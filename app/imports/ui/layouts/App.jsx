@@ -15,6 +15,7 @@ import Signout from '../pages/Signout';
 import Discovery from '../pages/Discovery';
 import MySpots from '../pages/MySpots';
 import AddSpot from '../pages/AddSpot';
+import AddSpotExtra from '../pages/AddSpotExtra';
 import EditPassword from '../pages/EditPassword';
 import EditSpot from '../pages/EditSpot';
 import LocationsPage from '../pages/LocationsPage';
@@ -38,6 +39,7 @@ class App extends React.Component {
               <Route path="/location/:_id" component={OneSpotLocationPage}/>
               <ProtectedRoute path="/myspots" component={MySpots}/>
               <ProtectedRoute path="/addspot" component={AddSpot}/>
+              <ProtectedRoute path="/extra/:_id" component={AddSpotExtra}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/userfile" component={UserProfile}/>
               <ProtectedRoute path='/editpassword' component={EditPassword}/>

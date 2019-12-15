@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 
+/** This component has been merged into Locations Page. It's Not Used. */
 class MapComponent extends Component {
   render() {
     return (
@@ -14,7 +15,7 @@ class MapComponent extends Component {
           />
           {/* eslint-disable-next-line max-len */}
           {_.map(this.props.spots, (spot, index) => (<Marker position={[spot.latitude, spot.longitude]} key={index}>
-            <Popup>
+            <Popup onOpen={ () => console.log(spot) }>
               {spot.name}
             </Popup>
           </Marker>))}

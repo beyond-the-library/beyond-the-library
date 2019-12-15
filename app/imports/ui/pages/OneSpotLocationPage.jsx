@@ -35,11 +35,14 @@ class OneSpotLocationPage extends Component {
               </Map>
             </Grid.Column>
             <Grid.Column width={4}>
-              {/* eslint-disable-next-line max-len */}
-              <SpotCard spot={this.props.doc} notes={this.props.notes.filter(note => (note.contactId === this.props.doc._id))}/>
-              <Link to={'/discovery'}>
-                <Button color='blue'>Find Another Spot</Button>
-              </Link>
+              <Grid centered>
+                <Grid.Row>
+                  <SpotCard spot={this.props.doc} notes={this.props.notes.filter(note => (note.contactId === this.props.doc._id))}/>
+                  <Link to={'/discovery'}>
+                    <Button color='blue'>Find Another Spot</Button>
+                  </Link>
+                </Grid.Row>
+              </Grid>
             </Grid.Column>
           </Grid>
         </Container>

@@ -2,15 +2,24 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Loader, Grid, Container, Card } from 'semantic-ui-react';
-import MapComponent from '../components/MapComponent';
+import { Loader, Grid, Container, Button, Header } from 'semantic-ui-react';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import MapsNote from '../components/MapsNote';
-// import { MapMarker } from '../../api/mapmarker/MapMarker';
 import { Notes } from '../../api/note/Notes';
-// import AddNote from '../components/AddNote';
+import { _ } from 'meteor/underscore';
+import { Link } from 'react-router-dom';
 import { Spots } from '../../api/spot/Spots';
+import SpotCard from '../components/SpotCard';
 
 class LocationsPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentSpot: null,
+    };
+  }
+
   render() {
     // const date = new Date('2013-03-10T02:00:00Z');
     // const date3 = new Date('2019-12-12T22:48:00Z');
@@ -21,27 +30,58 @@ class LocationsPage extends Component {
     return (this.props.ready) ? this.renderPage() : <Loader active>Rendering the map</Loader>;
   }
 
-  renderPage() {
-    const uhposition = [21.2969, -157.8171];
+  showSpotCard() {
+    if (this.state.currentSpot != null) {
+      return (
+          <Grid centered>
+            <h1>Spot Updates</h1>
+            <Grid.Row>
+              <SpotCard spot={this.state.currentSpot}/>
+            </Grid.Row>
+            <Grid.Row>
+              {/* eslint-disable-next-line max-len */}
+              {(this.props.notes.slice(this.props.notes.length - 7, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
+            </Grid.Row>
+            <Grid.Row>
+              <Link to={'/discovery'}>
+                <Button color='blue'>Discover a Spot</Button>
+              </Link>
+            </Grid.Row>
+            <Grid.Row>
+              <Link to={'/mySpots'}>
+                <Button color='blue'>Share My Spots</Button>
+              </Link>
+            </Grid.Row>
+          </Grid>
 
-    // function formatTime(time) {
-    //   return time.toLocaleDateString('en-us') === new Date();
-    // }
-    console.log(this.props.notes.length);
+      );
+    }
+    return (<Header as='h3'> Click on a Pin to see more details</Header>);
+  }
+
+  renderPage() {
+    const uhPosition = [21.2982, -157.8171];
     return (
         <Container>
           <h1>Beyond the Library Map</h1>
           <Grid columns={2}>
             <Grid.Column width={12}>
-              {/* eslint-disable-next-line max-len */}
-              <MapComponent className='map' lat={uhposition[0]} lng={uhposition[1]} zoom={16} spots={this.props.spots}/>
+              <Map className='map' center={uhPosition} zoom={16}>
+                <TileLayer
+                    attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                    url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                />
+                {/* eslint-disable-next-line max-len */}
+                {_.map(this.props.spots, (spot, index) => (
+                    <Marker position={[spot.latitude, spot.longitude]} key={index}>
+                      <Popup onOpen={() => this.setState({ currentSpot: spot })}>
+                        {spot.name}
+                      </Popup>
+                    </Marker>))}
+              </Map>
             </Grid.Column>
             <Grid.Column width={4}>
-              <h1>Spot Updates</h1>
-              <Card.Content extra>
-                {/* eslint-disable-next-line max-len */}
-                {(this.props.notes.slice(this.props.notes.length - 7, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
-              </Card.Content>
+              {this.showSpotCard()}
             </Grid.Column>
           </Grid>
         </Container>
@@ -64,5 +104,6 @@ export default withTracker(() => {
     spots: Spots.find({ status: 'Published' }).fetch(),
     notes: Notes.find({}).fetch(),
     ready: subs1.ready() && subs2.ready(),
+
   };
 })(LocationsPage);

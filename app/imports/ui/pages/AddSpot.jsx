@@ -3,70 +3,82 @@ import SimpleSchema from 'simpl-schema';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
-import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import LongTextField from 'uniforms-semantic/LongTextField';
-import NumField from 'uniforms-semantic/NumField';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { Spots } from '/imports/api/spot/Spots';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import ReactTooltip from 'react-tooltip';
+import { Redirect } from 'react-router-dom';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   name: String, // name of the spot
-  image: String, // a link to the picture of the spot
   location: String, // general location for display
   description: String, // extra information for display
-  address: String, // this is the exact address for map interaction
-  latitude: {
-    type: Number,
-    defaultValue: 21.2969,
-  }, // latitude
-  longitude: {
-    type: Number,
-    defaultValue: -157.8171,
-  }, // longitude
-  major: {
-    type: String,
-    allowedValues: ['Computer Science', 'Computer Engineering', 'Music', 'Open for everyone'],
-    defaultValue: 'Open for everyone',
-  },
-  environment: {
-    type: String,
-    allowedValues: ['Indoor', 'Outdoor', 'Unknown'],
-    defaultValue: 'Outdoor',
-  },
-  time: {
-    type: String,
-    allowedValues: ['24/7', 'Weekdays Daytime', 'Daytime', 'Unknown'],
-    defaultValue: '24/7',
-  },
 });
 
 /** Renders the Page for adding a document. */
 class AddSpot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToMySpots: false,
+      redirectToNext: false,
+    };
+  }
 
   /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { name, image, location, description, address, lat, lng, major, environment, time } = data;
+  submit(data) {
+    const { name, location, description, major, environment, time } = data;
     const owner = Meteor.user().username;
     const status = 'Pending';
-    Spots.insert({ name, image, location, description, address, status, lat, lng, owner, major, environment, time },
+    const image = 'images/logo-temp.png';
+    const latitude = 21.2969;
+    const longitude = -157.8171;
+    // eslint-disable-next-line no-undef,max-len
+    const spotID = Spots.insert({ name, image, location, description, status, latitude, longitude, owner, major, environment, time },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
           } else {
-            swal('Success', 'Spot added successfully', 'success');
-            formRef.reset();
+            swal({
+              title: 'Success',
+              text: 'Would you like to add more details to this spot? You can keep editing your spot on My Spots Page.',
+              icon: 'success',
+              buttons: {
+                willContinue: 'Why not?',
+                cancel: 'Maybe Later...',
+              },
+            })
+                .then((value) => {
+                  switch (value) {
+
+                    case 'willContinue':
+                      this.setState({ spotID: spotID });
+                      this.setState({ redirectNext: true });
+                      break;
+
+                    default:
+                      this.setState({ redirectToMySpots: true });
+                  }
+                });
           }
         });
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
+    const redirectToMySpots = this.state.redirectToMySpots;
+    const redirectToNext = this.state.redirectNext;
+    if (redirectToMySpots === true) {
+      return <Redirect to='/myspots'/>;
+    }
+    if (redirectToNext === true) {
+      return <Redirect to={`/extra/${this.state.spotID}`}/>;
+    }
     let fRef = null;
     return (
         <Grid container centered>
@@ -77,18 +89,8 @@ class AddSpot extends React.Component {
             }} schema={formSchema} onSubmit={data => this.submit(data, fRef)}>
               <Segment>
                 <TextField name='name' data-tip="The name of the study spot"/>
-                {/* eslint-disable-next-line max-len */}
-                <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
-                <TextField name='location' data-tip="General location for display"/>
+                <TextField name='location' data-tip="Where is the study spot?"/>
                 <LongTextField name='description' data-tip="You can add some extra description or information here"/>
-                <TextField name='address' data-tip="NEED TO BE CHANGED. Write whatever you want here."/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use defalt value if you are not sure."/>
-                <SelectField name='major' data-tip="If there is any major restrictions"/>
-                <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
-                <SelectField name='time' data-tip="When is your spot available?"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <ReactTooltip />
