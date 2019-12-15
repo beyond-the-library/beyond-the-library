@@ -25,6 +25,13 @@ const formSchema = new SimpleSchema({
 
 /** Renders the Page for adding a document. */
 class AddSpot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToMySpots: false,
+      redirectToNext: false,
+    };
+  }
 
   /** On submit, insert the data. */
   submit(data, formRef) {
@@ -52,12 +59,11 @@ class AddSpot extends React.Component {
                   switch (value) {
 
                     case 'willContinue':
-                      console.log('continue');
-                      browserHistory.push('/');
+                      this.setState({ redirectToNext: true });
                       break;
 
                     default:
-                      console.log('back to my spot');
+                      this.setState({ redirectToMySpots: true });
                   }
                 });
             formRef.reset();
@@ -67,6 +73,14 @@ class AddSpot extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
+    const redirectToMySpots = this.state.redirectToMySpots;
+    const redirectToNext = this.state.redirectToNext;
+    if (redirectToMySpots === true) {
+      return <Redirect to="/myspots" />;
+    }
+    if (redirectToNext === true) {
+      return <Redirect to="/discovery" />;
+    }
     let fRef = null;
     return (
         <Grid container centered>
