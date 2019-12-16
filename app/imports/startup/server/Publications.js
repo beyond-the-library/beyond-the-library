@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Spots } from '../../api/spot/Spots';
 import { Users } from '../../api/user/Users';
 import { MapMarker } from '../../api/mapmarker/MapMarker';
+import { Notes } from '../../api/note/Notes';
 
 /** This subscription publishes all the documents associated with the spots app */
 Meteor.publish('Spots', function publish() {
@@ -56,4 +57,26 @@ Meteor.publish('FavoriteSpots', function publish() {
     return Spots.find({ owner: username });
   }
   return this.ready();
+});
+
+Meteor.publish('Notes', function publish() {
+  return Notes.find();
+});
+
+Meteor.publish('MapsNotes', function publish() {
+  function formatTime(time) {
+    return time.toLocaleDateString('en-us');
+  }
+
+  function compareTime(time) {
+    return time === new Date();
+  }
+  if (compareTime(formatTime(Notes.createdAt))) {
+    return Notes.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish('AggregatedNotes', function publish() {
+  return Notes.find();
 });
