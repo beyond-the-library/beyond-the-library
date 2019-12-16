@@ -37,6 +37,7 @@ class OneSpotLocationPage extends Component {
             <Grid.Column width={4}>
               <Grid centered>
                 <Grid.Row>
+                  {/* eslint-disable-next-line max-len */}
                   <SpotCard spot={this.props.doc} notes={this.props.notes.filter(note => (note.contactId === this.props.doc._id))}/>
                   <Link to={'/discovery'}>
                     <Button color='blue'>Find Another Spot</Button>

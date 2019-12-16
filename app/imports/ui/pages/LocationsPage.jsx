@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { _ } from 'meteor/underscore';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Loader, Grid, Container, Button, Header } from 'semantic-ui-react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import MapsNote from '../components/MapsNote';
 import { Notes } from '../../api/note/Notes';
-import { _ } from 'meteor/underscore';
-import { Link } from 'react-router-dom';
 import { Spots } from '../../api/spot/Spots';
 import SpotCard from '../components/SpotCard';
 
@@ -21,12 +21,6 @@ class LocationsPage extends Component {
   }
 
   render() {
-    // const date = new Date('2013-03-10T02:00:00Z');
-    // const date3 = new Date('2019-12-12T22:48:00Z');
-    // const date2 = new Date();
-    // console.log(date3 === date2);
-    // console.log(date2.toLocaleDateString());
-    // console.log(`${date.getFullYear()} - ${date.getMonth() + 1} - ${date.getDate()}`);
     return (this.props.ready) ? this.renderPage() : <Loader active>Rendering the map</Loader>;
   }
 
@@ -36,11 +30,7 @@ class LocationsPage extends Component {
           <Grid centered>
             <h1>Spot Updates</h1>
             <Grid.Row>
-              <SpotCard spot={this.state.currentSpot}/>
-            </Grid.Row>
-            <Grid.Row>
-              {/* eslint-disable-next-line max-len */}
-              {(this.props.notes.slice(this.props.notes.length - 7, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
+              <SpotCard notes={this.props.notes} spot={this.state.currentSpot}/>
             </Grid.Row>
             <Grid.Row>
               <Link to={'/discovery'}>
@@ -53,10 +43,17 @@ class LocationsPage extends Component {
               </Link>
             </Grid.Row>
           </Grid>
-
       );
     }
-    return (<Header as='h3'> Click on a Pin to see more details</Header>);
+    return (
+        <Grid>
+          <Header as='h3'> Click on a Pin to see more details</Header>
+          <Grid.Row>
+            {/* eslint-disable-next-line max-len */}
+            {(this.props.notes.slice(this.props.notes.length - 10, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
+          </Grid.Row>
+        </Grid>
+    );
   }
 
   renderPage() {
@@ -104,6 +101,5 @@ export default withTracker(() => {
     spots: Spots.find({ status: 'Published' }).fetch(),
     notes: Notes.find({}).fetch(),
     ready: subs1.ready() && subs2.ready(),
-
   };
 })(LocationsPage);
