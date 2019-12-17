@@ -38,7 +38,7 @@ class AddNote extends React.Component {
           fRef = ref;
         }} schema={NotesSchema} onSubmit={data => this.submit(data, fRef)}>
           <Segment>
-            <TextField label="Status of spots" name='note'/>
+            <TextField label="Spots Status" name='note'/>
             <SubmitField value='Submit'/>
             <ErrorsField/>
             <HiddenField name='owner' value={this.props.owner}/>

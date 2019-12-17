@@ -22,3 +22,7 @@ body {
 .map{
   height: 500px;
 }
+
+.nameCenter {
+  padding: 10px;
+}

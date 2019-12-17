@@ -100,13 +100,13 @@ class Discovery extends React.Component {
                       onAddItem={(e, data) => this.handleAddition(e, data, this.state.searchBy)}/>
             <Button negative onClick={this.onClickClear}>Clear</Button>
           </Menu>
-          <Card.Group centered>
+          <Card.Group>
             {this.state.spots.length === 0 ? (
                 // eslint-disable-next-line max-len
                 this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot} notes={this.props.notes.filter(note => (note.contactId === spot._id))}/>)
             ) : (
                 // eslint-disable-next-line max-len
-                this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)} notes={(this.props.notes.filter((note) => (note.contactId === spot._id))).slice(this.props.notes.length - 4, this.props.notes.length)}/>))
+                this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)} notes={this.props.notes.filter((note) => (note.contactId === spot._id))}/>))
             }
           </Card.Group>
         </Container>
