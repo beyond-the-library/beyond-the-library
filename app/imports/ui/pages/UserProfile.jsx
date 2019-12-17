@@ -62,6 +62,6 @@ UserProfile.propTypes = {
 export default withTracker(() => {
   Meteor.subscribe('Users');
   return {
-    users: Users.find({ }).fetch(),
+    users: Users.find({ username: Meteor.user() ? Meteor.user().username : '' }).fetch(),
   };
 })(UserProfile);
