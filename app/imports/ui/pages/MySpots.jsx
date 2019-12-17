@@ -10,10 +10,25 @@ import { Spots } from '../../api/spot/Spots';
 
 class MySpots extends React.Component {
 
+  titleHelp() {
+    // eslint-disable-next-line max-len
+    (swal({
+      title: 'Welcome',
+      text: 'Welcome to MySpots Page! You can contribute your favorite study spots here.',
+      button: 'Next',
+    })
+        .then(() => {
+          (swal({
+            text: 'Click the blue button in the middle of the screen to share your first spot!',
+            button: 'Got it',
+          }));
+        }));
+  }
+
   title() {
     if (this.props.spots.length < 1) {
       return (
-          <Divider>{ swal("Here's the title!", "...and here's the text!") }</Divider>
+          <Divider>{this.titleHelp()}</Divider>
       );
     }
     return (<Divider/>);
@@ -32,9 +47,9 @@ class MySpots extends React.Component {
             {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
           </Card.Group>
           <Card centered>
-              <Link to="/addspot">
-                <Button fluid primary>Click Here to Contribute a New Spot</Button>
-              </Link>
+            <Link to="/addspot">
+              <Button fluid primary>Click Here to Contribute a New Spot</Button>
+            </Link>
           </Card>
         </Container>
 
