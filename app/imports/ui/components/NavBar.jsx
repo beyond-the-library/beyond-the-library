@@ -20,7 +20,10 @@ class NavBar extends React.Component {
                      exact to="/discovery" key='discovery'>Discover</Menu.Item>
           <Menu.Item as={NavLink}
                      activeClassName="active"
-                     exact to="/locations" key='locations'>Map</Menu.Item>
+                     exact to="/locations" key='locations'>Map
+          </Menu.Item><Menu.Item as={NavLink}
+                     activeClassName="active"
+                     exact to="/FAQ" key='FAQ'>FAQ</Menu.Item>
           {this.props.currentUser ? (
               [
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/myspots" key='addspot'>My Spots</Menu.Item>,

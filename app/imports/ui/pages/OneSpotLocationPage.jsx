@@ -6,6 +6,7 @@ import { Loader, Grid, Container, Button } from 'semantic-ui-react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 import { Spots } from '../../api/spot/Spots';
+import { Notes } from '../../api/note/Notes';
 import SpotCard from '../components/SpotCard';
 
 class OneSpotLocationPage extends Component {
@@ -36,7 +37,8 @@ class OneSpotLocationPage extends Component {
             <Grid.Column width={4}>
               <Grid centered>
                 <Grid.Row>
-                  <SpotCard spot={this.props.doc}/>
+                  {/* eslint-disable-next-line max-len */}
+                  <SpotCard spot={this.props.doc} notes={this.props.notes.filter(note => (note.contactId === this.props.doc._id))}/>
                   <Link to={'/discovery'}>
                     <Button color='blue'>Find Another Spot</Button>
                   </Link>
@@ -50,6 +52,7 @@ class OneSpotLocationPage extends Component {
 }
 
 OneSpotLocationPage.propTypes = {
+  notes: PropTypes.array.isRequired,
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -60,8 +63,10 @@ export default withTracker(({ match }) => {
   const documentId = match.params._id;
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Spots');
+  const subs2 = Meteor.subscribe('AggregatedNotes');
   return {
     doc: Spots.findOne(documentId),
-    ready: subscription.ready(),
+    notes: Notes.find().fetch(),
+    ready: subscription.ready() && subs2.ready(),
   };
 })(OneSpotLocationPage);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
+import { Redirect } from 'react-router-dom';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
@@ -15,7 +16,7 @@ import 'uniforms-bridge-simple-schema-2';
 import NumField from 'uniforms-semantic/NumField';
 import ReactTooltip from 'react-tooltip';
 import { Spots, SpotsSchema } from '../../api/spot/Spots';
-import { Redirect } from 'react-router-dom';
+
 
 /** Renders the Page for editing a single document. */
 class EditSpot extends React.Component {

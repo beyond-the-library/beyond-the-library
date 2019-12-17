@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Feed, Container } from 'semantic-ui-react';
+import { Card, Image, Container, Feed } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
@@ -11,18 +11,18 @@ import AddNote from '/imports/ui/components/AddNote.jsx';
 class SpotCard extends React.Component {
   render() {
     return (
-        <Card>
+        <Card centered>
+          <Link to={`/location/${this.props.spot._id}`}>
+            <Image src={this.props.spot.image} wrapped/>
+          </Link>
           <Container>
-            <Link to={`/location/${this.props.spot._id}`}>
-              <Image src={this.props.spot.image} wrapped/>
-            </Link>
-            <Card.Header text-align="center" as='h4'>{this.props.spot.name}</Card.Header>
+            <Card.Header as='h4'>{this.props.spot.name}</Card.Header>
             <Card.Meta>{this.props.spot.address}</Card.Meta>
             <Card.Description>
               {this.props.spot.description}
             </Card.Description>
             <Card.Content extra>
-              <Feed text-align="center">
+              <Feed>
                 {this.props.notes.map((note, index) => <MapsNote key={index} note={note}/>)}
               </Feed>
             </Card.Content>
