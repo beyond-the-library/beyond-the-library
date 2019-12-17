@@ -79,7 +79,7 @@ class AddSpotExtra extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Extra</Header>
+            <Header as="h2" textAlign="center">Extra Information</Header>
             <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
               <Segment>
                 {/* eslint-disable-next-line max-len */}

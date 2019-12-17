@@ -91,7 +91,6 @@ LocationsPage.propTypes = {
   notes: PropTypes.array.isRequired,
   spots: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  mapmarker: PropTypes.array.isRequired,
 };
 
 export default withTracker(() => {
