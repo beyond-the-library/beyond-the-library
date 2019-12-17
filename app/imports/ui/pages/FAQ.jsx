@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Icon, Grid, Image } from 'semantic-ui-react';
+import { Accordion, Icon, Grid, Image, List, Header } from 'semantic-ui-react';
 
 /** A simple static component to render some text for the landing page. */
 class FAQ extends React.Component {
@@ -17,63 +17,82 @@ class FAQ extends React.Component {
     const { activeIndex } = this.state;
 
     return (
-        <Grid centered container style={{ paddingTop: '25px' }}>
+        <Grid container style={{ paddingTop: '25px' }}>
+          <Header as='h1'>Frequently Asked Questions About Beyond the Library</Header>
           <Accordion fluid styled>
-          <Accordion.Title
-              active={activeIndex === 0}
-              index={0}
-              onClick={this.handleClick}
-          >
-            <Icon name='dropdown'/>
-            What is a dog?
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 0}>
-            <p>
-              A dog is a type of domesticated animal. Known for its loyalty and
-              faithfulness, it can be found as a welcome guest in many households
-              across the world.
-            </p>
-          </Accordion.Content>
+            <Accordion.Title
+                active={activeIndex === 0}
+                index={0}
+                onClick={this.handleClick}
+            >
+              <Icon name='dropdown'/>
+              What is Beyond the Library?
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 0}>
+              <p>
+                Beyond the Library is a web application where UH students can discover and share study spots.
+              </p>
+            </Accordion.Content>
 
-          <Accordion.Title
-              active={activeIndex === 1}
-              index={1}
-              onClick={this.handleClick}
-          >
-            <Icon name='dropdown'/>
-            What kinds of dogs are there?
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 1}>
-            <p>
-              There are many breeds of dogs. Each breed varies in size and
-              temperament. Owners often select a breed of dog that they find to be
-              compatible with their own lifestyle and desires from a companion.
-            </p>
-          </Accordion.Content>
+            <Accordion.Title
+                active={activeIndex === 1}
+                index={1}
+                onClick={this.handleClick}
+            >
+              <Icon name='dropdown'/>
+              How do I log in or sign up?
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 1}>
+              <List as='ul'>
+                <List.Item as='li'>
+                  Click on the person icon in the upper right-hand corner of the site.
+                  <List.List>
+                    <List.Item as='li'>If you do not have an account or would like to create a new account, click
+                      the &quot;
+                      sign up&quot; option.</List.Item>
+                    <List.Item as='li'>If you already have an account, click the &quot;sign in&quot; option.</List.Item>
+                  </List.List></List.Item>
+              </List>
+            </Accordion.Content>
 
-          <Accordion.Title
-              active={activeIndex === 2}
-              index={2}
-              onClick={this.handleClick}
-          >
-            <Icon name='dropdown'/>
-            How do you acquire a dog?
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 2}>
-            <Image centered src='https://cdn3-www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg'/>
-            <p>
-              Three common ways for a prospective owner to acquire a dog is from
-              pet shops, private owners, or shelters.
-            </p>
-            <p>
-              A pet shop may be the most convenient way to buy a dog. Buying a dog
-              from a private owner allows you to assess the pedigree and
-              upbringing of your dog before choosing to take it home. Lastly,
-              finding your dog from a shelter, helps give a good home to a dog who
-              may not find one so readily.
-            </p>
-          </Accordion.Content>
-        </Accordion>
+            <Accordion.Title
+                active={activeIndex === 2}
+                index={2}
+                onClick={this.handleClick}
+            >
+              <Icon name='dropdown'/>
+              How do I find the image url?
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <List ordered>
+                <List.Item>Search on your own image hosting service (i.e. Google Photos) or search the internet
+                  for the location image (i.e. Google Images).</List.Item>
+                <List.Item>Right click on the image.</List.Item>
+                <List.Item>Select the &quot;Copy image address&quot; option</List.Item>
+                <List.Item>Now the image is copied to your clipboard and can be pasted into the form.</List.Item>
+              </List>
+            </Accordion.Content>
+
+            <Accordion.Title
+                active={activeIndex === 3}
+                index={3}
+                onClick={this.handleClick}
+            >
+              <Icon name='dropdown'/>
+              How do I find a location&apos;s geo coordinates?
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 3}>
+              <List ordered>
+                <List.Item>Use Google Maps to find the location you want to add.</List.Item>
+                <List.Item>Right click on the map.</List.Item>
+                <List.Item>Select the &quot;What&apos;s here&quot; option.<Image src='images/geo_1.png'/></List.Item>
+                <List.Item>Click on the pop up on the bottom of the map.<Image src='images/geo_2.png'/></List.Item>
+                <List.Item>There is a new side panel with two numbers.<Image src='images/geo_3.png'/></List.Item>
+                <List.Item>The first number is the latitude.</List.Item>
+                <List.Item>The second number is the longitude.</List.Item>
+              </List>
+            </Accordion.Content>
+          </Accordion>
         </Grid>
     );
   }

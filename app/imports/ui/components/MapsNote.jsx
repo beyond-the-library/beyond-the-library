@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 class MapsNote extends React.Component {
   render() {
     return (
-        <Feed.Event >
+        <Feed.Event text-align='center'>
           <Feed.Content>
             <Feed.Date><b>Date posted: {this.props.note.createdAt.toLocaleDateString('en-US')}</b></Feed.Date>
             <Feed.User>Author: {this.props.note.owner }</Feed.User>

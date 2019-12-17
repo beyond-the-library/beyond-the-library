@@ -5,7 +5,7 @@
       "username": "Administrator",
       "password": "changeme",
       "role": "admin",
-      "image": "https://compote.slate.com/images/5e48cf3d-0992-4eda-a080-e00e07738b2f.jpg",
+      "image": "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg",
       "description": "I am the Admin of this domain >:D",
       "major": "Computer Engineering",
       "favoriteSpot": "Holmes Hall"
@@ -15,7 +15,7 @@
       "username": "JohnDoe70",
       "password": "changeme",
       "role": "student",
-      "image": "https://compote.slate.com/images/5e48cf3d-0992-4eda-a080-e00e07738b2f.jpg",
+      "image": "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg",
       "description": "I am JohnDoe70.",
       "major": "Computer Engineering",
       "favoriteSpot": "Holmes Hall"
@@ -25,16 +25,26 @@
       "username": "AlaBlaster19",
       "password": "ADAD",
       "role": "student",
-      "image": "https://compote.slate.com/images/5e48cf3d-0992-4eda-a080-e00e07738b2f.jpg",
+      "image": "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg",
       "description": "I am AlaBlaster19",
+      "major": "Computer Engineering",
+      "favoriteSpot": "Holmes Hall"
+    },
+    {
+      "email": "chris@hawaii.edu",
+      "username": "chris@hawaii.edu",
+      "password": "asdf",
+      "role": "student",
+      "image": "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg",
+      "description": "I am chris@hawaii.edu",
       "major": "Computer Engineering",
       "favoriteSpot": "Holmes Hall"
     }
   ],
   "defaultSpots": [
     {
-      "name": "Paradise Palms",
-      "image": "https://lh5.googleusercontent.com/p/AF1QipNPoshJ3WI2yz7tJDWlMyZ20BEFPRHXk7U4f_Zv=w203-h270-k-no",
+      "name": "Paradise Palms (Renovated)",
+      "image": "images/paradise.jpg",
       "location": "2560 McCarthy mall, Honolulu, HI 96822",
       "description": "A nice cafe where you can get coffee and milk tea.",
       "latitude": 21.300923,
@@ -83,6 +93,19 @@
       "time": "Daytime"
     },
     {
+      "name": "Paradise Palms",
+      "image": "images/paradise.jpg",
+      "location": "2560 McCarthy mall, Honolulu, HI 96822",
+      "description": "AC room with several retail food options.",
+      "latitude": 21.300923,
+      "longitude": -157.815685,
+      "owner": "john@foo.com",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
+    },
+    {
       "name": "Le Crepe Law School",
       "image": "images/lecrepelawschool.jpg",
       "location": "Next to Zone 20 Parking Strucuture and Law School Library",
@@ -112,7 +135,7 @@
       "name": "Pacific Hurricane Center",
       "image": "images/pacifichurricanecenter.jpg",
       "location": "Pacific Hurricane Center",
-      "description": "Get to studying with crepes and coffee.",
+      "description": "An outdoor space with a lot of tables.",
       "latitude": 21.298022,
       "longitude": -157.816804,
       "owner": "john@foo.com",
@@ -187,23 +210,10 @@
       "time": "Daytime"
     },
     {
-      "name": "Kuykendall Hall",
-      "image": "images/kuykendall.jpg",
-      "location": "Kuykendall Hall",
-      "description": "Need a place to study and feed chickens, visit this study spot.",
-      "latitude": 21.298269,
-      "longitude": -157.817245,
-      "owner": "john@foo.com",
-      "status": "Published",
-      "major": "Open for everyone",
-      "environment": "Outdoor",
-      "time": "Daytime"
-    },
-    {
-      "name": "Language & Technology Diamond Head Computer Lab",
+      "name": "Moore Hall Diamond Head Computer Lab",
       "image": "https://clt.manoa.hawaii.edu/wp-content/uploads/2018/04/DH-Lab-back.jpg",
       "location": "Moore Hall",
-      "description": "AC room",
+      "description": "AC room with computers.",
       "latitude": 21.301187,
       "longitude": -157.815337,
       "owner": "hana@hawaii.edu",
@@ -213,10 +223,10 @@
       "time": "Daytime"
     },
     {
-      "name": "Language & Technology Ewa Computer Lab",
+      "name": "Moore Hall Diamond Ewa Computer Lab",
       "image": "https://clt.manoa.hawaii.edu/wp-content/uploads/2018/04/Ewa-Lab-front.jpg",
       "location": "Moore Hall",
-      "description": "AC room",
+      "description": "AC room with computers.",
       "latitude": 21.301180,
       "longitude": -157.815251,
       "owner": "hana@hawaii.edu",
@@ -253,9 +263,22 @@
     },
     {
       "name": "East West Center's Japanese Garden",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Japanese_Garden_%40_UH_Manoa_%285673592667%29.jpg",
-      "location": "2600 S King St, Honolulu, HI 96826",
-      "description": "Study here while enjoying boba and tea.",
+      "image": "images/ewc.jpg",
+      "location": "East West Center",
+      "description": "Study in UH's Japanese style garden.",
+      "latitude": 21.296422,
+      "longitude": -157.815017,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "East West Center Courtyard",
+      "image": "images/japanesegarden.jpg",
+      "location": "East West Center",
+      "description": "A nice outdoor spot with shade. Warning: close to Dole Street so the noise level is high.",
       "latitude": 21.299438,
       "longitude": -157.813791,
       "owner": "chris@hawaii.edu",
@@ -268,7 +291,7 @@
       "name": "Food Court",
       "image": "https://bloximages.newyork1.vip.townnews.com/manoanow.org/content/tncms/assets/v3/editorial/9/59/9591d620-48b1-11e6-ac0e-97b8953acd38/5785c2aa9b74e.image.png?resize=943%2C630",
       "location": "2465 Campus Rd, Honolulu, HI 96822",
-      "description": "Grab breakfast or lunch while studying",
+      "description": "Grab breakfast or lunch while studying.",
       "latitude": 21.298170,
       "longitude": -157.818631,
       "owner": "chris@hawaii.edu",
@@ -279,9 +302,9 @@
     },
     {
       "name": "Stir Fresh",
-      "image": "https://bloximages.newyork1.vip.townnews.com/manoanow.org/content/tncms/assets/v3/editorial/9/59/9591d620-48b1-11e6-ac0e-97b8953acd38/5785c2aa9b74e.image.png?resize=943%2C630",
+      "image": "https://bloximages.newyork1.vip.townnews.com/manoanow.org/content/tncms/assets/v3/editorial/a/f4/af413e18-6827-11e6-bf92-83d2ed164e0e/57ba8af79deff.image.jpg",
       "location": "2465 Campus Rd, Honolulu, HI 96822",
-      "description": "Grab lunch while studying",
+      "description": "Grab lunch while studying.",
       "latitude": 21.298020,
       "longitude": -157.818559,
       "owner": "chris@hawaii.edu",
@@ -292,9 +315,9 @@
     },
     {
       "name": "Campus Center Starbucks",
-      "image": "https://s3-media1.fl.yelpcdn.com/bphoto/CAqHQW6sWzI64KmHII5u1Q/l.jpg",
+      "image": "images/starbucks.jpg",
       "location": "2465 Campus Rd, Honolulu, HI 96822",
-      "description": "Grab some coffee and study overlooking the campus center courtyard",
+      "description": "Grab some coffee and study overlooking the campus center courtyard.",
       "latitude": 21.298551,
       "longitude": -157.818927,
       "owner": "chris@hawaii.edu",
@@ -307,7 +330,7 @@
       "name": "Coffee or Tea?",
       "image": "https://media-cdn.tripadvisor.com/media/photo-s/14/8d/2e/f3/coffee-or-tea.jpg",
       "location": "1960 Kapiolani Blvd #106, Honolulu, HI 96826",
-      "description": "Sit down to study with some boba tea",
+      "description": "Sit down to study with some boba tea.",
       "latitude": 21.290080,
       "longitude": -157.832727,
       "owner": "chris@hawaii.edu",
@@ -320,7 +343,7 @@
       "name": "Shirokiya Japan Village Walk",
       "image": "http://honolulumagazine-images.dashdigital.com/images/Blogs/BitingCommentary/2016/Shirokiya-interior-seating-area.jpg?ver=1465870964",
       "location": "1450 Ala Moana Blvd #1360, Honolulu, HI 96814",
-      "description": "Food and study",
+      "description": "Study while eating Japanese cuisine.",
       "latitude": 21.291985,
       "longitude": -157.845632,
       "owner": "chris@hawaii.edu",
@@ -333,7 +356,7 @@
       "name": "Ala Moana Regional Park",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrPGWjlikqQYJ6nn0jKTsbrU7WaaI-VIclRGl9N51RKyX9P_qFA&s",
       "location": "1201 Ala Moana Blvd, Honolulu, HI 96814",
-      "description": "Outdoor and study",
+      "description": "A spacious public park in Honolulu.",
       "latitude": 21.289797,
       "longitude": -157.847683,
       "owner": "chris@hawaii.edu",
@@ -346,7 +369,7 @@
       "name": "Waikiki Beach",
       "image": "https://cdn.cnn.com/cnnnext/dam/assets/190422111708-01-waikiki-beach-file-exlarge-169.jpg",
       "location": "Waikiki Beach, Honolulu, HI 96815",
-      "description": "Outdoor and study",
+      "description": "One of the most famous beaches in Hawaii. Why not catch some sun and waves while studying?",
       "latitude": 21.275555,
       "longitude": -157.825921,
       "owner": "chris@hawaii.edu",
@@ -359,7 +382,7 @@
       "name": "Kanewai Community Park",
       "image": "https://lh5.googleusercontent.com/p/AF1QipOs9WxSymp8VdXUNr5TeqlKBBXNRbIsLCELtihE=w408-h544-k-no",
       "location": "2695 Dole St, Honolulu, HI 96822",
-      "description": "Outdoor and study",
+      "description": "A public park close to campus.",
       "latitude": 21.292870,
       "longitude": -157.811919,
       "owner": "chris@hawaii.edu",
@@ -367,64 +390,112 @@
       "major": "Open for everyone",
       "environment": "Outdoor",
       "time": "Daytime"
+    },
+    {
+      "name": "Bilger Hall Courtyard",
+      "image": "images/bilger.jpg",
+      "location": "Bilger Hall",
+      "description": "Rest in the shade of the trees. Seating is limited.",
+      "latitude": 21.299521,
+      "longitude": -157.816532,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Bilger Hall Addition",
+      "image": "images/bilgerext.jpg",
+      "location": "Bilger Hall",
+      "description": "A small study spot perfect for a small group.",
+      "latitude": 21.298806,
+      "longitude": -157.816722,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Geophysics Courtyard",
+      "image": "images/geo.jpg",
+      "location": "Geophysics Hall",
+      "description": "A great outdoor study spot. However, it does get windy here.",
+      "latitude": 21.298368,
+      "longitude": -157.817170,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Sakamaki Hall Courtyard",
+      "image": "images/sak.jpg",
+      "location": "Sakamaki Hall",
+      "description": "Admire the tall bamboo while studying.",
+      "latitude": 21.297727,
+      "longitude": -157.817100,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Kuykendall Hall Courtyard",
+      "image": "images/kuy.jpg",
+      "location": "Kuykendall Hall",
+      "description": "Plenty of tables available. However, watch out for the chickens.",
+      "latitude": 21.298267,
+      "longitude": -157.817435,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Art Space",
+      "image": "images/art.jpg",
+      "location": "Art Building",
+      "description": "Study amongst local art pieces.",
+      "latitude": 21.299302,
+      "longitude": -157.817695,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Indoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Campus Center Courtyard",
+      "image": "images/ccc.jpg",
+      "location": "Campus Center",
+      "description": "A large open at the center of campus with benches and tables.",
+      "latitude": 21.298590,
+      "longitude": -157.818634,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
+    },
+    {
+      "name": "Kennedy Theater Courtyard",
+      "image": "images/jfk.jpg",
+      "location": "Kennedy Theater",
+      "description": "Study under some of the campus trees.",
+      "latitude": 21.299132,
+      "longitude": -157.814806,
+      "owner": "chris@hawaii.edu",
+      "status": "Published",
+      "major": "Open for everyone",
+      "environment": "Outdoor",
+      "time": "Daytime"
     }
   ],
-  "defaultMarker": [
-    {
-      "name": "Paradise Palms",
-      "lat": 21.300923,
-      "lng": -157.815685
-    },
-    {
-      "name": "POST",
-      "lat": 21.297330,
-      "lng": -157.816354
-    },
-    {
-      "name":"Le Crepe Law School",
-      "lat": 21.29526,
-      "lng": -157.818197
-    },
-    {
-      "name": "Marine Science Building",
-      "lat": 21.297925,
-      "lng": -157.815896
-    },
-    {
-      "name": "Pacific Hurricane Center",
-      "lat": 21.298022,
-      "lng": -157.816804
-    },
-    {
-      "name": "Queen Liliuokalani Center",
-      "lat": 21.300247,
-      "lng": -157.818509
-    },
-    {
-      "name": "Saunders Hall",
-      "lat": 21.300516,
-      "lng": -157.819008
-    },
-    {
-      "name": "Architecture Building",
-      "lat": 21.299660,
-      "lng": -157.820671
-    },
-    {
-      "name": "Ba-Le",
-      "lat": 21.298831,
-      "lng": -157.819853
-    },
-    {
-      "name": "George Hall",
-      "lat": 21.300441,
-      "lng": -157.820223
-    },
-    {
-      "name": "Kuykendall Hall",
-      "lat": 21.298269,
-      "lng": -157.817245
-    }
-  ],"defaultNotes": [
+  "defaultNotes": [
 ]
 }

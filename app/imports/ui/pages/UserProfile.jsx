@@ -13,22 +13,35 @@ class UserProfile extends React.Component {
 
   deleteMessage = () => {
     swal({
-      title: 'You are deleting you account',
-      text: 'Upon deletion, your spots wont be attributed to you anymore.',
+      title: 'Delete your account?',
+      text: 'Any spots you published will not appear on the list unless added again. Proceed?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
     })
-        .then((deleteuser) => {
-          if (deleteuser) {
-            Meteor.logout();
-            swal('Your account has been deleted.', {
-              icon: 'success',
-            });
-          }
+        .then(() => {
+          const id = Users.find({ username: Meteor.user() ? Meteor.user().username : '' }).fetch();
+          console.log(id);
+          const userId = id._id;
+          console.log(userId);
+          // Meteor.logout();
+          // Users.remove({ _id: id }, true);
+          swal('Your account has been deleted.', {
+            icon: 'success',
+          });
+
         });
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     return <Redirect to={from}/>;
+  }
+
+  deleteMessage2 = () => {
+    swal({
+      title: 'Hey,',
+      text: 'Delete functionality under construction.',
+      icon: 'warning',
+      buttons: true,
+    });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -45,7 +58,7 @@ class UserProfile extends React.Component {
           </Card.Group>
           <Segment>
             <Button as={NavLink} exact to={'/editPassword'}> Change Password</Button>
-            <Button onClick={this.deleteMessage}> Delete this account</Button>
+            <Button onClick={this.deleteMessage2}> Delete this account</Button>
           </Segment>
         </Container>
     );
