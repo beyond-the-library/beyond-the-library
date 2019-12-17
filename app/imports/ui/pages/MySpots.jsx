@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, Container, Loader, Button, Grid, Header } from 'semantic-ui-react';
+import { Card, Container, Loader, Button, Grid, Header, Menu, Divider } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import MySpotsCard from '../components/MySpotsCard';
 import { Spots } from '../../api/spot/Spots';
 
@@ -12,10 +13,10 @@ class MySpots extends React.Component {
   title() {
     if (this.props.spots.length < 1) {
       return (
-          <Header>It is Empty!</Header>
+          <Divider>{ swal("Here's the title!", "...and here's the text!") }</Divider>
       );
     }
-    return (<div></div>);
+    return (<Divider/>);
   }
 
   render() {
@@ -26,19 +27,15 @@ class MySpots extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Grid>
-            <Grid.Row>
-              {this.title()}
-              <Card.Group>
-                {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
-              </Card.Group>
-              <Grid.Row>
-                <Link to="/addspot">
-                  <Button>Click Here to Add a New Spot</Button>
-                </Link>
-              </Grid.Row>
-            </Grid.Row>
-          </Grid>
+          {this.title()}
+          <Card.Group>
+            {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
+          </Card.Group>
+          <Card centered>
+              <Link to="/addspot">
+                <Button fluid primary>Click Here to Contribute a New Spot</Button>
+              </Link>
+          </Card>
         </Container>
 
     );
