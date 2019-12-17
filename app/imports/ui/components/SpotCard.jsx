@@ -14,7 +14,7 @@ class SpotCard extends React.Component {
         <Card text-align='center'>
 
           <Link to={`/location/${this.props.spot._id}`}>
-            <Image src={this.props.spot.image}/>
+            <Image src={this.props.spot.image} style={{ width: '300px', height: '300px' }}/>
           </Link>
             {/* eslint-disable-next-line max-len */}
           <Card.Header text-align="center" as='h4'><span className='nameCenter'> {this.props.spot.name} </span></Card.Header>
