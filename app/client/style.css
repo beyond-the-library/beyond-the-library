@@ -14,17 +14,12 @@
 
 body {
   font-family: 'Quicksand', sans-serif !important;
-<<<<<<< Updated upstream
-=======
   font-size: 16px !important;
->>>>>>> Stashed changes
 }
 
 .map{
   height: 500px;
 }
-<<<<<<< Updated upstream
-=======
 
 .nameCenter {
   padding: 10px;
@@ -37,4 +32,3 @@ body {
 #navbarColor {
   background-color: #111E6C;
 }
->>>>>>> Stashed changes

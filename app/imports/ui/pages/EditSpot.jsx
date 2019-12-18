@@ -72,9 +72,9 @@ class EditSpot extends React.Component {
                 <TextField name='location' data-tip="General location for display"/>
                 <LongTextField name='description' data-tip="You can add some extra description or information here"/>
                 {/* eslint-disable-next-line max-len */}
-                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use defalt value if you are not sure."/>
+                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use default value if you are not sure. For more information, please check our FAQ page."/>
                 {/* eslint-disable-next-line max-len */}
-                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use defalt value if you are not sure."/>
+                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use default value if you are not sure.  For more information, please check our FAQ page."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>

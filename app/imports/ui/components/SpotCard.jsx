@@ -11,27 +11,34 @@ import AddNote from '/imports/ui/components/AddNote.jsx';
 class SpotCard extends React.Component {
   render() {
     return (
-        <Card>
-          <Container>
-            <Link to={`/location/${this.props.spot._id}`}>
-              <Image src={this.props.spot.image} wrapped/>
-            </Link>
-            <Card.Header text-align="center" as='h4'>{this.props.spot.name}</Card.Header>
-            <Card.Meta>{this.props.spot.address}</Card.Meta>
-            <Card.Description>
+        <Card text-align='center'>
+
+          <Link to={`/location/${this.props.spot._id}`}>
+            <Image src={this.props.spot.image} style={{ width: '300px', height: '300px' }}/>
+          </Link>
+            {/* eslint-disable-next-line max-len */}
+          <Card.Header text-align="center" as='h4'><span className='nameCenter'> {this.props.spot.name} </span></Card.Header>
+          <Card.Meta><span>{this.props.spot.address}</span></Card.Meta>
+          <Card.Description>
+            <span className='nameCenter'>
               {this.props.spot.description}
-            </Card.Description>
-            <Card.Content extra>
-              <Feed text-align="center">
-                {this.props.notes.map((note, index) => <MapsNote key={index} note={note}/>)}
-              </Feed>
-            </Card.Content>
-            {this.props.currentUser ? (
-                <Card.Content extra>
+            </span>
+          </Card.Description>
+          <Card.Content extra>
+            <Feed text-align="center">
+              <hr/>
+              {this.props.notes.map((note, index) => <MapsNote key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          {this.props.currentUser ? (
+              <Card.Content extra>
+                <Container>
+                  <hr/>
                   <AddNote owner={this.props.spot.owner} contactId={this.props.spot._id}/>
-                </Card.Content>
-            ) : ''}
-          </Container>
+                </Container>
+              </Card.Content>
+          ) : ''}
+          
         </Card>
     );
   }

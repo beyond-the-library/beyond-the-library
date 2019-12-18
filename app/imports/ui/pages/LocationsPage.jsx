@@ -30,16 +30,15 @@ class LocationsPage extends Component {
           <Grid centered>
             <h1>Spot Updates</h1>
             <Grid.Row>
-              <SpotCard notes={this.props.notes} spot={this.state.currentSpot}/>
+              {/* eslint-disable-next-line max-len */}
+              <SpotCard spot={this.state.currentSpot} notes={this.props.notes.filter(note => (note.contactId === this.state.currentSpot._id))} />
             </Grid.Row>
             <Grid.Row>
               <Link to={'/discovery'}>
-                <Button color='blue'>Discover a Spot</Button>
+                <Button color='blue'>Discover</Button>
               </Link>
-            </Grid.Row>
-            <Grid.Row>
               <Link to={'/mySpots'}>
-                <Button color='blue'>Share My Spots</Button>
+                <Button color='blue'>Contribute My Spots</Button>
               </Link>
             </Grid.Row>
           </Grid>
@@ -47,10 +46,10 @@ class LocationsPage extends Component {
     }
     return (
         <Grid>
-          <Header as='h3'> Click on a Pin to see more details</Header>
-          <Grid.Row>
+          <Grid.Row text-align='center'>
+            <Header as='h1'> Spot Updates </Header>
             {/* eslint-disable-next-line max-len */}
-            {(this.props.notes.slice(this.props.notes.length - 10, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
+            {(this.props.notes.slice(this.props.notes.length - 8, this.props.notes.length - 1)).map((note, index) => <MapsNote key={index} note={note}/>)}
           </Grid.Row>
         </Grid>
     );
@@ -90,7 +89,6 @@ LocationsPage.propTypes = {
   notes: PropTypes.array.isRequired,
   spots: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  mapmarker: PropTypes.array.isRequired,
 };
 
 export default withTracker(() => {
