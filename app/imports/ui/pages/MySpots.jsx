@@ -10,6 +10,19 @@ import { Spots } from '../../api/spot/Spots';
 
 class MySpots extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewAlert: true,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.spots !== prevProps.spots) {
+      this.setState({ viewAlert: false });
+    }
+  }
+
   titleHelp() {
     // eslint-disable-next-line max-len
     (swal({
@@ -26,12 +39,12 @@ class MySpots extends React.Component {
   }
 
   title() {
-    if (this.props.spots.length < 1) {
+    if (this.props.spots.length < 1 && this.state.viewAlert) {
       return (
-          <Divider>{this.titleHelp()}</Divider>
+          <Divider hidden>{this.titleHelp()}</Divider>
       );
     }
-    return (<Divider/>);
+    return (<Divider hidden/>);
   }
 
   render() {
