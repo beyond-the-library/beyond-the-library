@@ -35,12 +35,10 @@ class LocationsPage extends Component {
             </Grid.Row>
             <Grid.Row>
               <Link to={'/discovery'}>
-                <Button color='blue'>Contribute a Spot</Button>
+                <Button color='blue'>Discover</Button>
               </Link>
-            </Grid.Row>
-            <Grid.Row>
               <Link to={'/mySpots'}>
-                <Button color='blue'>Share My Spots</Button>
+                <Button color='blue'>Contribute My Spots</Button>
               </Link>
             </Grid.Row>
           </Grid>
