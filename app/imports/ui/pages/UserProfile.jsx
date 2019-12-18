@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Container, Segment, Button } from 'semantic-ui-react';
+import { Card, Container, Segment, Button, Divider } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
@@ -56,10 +56,12 @@ class UserProfile extends React.Component {
           <Card.Group>
             {this.props.users.map((user, index) => <DisplayUser key={index} user={user}/>)}
           </Card.Group>
+          <Divider hidden/>
           <Segment>
             <Button as={NavLink} exact to={'/editPassword'}> Change Password</Button>
             <Button onClick={this.deleteMessage2}> Delete this account</Button>
           </Segment>
+          <Divider hidden/>
         </Container>
     );
   }

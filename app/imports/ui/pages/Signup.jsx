@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment, Image } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import { Users } from '/imports/api/user/Users';
+import swal from 'sweetalert';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -22,11 +24,24 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
     const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const username = email;
+    const image = 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg';
+    const description = 'Say something to introduce yourself';
+    const major = 'Art';
+    const favoriteSpot = 'Paradise Palms';
+    Accounts.createUser({ email, username, password, image, description, major, favoriteSpot }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        this.setState({ error: '', redirectToReferer: true });
+        Users.insert({ email, username, password, image, description, major, favoriteSpot },
+            (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              } else {
+                swal('Welcome', 'Now you can leave comments and contribute your study spots', 'success');
+                this.setState({ error: '', redirectToReferer: true });
+              }
+            });
       }
     });
   }
