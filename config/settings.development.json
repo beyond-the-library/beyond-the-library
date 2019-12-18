@@ -262,10 +262,10 @@
       "time": "Daytime"
     },
     {
-      "name": "East West Center's Japanese Garden",
+      "name": "East West Center Courtyard",
       "image": "images/ewc.jpg",
       "location": "East West Center",
-      "description": "Study in UH's Japanese style garden.",
+      "description": "A nice outdoor spot with shade. Warning: close to Dole Street so the noise level is high.",
       "latitude": 21.296422,
       "longitude": -157.815017,
       "owner": "chris@hawaii.edu",
@@ -275,10 +275,10 @@
       "time": "Daytime"
     },
     {
-      "name": "East West Center Courtyard",
+      "name": "East West Center's Japanese Garden",
       "image": "images/japanesegarden.jpg",
       "location": "East West Center",
-      "description": "A nice outdoor spot with shade. Warning: close to Dole Street so the noise level is high.",
+      "description": "Study in UH's Japanese style garden.",
       "latitude": 21.299438,
       "longitude": -157.813791,
       "owner": "chris@hawaii.edu",
