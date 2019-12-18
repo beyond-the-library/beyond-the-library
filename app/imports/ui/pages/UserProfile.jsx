@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Container, Segment, Button, Divider, Loader } from 'semantic-ui-react';
+import { Card, Container, Segment, Button, Divider, Loader, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 import { Users } from '../../api/user/Users';
 import DisplayUser from '../components/DisplayUser';
 
@@ -61,10 +61,12 @@ class UserProfile extends React.Component {
   renderPage() {
     return (
         <Container>
+          {console.log(this.props.user)}
           <Card.Group>
             <DisplayUser user={this.props.user}/>)
           </Card.Group>
           <Divider hidden/>
+          <Grid centered>
           <Segment>
             <Button as={NavLink} exact to={'/editPassword'}> Change Password</Button>
             <Button onClick={this.deleteMessage2}> Delete this account</Button>
@@ -72,6 +74,7 @@ class UserProfile extends React.Component {
               <Button color='blue'>Edit Profile</Button>
             </Link>
           </Segment>
+          </Grid>
           <Divider hidden/>
         </Container>
     );
@@ -89,7 +92,7 @@ UserProfile.propTypes = {
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Users');
   return {
-    user: Users.findOne({ email: Meteor.user() ? Meteor.user().email : '' }),
+    user: Users.findOne({ username: Meteor.user() ? Meteor.user().username : '' }),
     ready: subscription.ready(),
   };
 })(UserProfile);

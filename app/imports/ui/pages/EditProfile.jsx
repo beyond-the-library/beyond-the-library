@@ -4,7 +4,6 @@ import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
-import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import LongTextField from 'uniforms-semantic/LongTextField'; // required for Uniforms
@@ -53,7 +52,6 @@ class EditProfile extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Edit Profile</Header>
-            {console.log(this.props.user)}
             <AutoForm schema={UsersSchema} onSubmit={data => this.submit(data)} model={this.props.user}>
               <Segment>
                 <TextField name='username' data-tip="Who are you?"/>

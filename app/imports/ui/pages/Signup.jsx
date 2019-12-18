@@ -33,7 +33,7 @@ class Signup extends React.Component {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Users.insert({ email, username, image, description, major, favoriteSpot },
+        Users.insert({ email, password, username, image, description, major, favoriteSpot },
             (error) => {
               if (error) {
                 swal('Error', error.message, 'error');
