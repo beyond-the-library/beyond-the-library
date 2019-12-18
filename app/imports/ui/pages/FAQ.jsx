@@ -17,7 +17,7 @@ class FAQ extends React.Component {
     const { activeIndex } = this.state;
 
     return (
-        <Grid container style={{ paddingTop: '25px' }}>
+        <Grid container style={{ paddingTop: '25px', paddingBottom: '35px' }}>
           <Header as='h1'>Frequently Asked Questions (FAQ) About Beyond the Library</Header>
           <Accordion fluid styled>
             <Accordion.Title
@@ -64,6 +64,7 @@ class FAQ extends React.Component {
               How do I find the image url?
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
+              <p>Note: This information is necessary to show a picture of the study spot.</p>
               <List ordered animated>
                 <List.Item>Search on your own image hosting service (i.e. Google Photos) or search the internet
                   for the location image (i.e. Google Images).</List.Item>
@@ -82,7 +83,7 @@ class FAQ extends React.Component {
               How do I find a location&apos;s geo coordinates?
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 3}>
-              <p>This information is necessary to place your study spot on the map.</p>
+              <p>Note: This information is necessary to place your study spot on the map.</p>
               <List ordered animated>
                 <List.Item>Use Google Maps to find the location you want to add.</List.Item>
                 <List.Item>Right click on the map.</List.Item>

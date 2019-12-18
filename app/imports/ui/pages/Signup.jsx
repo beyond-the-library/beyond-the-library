@@ -40,7 +40,7 @@ class Signup extends React.Component {
     }
     return (
       <Container>
-        <Image centered size='medium' src='/images/logo-temp.png'/>
+        <Image centered circular size='medium' src='/images/logo-temp.png'/>
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
             <Header as="h2" textAlign="center">
