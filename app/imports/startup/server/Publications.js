@@ -10,19 +10,9 @@ Meteor.publish('Spots', function publish() {
   return Spots.find();
 });
 
-Meteor.publish('Users', function publish() {
-    return Users.find({});
+Meteor.publish('User', function publish() {
+    return Users.findOne({ username: Meteor.user().username });
 });
-
-
- /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin.
-Meteor.publish('StuffAdmin', function publish() {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.find();
-  }
-  return this.ready();
-});
-* */
 
 Meteor.publish('MySpots', function publish() {
   if (this.userId) {

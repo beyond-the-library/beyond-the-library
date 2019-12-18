@@ -22,6 +22,7 @@ import LocationsPage from '../pages/LocationsPage';
 import OneSpotLocationPage from '../pages/OneSpotLocationPage';
 import UserProfile from '../pages/UserProfile';
 import FAQ from '../pages/FAQ';
+import EditProfile from '../pages/EditProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -44,6 +45,7 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/userfile" component={UserProfile}/>
               <ProtectedRoute path='/editpassword' component={EditPassword}/>
+              <ProtectedRoute path='/editProfile/:_id' component={EditProfile}/>
               <AdminProtectedRoute path="/admin" component={AllSpots}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>

@@ -4,7 +4,7 @@ import { Card, Container, Segment, Button, Divider } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { Users } from '../../api/user/Users';
 import DisplayUser from '../components/DisplayUser';
 
@@ -54,12 +54,16 @@ class UserProfile extends React.Component {
     return (
         <Container>
           <Card.Group>
-            {this.props.users.map((user, index) => <DisplayUser key={index} user={user}/>)}
+            <DisplayUser user={this.props.user}/>
           </Card.Group>
           <Divider hidden/>
           <Segment>
             <Button as={NavLink} exact to={'/editPassword'}> Change Password</Button>
             <Button onClick={this.deleteMessage2}> Delete this account</Button>
+            <Link to={`/editProfile/${this.props.user._id}`}>
+              <Button color='blue'>Edit Profile</Button>
+            </Link>
+            <Button as={NavLink} to={`/editProfile/${this.props.user._id}`} color='blue'>Edit Profile</Button>
           </Segment>
           <Divider hidden/>
         </Container>
@@ -69,14 +73,14 @@ class UserProfile extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 UserProfile.propTypes = {
-  users: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
   location: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  Meteor.subscribe('Users');
+  Meteor.subscribe('User');
   return {
-    users: Users.find({ username: Meteor.user() ? Meteor.user().username : '' }).fetch(),
+    user: Users.findOne(),
   };
 })(UserProfile);

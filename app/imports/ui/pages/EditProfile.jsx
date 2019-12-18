@@ -6,46 +6,34 @@ import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
-import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import LongTextField from 'uniforms-semantic/LongTextField'; // required for Uniforms
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import 'uniforms-bridge-simple-schema-2';
-import NumField from 'uniforms-semantic/NumField';
 import ReactTooltip from 'react-tooltip';
-import { Spots, SpotsSchema } from '../../api/spot/Spots';
-
+import { Users, UsersSchema } from '../../api/user/Users';
 
 /** Renders the Page for editing a single document. */
 class EditSpot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToMySpots: false,
+      redirectToProfile: false,
     };
   }
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, image, location, description, latitude, longitude, major, environment, time, _id } = data;
-    Spots.update(_id, {
+    const { username, image, description, major, favoriteSpot, _id } = data;
+    Users.update(_id, {
       $set: {
-        name,
-        image,
-        location,
-        description,
-        latitude,
-        longitude,
-        major,
-        environment,
-        time,
-        status: 'Pending',
+        username, image, description, major, favoriteSpot,
       },
     }, (error) => (error ?
         swal('Error', error.message, 'error') :
-        swal('Success', 'Spot updated successfully', 'success')))
+        swal('Success', 'Profile updated successfully', 'success')))
           .then(() => { this.setState({ redirectToMySpots: true }); });
   }
 
@@ -56,32 +44,25 @@ class EditSpot extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
-    const redirectToMySpots = this.state.redirectToMySpots;
-    if (redirectToMySpots === true) {
-      return <Redirect to='/myspots'/>;
+    const redirectToProfile = this.state.redirectToProfile;
+    if (redirectToProfile === true) {
+      return <Redirect to='/userfile'/>;
     }
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Spot</Header>
-            <AutoForm schema={SpotsSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
+            <Header as="h2" textAlign="center">Edit Profile</Header>
+            <AutoForm schema={UsersSchema} onSubmit={data => this.submit(data)} model={this.props.user}>
               <Segment>
-                <TextField name='name' data-tip="The name of the study spot"/>
+                <TextField name='username' data-tip="Who are you?"/>
                 {/* eslint-disable-next-line max-len */}
                 <TextField name='image' data-tip="An url link to the image file of the spot. Check FAQ for more information."/>
-                <TextField name='location' data-tip="General location for display"/>
-                <LongTextField name='description' data-tip="You can add some extra description or information here"/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='latitude' data-tip="The Latitude of GPS Coordinates. Please use default value if you are not sure. For more information, please check our FAQ page."/>
-                {/* eslint-disable-next-line max-len */}
-                <NumField name='longitude' data-tip="The Longitude of GPS Coordinates. Please use default value if you are not sure.  For more information, please check our FAQ page."/>
-                <SelectField name='major' data-tip="If there is any major restrictions"/>
-                <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
-                <SelectField name='time' data-tip="When is your spot available?"/>
+                <LongTextField name='description' data-tip="Say something about yourself!"/>
+                <SelectField name='major' data-tip="What is your major?"/>
+                <SelectField name='favoriteSpot' data-tip="Tell us your favorite study spot!"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <ReactTooltip />
-                <HiddenField name='owner'/>
               </Segment>
             </AutoForm>
           </Grid.Column>
@@ -92,7 +73,7 @@ class EditSpot extends React.Component {
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 EditSpot.propTypes = {
-  spot: PropTypes.object,
+  user: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
@@ -104,7 +85,7 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Spots');
   return {
-    spot: Spots.findOne(documentId),
+    user: Users.findOne(documentId),
     ready: subscription.ready(),
   };
 })(EditSpot);
