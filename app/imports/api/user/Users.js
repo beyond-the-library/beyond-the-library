@@ -9,7 +9,6 @@ const Users = new Mongo.Collection('UserProfiles');
 const UsersSchema = new SimpleSchema({
   email: String, // Email Name
   username: String, // Actual name of user
-  password: String,
   image: String, // a link to the picture of the user
   description: String, // extra information for display
   major: String,
