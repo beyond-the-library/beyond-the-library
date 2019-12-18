@@ -100,15 +100,13 @@ class Discovery extends React.Component {
             />
             <Button negative onClick={this.onClickClear}>Clear</Button>
           </Menu>
-          <Grid centered><Card.Group centered itemsPerRow={4}>
+          <Grid centered><Card.Group itemsPerRow={4}>
             {this.state.spots.length === 0 ? (
                 // eslint-disable-next-line max-len
-                this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot}
-                                                                notes={this.props.notes.filter(note => (note.contactId === spot._id))}/>)
+                this.props.spots.map((spot, index) => <SpotCard key={index} spot={spot} notes={this.props.notes.filter(note => (note.contactId === spot._id))}/>)
             ) : (
                 // eslint-disable-next-line max-len
-                this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)}
-                                                                notes={this.props.notes.filter((note) => (note.contactId === spot._id))}/>))
+                this.state.spots.map((spot, index) => <SpotCard key={index} spot={this.returnSpot(spot._id)} notes={this.props.notes.filter((note) => (note.contactId === spot._id))}/>))
             }
           </Card.Group></Grid>
         </Container>
