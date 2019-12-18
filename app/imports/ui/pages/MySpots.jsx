@@ -64,6 +64,7 @@ class MySpots extends React.Component {
               <Button fluid primary>Click Here to Contribute a New Spot</Button>
             </Link>
           </Card>
+          <Divider hidden/>
         </Container>
 
     );
