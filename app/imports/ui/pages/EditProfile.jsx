@@ -26,15 +26,17 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { username, image, description, major, favoriteSpot, _id } = data;
+    const { image, description, major, favoriteSpot, _id } = data;
     Users.update(_id, {
       $set: {
-        username, image, description, major, favoriteSpot,
+        image, description, major, favoriteSpot,
       },
     }, (error) => (error ?
         swal('Error', error.message, 'error') :
         swal('Success', 'Profile updated successfully', 'success'))
-        .then(() => { this.setState({ redirectToMySpots: true }); }));
+        .then(() => {
+          this.setState({ redirectToProfile: true });
+        }));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -54,15 +56,14 @@ class EditProfile extends React.Component {
             <Header as="h2" textAlign="center">Edit Profile</Header>
             <AutoForm schema={UsersSchema} onSubmit={data => this.submit(data)} model={this.props.user}>
               <Segment>
-                <TextField name='username' data-tip="Who are you?"/>
                 {/* eslint-disable-next-line max-len */}
-                <TextField name='image' data-tip="An url link to the image file of the spot. Check FAQ for more information."/>
+                <TextField name='image' data-tip="An url link to the profile image. Check FAQ for more information."/>
                 <LongTextField name='description' data-tip="Say something about yourself!"/>
                 <TextField name='major' data-tip="What is your major?"/>
                 <TextField name='favoriteSpot' data-tip="Tell us your favorite study spot!"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
-                <ReactTooltip />
+                <ReactTooltip/>
               </Segment>
             </AutoForm>
           </Grid.Column>
