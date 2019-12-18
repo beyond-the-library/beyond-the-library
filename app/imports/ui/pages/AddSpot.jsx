@@ -35,7 +35,7 @@ class AddSpot extends React.Component {
     const { name, location, description, major, environment, time } = data;
     const owner = Meteor.user().username;
     const status = 'Pending';
-    const image = 'images/logo-temp.png';
+    const image = 'images/defaultImage.png';
     const latitude = 21.2969;
     const longitude = -157.8171;
     // eslint-disable-next-line no-undef,max-len
