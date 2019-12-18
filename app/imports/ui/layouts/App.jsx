@@ -44,7 +44,7 @@ class App extends React.Component {
               <ProtectedRoute path="/extra/:_id" component={AddSpotExtra}/>
               <ProtectedRoute path="/edit/:_id" component={EditSpot}/>
               <ProtectedRoute path="/userfile" component={UserProfile}/>
-              <ProtectedRoute path='/editpassword' component={EditPassword}/>
+              <ProtectedRoute path='/editPassword' component={EditPassword}/>
               <ProtectedRoute path='/editProfile/:_id' component={EditProfile}/>
               <AdminProtectedRoute path="/admin" component={AllSpots}/>
               <ProtectedRoute path="/signout" component={Signout}/>

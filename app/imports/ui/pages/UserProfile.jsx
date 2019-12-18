@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Container, Segment, Button, Divider } from 'semantic-ui-react';
+import { Card, Container, Segment, Button, Divider, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
@@ -11,6 +11,13 @@ import DisplayUser from '../components/DisplayUser';
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToMySpots: false,
+    };
+  }
+/*
   deleteMessage = () => {
     swal({
       title: 'Delete your account?',
@@ -34,6 +41,7 @@ class UserProfile extends React.Component {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     return <Redirect to={from}/>;
   }
+*/
 
   deleteMessage2 = () => {
     swal({
@@ -46,7 +54,7 @@ class UserProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return this.renderPage();
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   /** Render the page once subscriptions have been received. */
@@ -54,7 +62,7 @@ class UserProfile extends React.Component {
     return (
         <Container>
           <Card.Group>
-            <DisplayUser user={this.props.user}/>
+            <DisplayUser user={this.props.user}/>)
           </Card.Group>
           <Divider hidden/>
           <Segment>
@@ -73,13 +81,15 @@ class UserProfile extends React.Component {
 /** Require an array of Stuff documents in the props. */
 UserProfile.propTypes = {
   user: PropTypes.object.isRequired,
+  ready: PropTypes.bool.isRequired,
   location: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  Meteor.subscribe('Users');
+  const subscription = Meteor.subscribe('Users');
   return {
-    user: Users.findOne(),
+    user: Users.findOne({ email: Meteor.user() ? Meteor.user().email : '' }),
+    ready: subscription.ready(),
   };
 })(UserProfile);

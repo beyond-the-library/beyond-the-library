@@ -16,7 +16,8 @@ import ReactTooltip from 'react-tooltip';
 import { Users, UsersSchema } from '../../api/user/Users';
 
 /** Renders the Page for editing a single document. */
-class EditSpot extends React.Component {
+class EditProfile extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -33,8 +34,8 @@ class EditSpot extends React.Component {
       },
     }, (error) => (error ?
         swal('Error', error.message, 'error') :
-        swal('Success', 'Profile updated successfully', 'success')))
-          .then(() => { this.setState({ redirectToMySpots: true }); });
+        swal('Success', 'Profile updated successfully', 'success'))
+        .then(() => { this.setState({ redirectToMySpots: true }); }));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -52,14 +53,15 @@ class EditSpot extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Edit Profile</Header>
+            {console.log(this.props.user)}
             <AutoForm schema={UsersSchema} onSubmit={data => this.submit(data)} model={this.props.user}>
               <Segment>
                 <TextField name='username' data-tip="Who are you?"/>
                 {/* eslint-disable-next-line max-len */}
                 <TextField name='image' data-tip="An url link to the image file of the spot. Check FAQ for more information."/>
                 <LongTextField name='description' data-tip="Say something about yourself!"/>
-                <SelectField name='major' data-tip="What is your major?"/>
-                <SelectField name='favoriteSpot' data-tip="Tell us your favorite study spot!"/>
+                <TextField name='major' data-tip="What is your major?"/>
+                <TextField name='favoriteSpot' data-tip="Tell us your favorite study spot!"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <ReactTooltip />
@@ -72,7 +74,7 @@ class EditSpot extends React.Component {
 }
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
-EditSpot.propTypes = {
+EditProfile.propTypes = {
   user: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -83,9 +85,9 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Spots');
+  const subscription = Meteor.subscribe('Users');
   return {
     user: Users.findOne(documentId),
     ready: subscription.ready(),
   };
-})(EditSpot);
+})(EditProfile);

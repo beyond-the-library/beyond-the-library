@@ -45,8 +45,8 @@ class EditSpot extends React.Component {
       },
     }, (error) => (error ?
         swal('Error', error.message, 'error') :
-        swal('Success', 'Spot updated successfully', 'success')))
-          .then(() => { this.setState({ redirectToMySpots: true }); });
+        swal('Success', 'Spot updated successfully', 'success')
+          .then(() => { this.setState({ redirectToMySpots: true }); })));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */

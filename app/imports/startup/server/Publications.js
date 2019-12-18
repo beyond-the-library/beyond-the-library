@@ -11,7 +11,7 @@ Meteor.publish('Spots', function publish() {
 });
 
 Meteor.publish('Users', function publish() {
-    return Users.find({ username: Meteor.user().username });
+    return Users.find();
 });
 
 Meteor.publish('MySpots', function publish() {
