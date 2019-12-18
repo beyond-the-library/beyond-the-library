@@ -7,6 +7,29 @@
   font-size: 16px;
 }
 
+.imageFAQ {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif !important;
+<<<<<<< Updated upstream
+=======
+  font-size: 16px !important;
+>>>>>>> Stashed changes
+}
+
+.map{
+  height: 500px;
+}
+<<<<<<< Updated upstream
+=======
+
+.nameCenter {
+  padding: 10px;
+}
+
 #carouselbackgroundcolor {
   background-color: #9FE2BF;
 }
@@ -14,11 +37,4 @@
 #navbarColor {
   background-color: #111E6C;
 }
-
-body {
-  font-family: 'Quicksand', sans-serif !important;
-}
-
-.map{
-  height: 500px;
-}
+>>>>>>> Stashed changes
