@@ -7,17 +7,14 @@
   font-size: 16px;
 }
 
-#carouselbackgroundcolor {
-  background-color: #9FE2BF;
-}
-
-#navbarColor {
-  background-color: #111E6C;
+.imageFAQ {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 body {
   font-family: 'Quicksand', sans-serif !important;
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 .map{
@@ -26,4 +23,12 @@ body {
 
 .nameCenter {
   padding: 10px;
+}
+
+#carouselbackgroundcolor {
+  background-color: #9FE2BF;
+}
+
+#navbarColor {
+  background-color: #111E6C;
 }

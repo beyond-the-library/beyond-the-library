@@ -18,7 +18,7 @@ class FAQ extends React.Component {
 
     return (
         <Grid container style={{ paddingTop: '25px' }}>
-          <Header as='h1'>Frequently Asked Questions About Beyond the Library</Header>
+          <Header as='h1'>Frequently Asked Questions (FAQ) About Beyond the Library</Header>
           <Accordion fluid styled>
             <Accordion.Title
                 active={activeIndex === 0}
@@ -64,11 +64,11 @@ class FAQ extends React.Component {
               How do I find the image url?
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
-              <List ordered>
+              <List ordered animated>
                 <List.Item>Search on your own image hosting service (i.e. Google Photos) or search the internet
                   for the location image (i.e. Google Images).</List.Item>
                 <List.Item>Right click on the image.</List.Item>
-                <List.Item>Select the &quot;Copy image address&quot; option</List.Item>
+                <List.Item>Select the &quot;Copy image address&quot; option.</List.Item>
                 <List.Item>Now the image is copied to your clipboard and can be pasted into the form.</List.Item>
               </List>
             </Accordion.Content>
@@ -82,12 +82,22 @@ class FAQ extends React.Component {
               How do I find a location&apos;s geo coordinates?
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 3}>
-              <List ordered>
+              <p>This information is necessary to place your study spot on the map.</p>
+              <List ordered animated>
                 <List.Item>Use Google Maps to find the location you want to add.</List.Item>
                 <List.Item>Right click on the map.</List.Item>
-                <List.Item>Select the &quot;What&apos;s here&quot; option.<Image src='images/geo_1.png'/></List.Item>
-                <List.Item>Click on the pop up on the bottom of the map.<Image src='images/geo_2.png'/></List.Item>
-                <List.Item>There is a new side panel with two numbers.<Image src='images/geo_3.png'/></List.Item>
+                <List.Item>
+                  Select the &quot;What&apos;s here?&quot; option.
+                  <Image src='images/geo_1.png' className='imageFAQ'/>
+                </List.Item>
+                <List.Item>
+                  Click on the pop up on the bottom of the map.
+                  <Image src='images/geo_2.png' className='imageFAQ'/>
+                </List.Item>
+                <List.Item>
+                  There is a new side panel with two numbers.
+                  <Image src='images/geo_3.png' className='imageFAQ'/>
+                </List.Item>
                 <List.Item>The first number is the latitude.</List.Item>
                 <List.Item>The second number is the longitude.</List.Item>
               </List>
