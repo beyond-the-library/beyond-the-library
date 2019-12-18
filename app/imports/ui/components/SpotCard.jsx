@@ -38,7 +38,7 @@ class SpotCard extends React.Component {
                 </Container>
               </Card.Content>
           ) : ''}
-          
+
         </Card>
     );
   }
