@@ -28,7 +28,6 @@ class LocationsPage extends Component {
     if (this.state.currentSpot != null) {
       return (
           <Grid centered>
-            <h1>Spot Updates</h1>
             <Grid.Row>
               {/* eslint-disable-next-line max-len */}
               <SpotCard spot={this.state.currentSpot} notes={this.props.notes.filter(note => (note.contactId === this.state.currentSpot._id))} />
