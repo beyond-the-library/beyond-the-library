@@ -10,8 +10,8 @@ Meteor.publish('Spots', function publish() {
   return Spots.find();
 });
 
-Meteor.publish('User', function publish() {
-    return Users.findOne({ username: Meteor.user().username });
+Meteor.publish('Users', function publish() {
+    return Users.find({ username: Meteor.user().username });
 });
 
 Meteor.publish('MySpots', function publish() {

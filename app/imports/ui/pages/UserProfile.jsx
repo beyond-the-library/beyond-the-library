@@ -63,7 +63,6 @@ class UserProfile extends React.Component {
             <Link to={`/editProfile/${this.props.user._id}`}>
               <Button color='blue'>Edit Profile</Button>
             </Link>
-            <Button as={NavLink} to={`/editProfile/${this.props.user._id}`} color='blue'>Edit Profile</Button>
           </Segment>
           <Divider hidden/>
         </Container>
@@ -79,7 +78,7 @@ UserProfile.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  Meteor.subscribe('User');
+  Meteor.subscribe('Users');
   return {
     user: Users.findOne(),
   };
