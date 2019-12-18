@@ -3,34 +3,36 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { marginBottom: '10px', backgroundColor: 'black' };
+    const menuStyle = { marginBottom: '10px', backgroundColor: 'black', borderRadius: '0', boxShadow: 'none' };
     return (
         <Menu style={menuStyle} attached="top" borderless inverted>
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image src='images/logo-temp.png' size='mini'/>
+            <Image src='images/logo-temp.png' size='mini' circular/>
           </Menu.Item>
           <Menu.Item as={NavLink}
                      activeClassName="active"
-                     exact to="/discovery" key='discovery'>Discover</Menu.Item>
+                     exact to="/discovery" key='discovery'><Icon name='compass'/>Discover</Menu.Item>
           <Menu.Item as={NavLink}
                      activeClassName="active"
-                     exact to="/locations" key='locations'>Map
+                     exact to="/locations" key='locations'><Icon name='point'/>Map
           </Menu.Item><Menu.Item as={NavLink}
-                     activeClassName="active"
-                     exact to="/FAQ" key='FAQ'>FAQ</Menu.Item>
+                                 activeClassName="active"
+                                 exact to="/FAQ" key='FAQ'><Icon name='question circle'/>FAQ</Menu.Item>
           {this.props.currentUser ? (
               [
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/myspots" key='addspot'>My Spots</Menu.Item>,
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/myspots" key='addspot'>
+                  <Icon name='pencil alternate'/>My Spots</Menu.Item>,
               ]
           ) : ''}
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>All Spots</Menu.Item>
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>
+                <Icon name='list alternate'/>All Spots</Menu.Item>
           ) : ''}
           <Menu.Item position="right">
             {this.props.currentUser === '' ? (

@@ -1,13 +1,52 @@
 import React from 'react';
-import { Card, Container, Message, Loader } from 'semantic-ui-react';
+import { Card, Container, Loader, Button, Divider } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import MySpotsCard from '../components/MySpotsCard';
 import { Spots } from '../../api/spot/Spots';
 
 class MySpots extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewAlert: true,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.spots !== prevProps.spots) {
+      this.setState({ viewAlert: false });
+    }
+  }
+
+  titleHelp() {
+    // eslint-disable-next-line max-len
+    (swal({
+      title: 'Welcome',
+      text: 'Welcome to MySpots Page! You can contribute your favorite study spots here.',
+      button: 'Next',
+    })
+        .then(() => {
+          (swal({
+            text: 'Click the blue button in the middle of the screen to share your first spot!',
+            button: 'Got it',
+          }));
+        }));
+  }
+
+  title() {
+    if (this.props.spots.length < 1 && this.state.viewAlert) {
+      return (
+          <Divider hidden>{this.titleHelp()}</Divider>
+      );
+    }
+    return (<Divider hidden/>);
+  }
+
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
@@ -16,14 +55,16 @@ class MySpots extends React.Component {
   renderPage() {
     return (
         <Container>
+          {this.title()}
           <Card.Group>
-              {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
+            {this.props.spots.map((spot, index) => (<MySpotsCard key={index} spot={spot}/>))}
           </Card.Group>
           <Card centered>
-            <Message>
-              <Link to="/addspot">Click here to Add a new Spot</Link>
-            </Message>
+            <Link to="/addspot">
+              <Button fluid primary>Click Here to Contribute a New Spot</Button>
+            </Link>
           </Card>
+          <Divider hidden/>
         </Container>
 
     );

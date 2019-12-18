@@ -1,52 +1,81 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Container, Segment, Button } from 'semantic-ui-react';
+import { Card, Container, Segment, Button, Divider, Loader, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 import { Users } from '../../api/user/Users';
 import DisplayUser from '../components/DisplayUser';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToMySpots: false,
+    };
+  }
+/*
   deleteMessage = () => {
     swal({
-      title: 'You are deleting you account',
-      text: 'Upon deletion, your spots wont be attributed to you anymore.',
+      title: 'Delete your account?',
+      text: 'Any spots you published will not appear on the list unless added again. Proceed?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
     })
-        .then((deleteuser) => {
-          if (deleteuser) {
-            Meteor.logout();
-            swal('Your account has been deleted.', {
-              icon: 'success',
-            });
-          }
+        .then(() => {
+          const id = Users.find({ username: Meteor.user() ? Meteor.user().username : '' }).fetch();
+          console.log(id);
+          const userId = id._id;
+          console.log(userId);
+          // Meteor.logout();
+          // Users.remove({ _id: id }, true);
+          swal('Your account has been deleted.', {
+            icon: 'success',
+          });
+
         });
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     return <Redirect to={from}/>;
   }
+*/
+
+  deleteMessage2 = () => {
+    swal({
+      title: 'Hey,',
+      text: 'Delete functionality under construction.',
+      icon: 'warning',
+      buttons: true,
+    });
+  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return this.renderPage();
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
         <Container>
+          {console.log(this.props.user)}
           <Card.Group>
-            {this.props.users.map((user, index) => <DisplayUser key={index} user={user}/>)}
+            <DisplayUser user={this.props.user}/>)
           </Card.Group>
+          <Divider hidden/>
+          <Grid centered>
           <Segment>
             <Button as={NavLink} exact to={'/editPassword'}> Change Password</Button>
-            <Button onClick={this.deleteMessage}> Delete this account</Button>
+            <Button onClick={this.deleteMessage2}> Delete this account</Button>
+            <Link to={`/editProfile/${this.props.user._id}`}>
+              <Button color='blue'>Edit Profile</Button>
+            </Link>
           </Segment>
+          </Grid>
+          <Divider hidden/>
         </Container>
     );
   }
@@ -54,14 +83,16 @@ class UserProfile extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 UserProfile.propTypes = {
-  users: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
+  ready: PropTypes.bool.isRequired,
   location: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  Meteor.subscribe('Users');
+  const subscription = Meteor.subscribe('Users');
   return {
-    users: Users.find({ username: Meteor.user() ? Meteor.user().username : '' }).fetch(),
+    user: Users.findOne({ username: Meteor.user() ? Meteor.user().username : '' }),
+    ready: subscription.ready(),
   };
 })(UserProfile);

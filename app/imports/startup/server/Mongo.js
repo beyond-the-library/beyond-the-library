@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Spots } from '../../api/spot/Spots.js';
 import { Users } from '../../api/user/Users';
-import { MapMarker } from '../../api/mapmarker/MapMarker.js';
 import { Notes } from '../../api/note/Notes';
 
 
@@ -42,18 +41,6 @@ if (Users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating default users');
     Meteor.settings.defaultAccounts.map(data => addUserProfile(data));
-  }
-}
-
-function addMarker(data) {
-  console.log(`  Adding: ${data.name} ${data.lat} ${data.lng}`);
-  MapMarker.insert(data);
-}
-
-if (MapMarker.find().count() === 0) {
-  if (Meteor.settings.defaultMarker) {
-    console.log('Creating Map markers.');
-    Meteor.settings.defaultMarker.map(data => addMarker(data));
   }
 }
 

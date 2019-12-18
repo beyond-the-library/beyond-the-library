@@ -35,12 +35,10 @@ class LocationsPage extends Component {
             </Grid.Row>
             <Grid.Row>
               <Link to={'/discovery'}>
-                <Button color='blue'>Discover a Spot</Button>
+                <Button color='blue'>Discover</Button>
               </Link>
-            </Grid.Row>
-            <Grid.Row>
               <Link to={'/mySpots'}>
-                <Button color='blue'>Share My Spots</Button>
+                <Button color='blue'>Contribute My Spots</Button>
               </Link>
             </Grid.Row>
           </Grid>
@@ -91,7 +89,6 @@ LocationsPage.propTypes = {
   notes: PropTypes.array.isRequired,
   spots: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  mapmarker: PropTypes.array.isRequired,
 };
 
 export default withTracker(() => {

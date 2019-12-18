@@ -6,24 +6,21 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import MapsNote from '/imports/ui/components/MapsNote';
 import AddNote from '/imports/ui/components/AddNote.jsx';
+import ReactTooltip from 'react-tooltip';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class SpotCard extends React.Component {
   render() {
     return (
         <Card text-align='center'>
-
+          <ReactTooltip />
           <Link to={`/location/${this.props.spot._id}`}>
-            <Image src={this.props.spot.image}/>
+            {/* eslint-disable-next-line max-len */}
+            <Image src={this.props.spot.image} style={{ width: '300px', height: '300px' }} data-tip={this.props.spot.location}/>
           </Link>
             {/* eslint-disable-next-line max-len */}
-          <Card.Header text-align="center" as='h4'><span className='nameCenter'> {this.props.spot.name} </span></Card.Header>
-          <Card.Meta><span>{this.props.spot.address}</span></Card.Meta>
-          <Card.Description>
-            <span className='nameCenter'>
-              {this.props.spot.description}
-            </span>
-          </Card.Description>
+          <Card.Header text-align="center" as='h4'> {this.props.spot.name} </Card.Header>
+          <Card.Description> {this.props.spot.description} </Card.Description>
           <Card.Content extra>
             <Feed text-align="center">
               <hr/>

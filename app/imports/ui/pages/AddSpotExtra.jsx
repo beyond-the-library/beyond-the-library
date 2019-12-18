@@ -79,11 +79,11 @@ class AddSpotExtra extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Extra</Header>
+            <Header as="h2" textAlign="center">Extra Information</Header>
             <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} model={this.props.spot}>
               <Segment>
                 {/* eslint-disable-next-line max-len */}
-                <TextField name='image' data-tip="An url link to the image file of the spot. You may want to try https://imgbb.com/ "/>
+                <TextField name='image' data-tip="An url link to the image file of the spot. Check FAQ for more information."/>
                 <SelectField name='major' data-tip="If there is any major restrictions"/>
                 <SelectField name='environment' data-tip="Some spots are indoor, some are not"/>
                 <SelectField name='time' data-tip="When is your spot available?"/>

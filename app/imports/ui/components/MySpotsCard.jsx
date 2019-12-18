@@ -52,6 +52,10 @@ class MySpotsCard extends React.Component {
           </Button.Group>
       );
     }
+    if (this.props.spot.status !== 'Archived') {
+      // eslint-disable-next-line max-len
+      return (<Header as='h4'>Your spot has been archived for some reason. We are sorry for the inconvenience.</Header>);
+    }
     return (
         <Header as='h4'>Thank you for the contribution to our community!</Header>
     );
